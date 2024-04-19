@@ -19,17 +19,8 @@ in
   config = lib.mkIf cfg.enable {
     # Enable X11 and Window Manager
     services.xserver.enable = true;
-    services.desktopManager.xfce.enable = false;
-
-    services.xserver.windowManager.${cfg.wm}.enable = {
-      enable = true;
-      extraPackages = with pkgs; [
-          dmenu
-	  pcmanfm
-	  alacritty
-        ];
-      };
-    
+    services.xserver.desktopManager.xfce.enable = false;
+    services.xserver.windowManager.${cfg.wm}.enable = true;
     services.xserver.displayManager.defaultSession = "none+${cfg.wm}";
 
     # Keyboard xserver config

@@ -22,6 +22,9 @@
     spotify
     gimp
     brave
+    alacritty
+    neofetch
+    nitrogen
   ];
 
   # File links
@@ -78,7 +81,7 @@
 	colors.primary = {
 	  foreground = "#1158c7";
 	  background = "#0d1117";
-	}
+	};
       };
     };
   };
