@@ -21,11 +21,11 @@ in
     services.xserver.enable = true;
     services.xserver.desktopManager.xfce.enable = false;
     services.xserver.windowManager.${cfg.wm}.enable = true;
-    services.xserver.displayManager.defaultSession = "none+${cfg.wm}";
+    services.displayManager.defaultSession = "none+${cfg.wm}";
 
     # Keyboard xserver config
     services.xserver.xkb.layout = "us,br";
-    services.xserver.xkb.options = "grp:rctrl_rshift_toggle";
+    services.xserver.xkb.options = "altwin:menu,altwin:swap_lalt_lwin,grp:rctrl_rshift_toggle";
 
     # Picom
     services.picom = {
@@ -33,7 +33,7 @@ in
       backend = "glx";
       fade = true;
       fadeDelta = 4;
-      fadeSteps = [ 0.4 0.4 ];
+      fadeSteps = [ (0.4) (0.4) ];
 
       # Opacity
       activeOpacity = 0.95;
@@ -55,23 +55,23 @@ in
       shadow = true;
       shadowOpacity = 0.55;
       shadowExclude = [
-	 "name = 'Notification'"
-	 "class_g = 'Conky'"
-  	 "class_g ?= 'Notify-osd'"
-  	 "class_g = 'Cairo-clock'"
-  	 "class_g = 'slop'"
-  	 "class_g = 'Polybar'"
-	 "100:class_g = 'dmenu'"
+	"name = 'Notification'"
+	"class_g = 'Conky'"
+  	"class_g ?= 'Notify-osd'"
+  	"class_g = 'Cairo-clock'"
+  	"class_g = 'slop'"
+  	"class_g = 'Polybar'"
+	"class_g = 'dmenu'"
       ];
       shadowOffsets = [ (-40) (-20) ];
       
       # Extra configs
       settings = {
 
-	cornerRadius = 10;
-	roundBorders = 1;
+	corner-radius = 10;
+	round-borders = 1;
 
-	focusExclude = [
+	focus-exclude = [
 	  "class_g = 'Cairo-clock'"
 	  "class_g = 'Bar'"
 	  "class_g = 'slop'"
@@ -82,37 +82,10 @@ in
 	  method = "dual_kawase";
 	  strength = 7;
 	  background = true;
-	  backgroundFrame = false;
-	  backgroundFixed = false;
+	  background-frame = false;
+	  background-fixed = false;
 	};
         vsync = true;
-      };
-
-      # Wintype
-      wintypes = {
-	normal = {
-	  fade = false;
-	  shadow = false;
-	};
-	tooltip = {
-	  fade = true; 
-	  shadow = true;
-	  opacity = 0.75;
-	  focus = true;
-	  fullShadow = false;
-	};
-	dock = {
-	  shadow = false;
-	};
-	dnd = {
-	  shadow = false;
-	};
-	popup_menu = {
-	  opacity = 0.9;
-	};
-	dropdown_menu = { 
-	  opacity = 0.8;
-	};
       };
     };
   };
