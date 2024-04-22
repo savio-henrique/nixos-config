@@ -70,6 +70,9 @@ in
 
 	corner-radius = 10;
 	round-borders = 1;
+        rounded-corners-exclude = [
+	  "class_g = 'awesome'"
+	];
 
 	focus-exclude = [
 	  "class_g = 'Cairo-clock'"
