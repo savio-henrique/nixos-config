@@ -129,6 +129,7 @@
     fwupd
     xorg.xev
     pavucontrol
+    usbutils
 
     rofi
     nitrogen
