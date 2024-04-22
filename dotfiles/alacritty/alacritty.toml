@@ -1,0 +1,7 @@
+window.opacity = 0.2
+window.title = "Terminal"
+window.dynamic_title = false
+window.blur = true;
+
+colors.primary.foreground = "#1158c7"
+colors.primary.background = "#0d1117"

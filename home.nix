@@ -75,12 +75,14 @@
       enable = true;
 
       settings = {
-	opacity = 0.2;
-	title = "Terminal";
-	dynamic_title = false;
-	colors.primary = {
-	  foreground = "#1158c7";
-	  background = "#0d1117";
+	window = {
+	  opacity = 0.2;
+	  title = "Terminal";
+	  dynamic_title = false;
+	  colors.primary = {
+	    foreground = "#1158c7";
+	    background = "#0d1117";
+	  };
 	};
       };
     };
