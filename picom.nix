@@ -19,7 +19,7 @@ in
   config = lib.mkIf cfg.enable {
     services.picom = {
       enable = true;
-      package = ${cfg.package};
+      package = cfg.package;
       backend = "glx";
       fade = true;
       fadeDelta = 4;
