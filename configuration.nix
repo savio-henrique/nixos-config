@@ -10,6 +10,7 @@
       ./hardware-configuration.nix
       inputs.home-manager.nixosModules.default
       ./users/main-user.nix
+      ./picom.nix
       ./video.nix
     ];
 
@@ -52,6 +53,9 @@
   video.enable = true;
   video.wm = "awesome";
 
+  # Picom configuration
+  picom.enable = true;
+
   # Enable CUPS to print documents.
   # services.printing.enable = true;
 
@@ -71,7 +75,7 @@
 
   # udev rule to not suspend usb
   services.udev.extraRules = ''
-    ACTION=="add", ATTRS{idVendor}=="0d8c", ATTRS{idProduct}=="4147", ATTR{power/control}:="on"
+    ACTION=="add", ATTR{idVendor}=="0d8c", ATTR{idProduct}=="4147", ATTR{power/control}:="on"
   '';
 
   # Enable touchpad support (enabled default in most desktopManager).
