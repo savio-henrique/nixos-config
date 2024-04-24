@@ -75,7 +75,7 @@
 
   # udev rule to not suspend usb
   services.udev.extraRules = ''
-    ACTION=="add", ATTR{idVendor}=="0d8c", ATTR{idProduct}=="4147", ATTR{power/control}:="on"
+    ACTION=="add", DRIVER=="usb", ATTR{power/control}:="on"
   '';
 
   # Enable touchpad support (enabled default in most desktopManager).
