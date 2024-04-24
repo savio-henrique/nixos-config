@@ -100,6 +100,8 @@
     gaa = "git add --all";
     gl = "git log";
     gd = "git diff";
+    gr = "git restore";
+    grs = "git restore --staged";
     v = "nvim";
     rebuild = "sudo nixos-rebuild switch --flake '/etc/nixos#saviohc'";
     perms = "sudo chmod -R 775 /etc/nixos && sudo chown -R root:nixos-dev /etc/nixos";
