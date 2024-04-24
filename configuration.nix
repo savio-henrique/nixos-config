@@ -54,7 +54,7 @@
   video.wm = "awesome";
 
   # Picom configuration
-  picom.enable = true;
+  picom.enable = false;
 
   # Enable CUPS to print documents.
   # services.printing.enable = true;

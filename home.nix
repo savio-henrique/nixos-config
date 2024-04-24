@@ -104,6 +104,9 @@
     rebuild = "sudo nixos-rebuild switch --flake '/etc/nixos#saviohc'";
     perms = "sudo chmod -R 775 /etc/nixos && sudo chown -R root:nixos-dev /etc/nixos";
     flake = "nix flake update";
+    m = "tmux";
+    ma = "tmux attach -t";
+    mr = "tmux rename-session -t";
   };
 
   programs.home-manager.enable = true;
