@@ -25,6 +25,7 @@
     alacritty
     neofetch
     nitrogen
+    minecraft
   ];
 
   # File links
@@ -109,6 +110,7 @@
     m = "tmux";
     ma = "tmux attach -t";
     mr = "tmux rename-session -t";
+    dev = "nix develop";
   };
 
   programs.home-manager.enable = true;
