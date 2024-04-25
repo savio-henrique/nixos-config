@@ -10,8 +10,8 @@
       ./hardware-configuration.nix
       inputs.home-manager.nixosModules.default
       ./users/main-user.nix
-      ./picom.nix
-      ./video.nix
+      ./video/picom/picom.nix
+      ./video/video.nix
     ];
 
   # Use the GRUB 2 boot loader.
