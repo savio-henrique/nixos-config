@@ -1,3 +1,5 @@
+#TODO -- modularize the neovim configuration using home-manager modules.
+
 { lib, pkgs, config , ... }:
 
 let
@@ -5,8 +7,7 @@ let
 in
 {
   options.neovim = {
-    enable = lib.mkEnableOption "enable neovim configuration";
-    
+    enable = lib.mkDefault true;
   };
 
   config = lib.mkIf cfg.enable {
@@ -16,8 +17,6 @@ in
       toLuaFile = path: "lua << EOF\n${builtins.readFile path}\nEOF\n";
     in
     {
-      enable = true;
-
       extraLuaConfig = ''
 	${builtins.readFile ./config/options.lua}
       '';

@@ -1,7 +1,8 @@
 { config, pkgs, ... }:
 
 {
-  imports = [ ./programs/nvim/nvim.nix ];
+  # TODO -- add as a home-manager module: imports = [ ./programs/nvim/nvim.nix ];
+
   home.username = "saviohc";
   home.homeDirectory = "/home/saviohc";
 
@@ -88,11 +89,25 @@
 	};
       };
     };
+
+    # Neovim config
+    neovim = 
+      let
+        toLua = str: "lua << EOF\n${str}\nEOF\n";
+        toLuaFile = path: "lua << EOF\n${builtins.readFile path}\nEOF\n";
+      in
+      {
+        enable = true; 
+  
+        extraLuaConfig = ''
+	  ${builtins.readFile ./programs/nvim/config/options.lua}
+        '';
+  
+        #plugins = with pkgs.vimPlugins; [
+        #];
+      };
   };
 
-  # Neovim configuration
-  nvim.enable = true;
-	
   # Bash alias
   home.shellAliases = {
     c = "clear";
