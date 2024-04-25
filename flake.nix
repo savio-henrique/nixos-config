@@ -9,6 +9,8 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+		nix-colors.url = "github:misterio77/nix-colors";
+
 		plugin-github-theme.url = "github:projekt0n/github-nvim-theme";
 		plugin-github-theme.flake = false;
   };

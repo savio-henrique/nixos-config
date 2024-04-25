@@ -3,6 +3,15 @@
 {
   # TODO -- add as a home-manager module: imports = [ ./programs/nvim/nvim.nix ];
 
+	# Imports
+  imports = [
+		inputs.nix-colors.homeManagerModules.default
+		./programs/alacritty/alacritty.nix
+	];
+
+	colorScheme = inputs.nix-colors.colorSchemes.mocha;
+
+	# User config
   home.username = "saviohc";
   home.homeDirectory = "/home/saviohc";
 
@@ -26,17 +35,13 @@
     brave
     alacritty
     neofetch
-    nitrogen
     minecraft
   ];
 
   # File links
   home.file = {
     ".config/awesome".source = dotfiles/awesome;
-    ".config/alacritty".source = dotfiles/alacritty;
-    ".config/nitrogen".source = dotfiles/nitrogen;
     ".config/neofetch".source = dotfiles/neofetch;
-    ".config/picom".source = dotfiles/picom;
   };
 
   # Session Variables
@@ -73,22 +78,6 @@
       };
     };
 
-    # Alacritty configs
-    alacritty = {
-      enable = true;
-
-      settings = {
-	window = {
-	  opacity = 0.2;
-	  title = "Terminal";
-	  dynamic_title = false;
-	  colors.primary = {
-	    foreground = "#1158c7";
-	    background = "#0d1117";
-	  };
-	};
-      };
-    };
 
     # Neovim config
     neovim = {

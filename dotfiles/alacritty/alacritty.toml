@@ -1,6 +1,0 @@
-window.opacity = 1
-window.title = "Terminal"
-window.dynamic_title = false
-
-colors.primary.foreground = "#1158c7"
-colors.primary.background = "#0d1117"
