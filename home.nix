@@ -110,7 +110,7 @@
     m = "tmux";
     ma = "tmux attach -t";
     mr = "tmux rename-session -t";
-    dev = "nix develop";
+    dev = "nix develop --command fish";
   };
 
   programs.home-manager.enable = true;
