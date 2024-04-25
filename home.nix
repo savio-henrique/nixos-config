@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ config, pkgs, inputs, ... }:
 
 {
   # TODO -- add as a home-manager module: imports = [ ./programs/nvim/nvim.nix ];
@@ -91,12 +91,7 @@
     };
 
     # Neovim config
-    neovim = 
-      let
-        toLua = str: "lua << EOF\n${str}\nEOF\n";
-        toLuaFile = path: "lua << EOF\n${builtins.readFile path}\nEOF\n";
-      in
-      {
+    neovim = {
         enable = true; 
 				
 				viAlias = true;
@@ -121,9 +116,14 @@
 					}
 
 					{
-					  plugin = gruvbox-nvim;
-						config = "colorscheme gruvbox";
+					  plugin = github-nvim-theme;
+						config = "colorscheme github_dark_default";
 					}
+
+					# {
+					#   plugin = gruvbox-nvim;
+					# 	config = "colorscheme gruvbox";
+					# }
 
           #{
 					  #plugin = vim-nix;

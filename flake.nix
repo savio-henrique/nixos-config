@@ -8,6 +8,9 @@
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+		plugin-github-theme.url = "github:projekt0n/github-nvim-theme";
+		plugin-github-theme.flake = false;
   };
 
   outputs = {self, nixpkgs, ... }@inputs:
