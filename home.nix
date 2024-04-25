@@ -98,13 +98,39 @@
       in
       {
         enable = true; 
+				
+				viAlias = true;
+				vimAlias = true;
+				vimdiffAlias = true;
   
         extraLuaConfig = ''
 	  ${builtins.readFile ./programs/nvim/config/options.lua}
         '';
   
-        #plugins = with pkgs.vimPlugins; [
-        #];
+        plugins = with pkgs.vimPlugins; [
+					{
+					  plugin = comment-nvim;
+					  type = "lua";
+            config = "require('Comment').setup()";
+					}
+
+				  {
+				  	plugin = nvim-lspconfig;
+						type = "lua";
+						config = "${builtins.readFile ./programs/nvim/config/plugin/lsp.lua}";
+					}
+
+					{
+					  plugin = gruvbox-nvim;
+						config = "colorscheme gruvbox";
+					}
+
+          #{
+					  #plugin = vim-nix;
+						#type = "";
+						#config = "";
+					#}
+        ];
       };
   };
 
