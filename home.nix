@@ -1,6 +1,7 @@
 { config, pkgs, ... }:
 
 {
+  imports = [ ./programs/nvim/nvim.nix ];
   home.username = "saviohc";
   home.homeDirectory = "/home/saviohc";
 
@@ -89,6 +90,9 @@
     };
   };
 
+  # Neovim configuration
+  nvim.enable = true;
+	
   # Bash alias
   home.shellAliases = {
     c = "clear";
