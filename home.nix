@@ -9,12 +9,11 @@
 		./programs/alacritty/alacritty.nix
 	];
 
-	colorScheme = inputs.nix-colors.colorSchemes.mocha;
+	colorScheme = inputs.nix-colors.colorSchemes.twilight;
 
 	# User config
   home.username = "saviohc";
   home.homeDirectory = "/home/saviohc";
-
   # Version
   home.stateVersion = "23.11"; 
 
