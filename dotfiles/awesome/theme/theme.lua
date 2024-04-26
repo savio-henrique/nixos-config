@@ -9,28 +9,28 @@ local dpi = xresources.apply_dpi
 local gfs = require("gears.filesystem")
 local themes_path = gfs.get_themes_dir()
 local mytheme_path = gfs.get_configuration_dir() .. "theme/"
-
-local theme = {}
-
+local theme = require("./colors.lua")
+-- local theme = {}
+--
 theme.font          = "sans 8"
-
-theme.bg_normal     = "#222222"
-theme.bg_focus      = "#535d6c"
-theme.bg_urgent     = "#ff0000"
-theme.bg_minimize   = "#444444"
-theme.bg_systray    = theme.bg_normal
-
-theme.fg_normal     = "#aaaaaa"
-theme.fg_focus      = "#ffffff"
-theme.fg_urgent     = "#ffffff"
-theme.fg_minimize   = "#ffffff"
-
-theme.useless_gap   = dpi(3)
-theme.border_width  = dpi(2)
-theme.border_normal = "#0d1117"
-theme.border_focus  = "#1f6feb"
-theme.border_marked = "#39d353"
-
+--
+-- theme.bg_normal     = "#222222"
+-- theme.bg_focus      = "#535d6c"
+-- theme.bg_urgent     = "#ff0000"
+-- theme.bg_minimize   = "#444444"
+-- theme.bg_systray    = theme.bg_normal
+--
+-- theme.fg_normal     = "#aaaaaa"
+-- theme.fg_focus      = "#ffffff"
+-- theme.fg_urgent     = "#ffffff"
+-- theme.fg_minimize   = "#ffffff"
+--
+-- theme.useless_gap   = dpi(3)
+-- theme.border_width  = dpi(2)
+-- theme.border_normal = "#0d1117"
+-- theme.border_focus  = "#1f6feb"
+-- theme.border_marked = "#39d353"
+--
 -- There are other variable sets
 -- overriding the default one when
 -- defined, the sets are:
@@ -42,13 +42,13 @@ theme.border_marked = "#39d353"
 -- prompt_[fg|bg|fg_cursor|bg_cursor|font]
 -- hotkeys_[bg|fg|border_width|border_color|shape|opacity|modifiers_fg|label_bg|label_fg|group_margin|font|description_font]
 -- Example:
-theme.titlebar_bg_color   = theme.border_focus
-theme.titlebar_fg_color   = theme.border_focus
-
-theme.tasklist_bg_focus  = theme.border_focus
-theme.tasklist_bg_normal = theme.border_normal
-theme.taglist_bg_normal  = theme.border_normal
-theme.taglist_bg_focus   = theme.border_focus
+-- theme.titlebar_bg_color   = theme.border_focus
+-- theme.titlebar_fg_color   = theme.border_focus
+--
+-- theme.tasklist_bg_focus  = theme.border_focus
+-- theme.tasklist_bg_normal = theme.border_normal
+-- theme.taglist_bg_normal  = theme.border_normal
+-- theme.taglist_bg_focus   = theme.border_focus
 
 -- Generate taglist squares:
 local taglist_square_size = dpi(4)
