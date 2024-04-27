@@ -8,7 +8,7 @@
 		vimdiffAlias = true;
 
     extraLuaConfig = ''
-			${builtins.readFile ./programs/nvim/config/options.lua}
+			${builtins.readFile ./config/options.lua}
     '';
 
 		plugins = with pkgs.vimPlugins; [
@@ -21,7 +21,7 @@
 		  {
 		  	plugin = nvim-lspconfig;
 				type = "lua";
-				config = "${builtins.readFile ./programs/nvim/config/plugin/lsp.lua}";
+				config = "${builtins.readFile ./config/plugin/lsp.lua}";
 			}
 
 			{
