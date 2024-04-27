@@ -9,6 +9,7 @@
 
     extraLuaConfig = ''
 			${builtins.readFile ./config/options.lua}
+			${builtins.readFile ./config/keymaps.lua}
     '';
 
 		plugins = with pkgs.vimPlugins; [
@@ -21,12 +22,18 @@
 		  {
 		  	plugin = nvim-lspconfig;
 				type = "lua";
-				config = "${builtins.readFile ./config/plugin/lsp.lua}";
+				config = "${builtins.readfile ./config/plugin/lsp.lua}";
+			}
+
+		  {
+		  	plugin = nvim-telescope;
+				type = "lua";
+				config = "${builtins.readfile ./config/plugin/lsp.lua}";
 			}
 
 			{
 			  plugin = kanagawa-nvim;
-				config = "colorscheme kanagawa-wave";
+				config = "colorscheme kanagawa-dragon";
 			}
 
       #{

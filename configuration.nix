@@ -38,20 +38,6 @@
   # Nixpkg config
   nixpkgs.config.allowUnfree = true;
 
-	# Increment nixpkgs 
-	nixpkgs = {
-		overlays = [
-			(final: prev: {
-				vimPlugins = prev.vimPlugins // {
-					github-nvim-theme = prev.vimUtils.buildVimPlugin {
-						name = "github-nvim-theme";
-						src = inputs.plugin-github-theme;
-					};
-				};
-			})
-		];
-	};
-
   # Select internationalisation properties.
   # i18n.defaultLocale = "en_US.UTF-8";
   # console = {
@@ -151,7 +137,6 @@
     usbutils
 
     rofi
-    nitrogen
   ];
 
 

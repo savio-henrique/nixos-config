@@ -86,28 +86,11 @@
         "type": "github"
       }
     },
-    "plugin-github-theme": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1706710373,
-        "narHash": "sha256-FO4mwRY2qjutjVTiW0wN5KVhuoBZmycfOwMFInaTnNo=",
-        "owner": "projekt0n",
-        "repo": "github-nvim-theme",
-        "rev": "d92e1143e5aaa0d7df28a26dd8ee2102df2cadd8",
-        "type": "github"
-      },
-      "original": {
-        "owner": "projekt0n",
-        "repo": "github-nvim-theme",
-        "type": "github"
-      }
-    },
     "root": {
       "inputs": {
         "home-manager": "home-manager",
         "nix-colors": "nix-colors",
-        "nixpkgs": "nixpkgs",
-        "plugin-github-theme": "plugin-github-theme"
+        "nixpkgs": "nixpkgs"
       }
     }
   },
