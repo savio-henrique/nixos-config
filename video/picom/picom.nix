@@ -26,7 +26,7 @@ in
       fadeSteps = [ (0.4) (0.4) ];
 
       # Opacity
-      activeOpacity = 1;
+      activeOpacity = 0.95;
       inactiveOpacity = 0.65;
       menuOpacity= 0.8;
       opacityRules = [

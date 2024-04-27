@@ -7,6 +7,7 @@
   imports = [
 		inputs.nix-colors.homeManagerModules.default
 		./programs/alacritty/alacritty.nix
+		./programs/nvim/nvim.nix
 	];
 
 	colorScheme = inputs.nix-colors.colorSchemes.twilight;
@@ -116,50 +117,6 @@ return theme
         init.defaultBranch = "main";
       };
     };
-
-
-    # Neovim config
-    neovim = {
-        enable = true; 
-				
-				viAlias = true;
-				vimAlias = true;
-				vimdiffAlias = true;
-  
-        extraLuaConfig = ''
-	  ${builtins.readFile ./programs/nvim/config/options.lua}
-        '';
-  
-        plugins = with pkgs.vimPlugins; [
-					{
-					  plugin = comment-nvim;
-					  type = "lua";
-            config = "require('Comment').setup()";
-					}
-
-				  {
-				  	plugin = nvim-lspconfig;
-						type = "lua";
-						config = "${builtins.readFile ./programs/nvim/config/plugin/lsp.lua}";
-					}
-
-					{
-					  plugin = github-nvim-theme;
-						config = "colorscheme github_dark_default";
-					}
-
-					# {
-					#   plugin = gruvbox-nvim;
-					# 	config = "colorscheme gruvbox";
-					# }
-
-          #{
-					  #plugin = vim-nix;
-						#type = "";
-						#config = "";
-					#}
-        ];
-      };
   };
 
   # Bash alias

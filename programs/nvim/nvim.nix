@@ -1,28 +1,39 @@
-#TODO -- modularize the neovim configuration using home-manager modules.
-
 { lib, pkgs, config , ... }:
-
-let
-  cfg = config.neovim;
-in
 {
-  options.neovim = {
-    enable = lib.mkDefault true;
-  };
+	programs.neovim = {
+ 		enable = true; 
+			
+		viAlias = true;
+		vimAlias = true;
+		vimdiffAlias = true;
 
-  config = lib.mkIf cfg.enable {
-    programs.neovim = 
-    let
-      toLua = str: "lua << EOF\n${str}\nEOF\n";
-      toLuaFile = path: "lua << EOF\n${builtins.readFile path}\nEOF\n";
-    in
-    {
-      extraLuaConfig = ''
-	${builtins.readFile ./config/options.lua}
-      '';
+    extraLuaConfig = ''
+			${builtins.readFile ./programs/nvim/config/options.lua}
+    '';
 
-      #plugins = with pkgs.vimPlugins; [
-      #];
-    };
-  };
+		plugins = with pkgs.vimPlugins; [
+			{
+			  plugin = comment-nvim;
+			  type = "lua";
+        config = "require('Comment').setup()";
+			}
+
+		  {
+		  	plugin = nvim-lspconfig;
+				type = "lua";
+				config = "${builtins.readFile ./programs/nvim/config/plugin/lsp.lua}";
+			}
+
+			{
+			  plugin = kanagawa-nvim;
+				config = "colorscheme kanagawa-wave";
+			}
+
+      #{
+			  #plugin = vim-nix;
+				#type = "";
+				#config = "";
+			#}
+		];
+	};
 }
