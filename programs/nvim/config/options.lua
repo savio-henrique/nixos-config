@@ -1,7 +1,7 @@
 -- Configs
 
-vim.g.mapleader = ''
-vim.g.maplocalleader = ''
+vim.g.mapleader = ' '
+vim.g.maplocalleader = ' '
 
 vim.o.clipboard = 'unnamedplus'
 

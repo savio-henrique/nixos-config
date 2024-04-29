@@ -8,8 +8,8 @@
 		vimdiffAlias = true;
 
     extraLuaConfig = ''
-			${builtins.readFile ./config/options.lua}
 			${builtins.readFile ./config/keymaps.lua}
+			${builtins.readFile ./config/options.lua}
     '';
 
 		plugins = with pkgs.vimPlugins; [
@@ -22,13 +22,35 @@
 		  {
 		  	plugin = nvim-lspconfig;
 				type = "lua";
-				config = "${builtins.readfile ./config/plugin/lsp.lua}";
+				config = "${builtins.readFile ./config/plugin/lsp.lua}";
 			}
 
 		  {
-		  	plugin = nvim-telescope;
+		  	plugin = telescope-nvim;
 				type = "lua";
-				config = "${builtins.readfile ./config/plugin/lsp.lua}";
+				config = "${builtins.readFile ./config/plugin/telescope.lua}";
+			}
+
+		  {
+		  	plugin = (nvim-treesitter.withPlugins (p : [
+					p.tree-sitter-nix
+					p.tree-sitter-vim
+					p.tree-sitter-bash
+					p.tree-sitter-lua
+					p.tree-sitter-python
+					p.tree-sitter-json
+					p.tree-sitter-css
+					p.tree-sitter-yaml
+					p.tree-sitter-html
+					p.tree-sitter-markdown
+					p.tree-sitter-tsx
+					p.tree-sitter-typescript
+					p.tree-sitter-javascript
+					p.tree-sitter-dockerfile
+					p.tree-sitter-php
+				]));
+				type = "lua";
+				config = "${builtins.readFile ./config/plugin/treesitter.lua}";
 			}
 
 			{
