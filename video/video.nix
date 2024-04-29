@@ -11,7 +11,7 @@ in
       type = lib.types.str;
       default = "awesome";
       description = ''
-	window manager
+				window manager
       '';
     };
   };
@@ -27,6 +27,24 @@ in
     # Keyboard xserver config
     services.xserver.xkb.layout = "us,br";
     services.xserver.xkb.options = "altwin:menu,altwin:swap_lalt_lwin,grp:rctrl_rshift_toggle";
+
+		# Dual Monitor Setup
+
+		services.xserver.xrandrHeads = [
+			{
+				output = "HDMI-0";
+				monitorConfig = ''
+					Option "PreferredMode" "2560x1080"
+				'';
+			}
+			{
+				output = "DP-5";
+				monitorConfig = ''
+					Option "PreferredMode" "1920x1080"
+				'';
+			}
+
+		];
 
     # OpenGL Config
     hardware.opengl = {
