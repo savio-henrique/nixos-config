@@ -24,6 +24,9 @@
   # Packages
   home.packages = with pkgs; [
     obs-studio
+		ffmpeg
+		vlc
+		davinci-resolve
     flameshot
     discord
     jetbrains.pycharm-community
