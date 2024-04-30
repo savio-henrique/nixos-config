@@ -12,7 +12,23 @@
 			${builtins.readFile ./config/options.lua}
     '';
 
+		extraPackages = with pkgs; [
+      lua-language-server
+      rnix-lsp
+
+      xclip
+      wl-clipboard
+    ];
+
 		plugins = with pkgs.vimPlugins; [
+		
+		  neodev-nvim
+		  cmp_luasnip
+			luasnip
+			lualine-nvim
+			friendly-snippets
+			vim-nix
+
 			{
 			  plugin = comment-nvim;
 			  type = "lua";
@@ -26,6 +42,12 @@
 			}
 
 		  {
+		  	plugin = nvim-cmp;
+				type = "lua";
+				config = "${builtins.readFile ./config/plugin/cmp.lua}";
+			}
+
+			{
 		  	plugin = telescope-nvim;
 				type = "lua";
 				config = "${builtins.readFile ./config/plugin/telescope.lua}";
@@ -38,7 +60,7 @@
 					p.tree-sitter-bash
 					p.tree-sitter-lua
 					p.tree-sitter-python
-					p.tree-sitter-json
+					p.tree-sitter-jsonv
 					p.tree-sitter-css
 					p.tree-sitter-yaml
 					p.tree-sitter-html
@@ -57,12 +79,6 @@
 			  plugin = kanagawa-nvim;
 				config = "colorscheme kanagawa-dragon";
 			}
-
-      #{
-			  #plugin = vim-nix;
-				#type = "";
-				#config = "";
-			#}
 		];
 	};
 }
