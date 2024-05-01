@@ -13,8 +13,14 @@
     '';
 
 		extraPackages = with pkgs; [
+      nodePackages.typescript-language-server
+      docker-compose-language-service
+      vscode-langservers-extracted
       lua-language-server
-      rnix-lsp
+			yaml-language-server
+			vim-language-server
+      phpactor
+      nixd
 
       xclip
       wl-clipboard
@@ -24,10 +30,19 @@
 		
 		  neodev-nvim
 		  cmp_luasnip
+      cmp-nvim-lsp
 			luasnip
-			lualine-nvim
 			friendly-snippets
 			vim-nix
+      vim-jsx-typescript
+
+      nvim-web-devicons
+
+			{
+			  plugin = lualine-nvim;
+			  type = "lua";
+        config = "require('lualine').setup({icons_enabled = true, theme = 'jellybeans',})";
+			}
 
 			{
 			  plugin = comment-nvim;

@@ -25,6 +25,7 @@ end
 
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities = require('cmp_nvim_lsp').default_capabilities(capabilities)
+capabilities.textDocument.completion.completionItem.snippetSupport = true;
 
 require('neodev').setup()
 require('lspconfig').lua_ls.setup {
@@ -33,16 +34,33 @@ require('lspconfig').lua_ls.setup {
 	root_dir = function()
         return vim.loop.cwd()
     end,
-	cmd = { "lua-lsp" },
+	cmd = { "lua-language-server" },
     settings = {
         Lua = {
+						diagnostics = {
+								globals = {'vim'},
+						},
             workspace = { checkThirdParty = false },
             telemetry = { enable = false },
         },
     }
 }
 
-require('lspconfig').rnix.setup {
-    on_attach = on_attach,
-    capabilities = capabilities,
+require('lspconfig').cssls.setup {
+		capabilities = capabilities,
 }
+
+require('lspconfig').jsonls.setup {}
+
+require('lspconfig').eslint.setup{} 
+
+require('lspconfig').html.setup {
+		capabilities = capabilities,
+}
+
+require('lspconfig').phpactor.setup{} 
+
+require('lspconfig').nixd.setup{} 
+
+require('lspconfig').docker_compose_language_service.setup{}
+
