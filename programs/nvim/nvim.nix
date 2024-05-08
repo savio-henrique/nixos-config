@@ -38,6 +38,15 @@
 
       nvim-web-devicons
 
+      markdown-preview-nvim
+      copilot-cmp
+
+			{
+			  plugin = copilot-lua;
+			  type = "lua";
+        config = "${builtins.readFile ./config/plugin/copilot.lua}";
+			}
+
 			{
 			  plugin = lualine-nvim;
 			  type = "lua";

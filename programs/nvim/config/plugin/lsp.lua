@@ -52,15 +52,15 @@ require('lspconfig').cssls.setup {
 
 require('lspconfig').jsonls.setup {}
 
-require('lspconfig').eslint.setup{} 
+require('lspconfig').eslint.setup{}
 
 require('lspconfig').html.setup {
 		capabilities = capabilities,
 }
 
-require('lspconfig').phpactor.setup{} 
+require('lspconfig').phpactor.setup{}
 
-require('lspconfig').nixd.setup{} 
+require('lspconfig').nixd.setup{}
 
 require('lspconfig').docker_compose_language_service.setup{}
 
