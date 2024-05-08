@@ -42,7 +42,7 @@
       copilot-cmp
 
 			{
-			  plugin = copilot-lua;
+			  plugin = copilot-vim;
 			  type = "lua";
         config = "${builtins.readFile ./config/plugin/copilot.lua}";
 			}
