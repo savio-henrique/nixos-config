@@ -38,7 +38,6 @@
     brave
     alacritty
     neofetch
-    minecraft
   ];
 
   # File links
