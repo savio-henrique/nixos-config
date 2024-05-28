@@ -79,7 +79,7 @@
   '';
 
   # Enable touchpad support (enabled default in most desktopManager).
-  services.xserver.libinput.enable = true;
+  services.libinput.enable = true;
 
   # Define user groups
   users.groups = {
@@ -118,6 +118,10 @@
   fonts.packages = with pkgs; [
     nerdfonts
   ];
+
+  # Enable dconf
+  programs.dconf.enable = true;
+
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [

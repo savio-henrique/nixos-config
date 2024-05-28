@@ -8,6 +8,7 @@
 		inputs.nix-colors.homeManagerModules.default
 		./programs/alacritty/alacritty.nix
 		./programs/nvim/nvim.nix
+		./programs/freecad/freecad.nix
 	];
 
 	colorScheme = inputs.nix-colors.colorSchemes.twilight;
@@ -41,12 +42,12 @@
   ];
 
   # File links
-  home.file = with config.colorScheme.colors; {
+  home.file = with config.colorScheme.palette; {
     ".config/neofetch".source = dotfiles/neofetch;
     ".config/awesome" = {
-			source = dotfiles/awesome;
-			recursive = true;
-		};
+			  source = dotfiles/awesome;
+        recursive = true;
+      };
 
 		".config/awesome/theme/colors.lua" = {
 			target = ".config/awesome/theme/colors.lua";

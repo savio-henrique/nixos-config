@@ -45,16 +45,16 @@ in
     #   shadow = true;
     #   shadowOpacity = 0.55;
     #   shadowExclude = [
-				# "name = 'Notification'"
-				# "class_g = 'Conky'"
-  		# 	"class_g ?= 'Notify-osd'"
-  		# 	"class_g = 'Cairo-clock'"
-  		# 	"class_g = 'slop'"
-  		# 	"class_g = 'Polybar'"
-				# "class_g = 'dmenu'"
+        # "name = 'Notification'"
+        # "class_g = 'Conky'"
+        # "class_g ?= 'Notify-osd'"
+        # "class_g = 'Cairo-clock'"
+        # "class_g = 'slop'"
+        # "class_g = 'Polybar'"
+        # "class_g = 'dmenu'"
     #   ];
     #   shadowOffsets = [ (-40) (-20) ];
-      
+
       # Extra configs
       settings = {
 

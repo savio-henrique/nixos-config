@@ -98,16 +98,16 @@
 				type = "lua";
 				config = "${builtins.readFile ./config/plugin/treesitter.lua}";
       }
+      #
+      # {
+      #   plugin = onedark-nvim;
+      #   config = "colorscheme onedark";
+      # }
 
-      {
-        plugin = onedark-nvim;
-        config = "colorscheme onedark";
-      }
-
-			# {
-			#   plugin = kanagawa-nvim;
-			# 	config = "colorscheme kanagawa-dragon";
-			# }
+			{
+			  plugin = kanagawa-nvim;
+				config = "colorscheme kanagawa-dragon";
+			}
 		];
 	};
 }
