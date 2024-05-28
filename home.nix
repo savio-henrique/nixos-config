@@ -8,7 +8,7 @@
 		inputs.nix-colors.homeManagerModules.default
 		./programs/alacritty/alacritty.nix
 		./programs/nvim/nvim.nix
-		./programs/freecad/freecad.nix
+		# ./programs/freecad/freecad.nix
 	];
 
 	colorScheme = inputs.nix-colors.colorSchemes.twilight;
@@ -39,6 +39,7 @@
     brave
     alacritty
     neofetch
+    freecad
   ];
 
   # File links
