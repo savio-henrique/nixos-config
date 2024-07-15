@@ -30,8 +30,6 @@
 		davinci-resolve
     flameshot
     discord
-    jetbrains.pycharm-community
-    jetbrains.phpstorm
     docker
     docker-compose
     spotify
@@ -39,7 +37,8 @@
     brave
     alacritty
     neofetch
-    freecad
+
+    prismlauncher
   ];
 
   # File links
@@ -68,6 +67,7 @@ theme.fg_normal     = "#${base06}"
 theme.fg_focus      = "#${base07}"
 theme.fg_urgent     = "#${base07}"
 theme.fg_minimize   = "#${base07}"
+
 	
 theme.useless_gap   = dpi(4)
 theme.border_width  = dpi(2)
@@ -129,6 +129,7 @@ return theme
     e = "exit";
     gs = "git status";
     gc = "git commit -m";
+    gcl = "git clone";
     gpl = "git pull";
     gp = "git push";
     ga = "git add";

@@ -32,15 +32,15 @@ in
 
 		services.xserver.xrandrHeads = [
 			{
-				output = "HDMI-0";
-				monitorConfig = ''
-					Option "PreferredMode" "2560x1080"
-				'';
-			}
-			{
 				output = "DP-5";
 				monitorConfig = ''
 					Option "PreferredMode" "1920x1080"
+				'';
+			}
+			{
+				output = "HDMI-0";
+				monitorConfig = ''
+					Option "PreferredMode" "2560x1080"
 				'';
 			}
 
@@ -49,7 +49,6 @@ in
     # OpenGL Config
     hardware.opengl = {
       enable = true;
-      driSupport = true;
       driSupport32Bit = true;
     };
 
