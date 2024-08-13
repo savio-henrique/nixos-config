@@ -27,7 +27,6 @@
     obs-studio
 		ffmpeg
 		vlc
-		davinci-resolve
     flameshot
     discord
     docker
@@ -119,6 +118,7 @@ return theme
         core.askPass = "";
         github.user = "savio-henrique";
         init.defaultBranch = "main";
+        safe.directory = "/etc/nixos";
       };
     };
   };

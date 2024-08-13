@@ -22,29 +22,10 @@ in
     services.xserver.desktopManager.xfce.enable = false;
     services.xserver.windowManager.${cfg.wm}.enable = true;
     services.displayManager.defaultSession = "none+${cfg.wm}";
-    services.xserver.videoDrivers = ["nvidia"];
 
     # Keyboard xserver config
     services.xserver.xkb.layout = "us,br";
     services.xserver.xkb.options = "altwin:menu,altwin:swap_lalt_lwin,grp:rctrl_rshift_toggle";
-
-		# Dual Monitor Setup
-
-		services.xserver.xrandrHeads = [
-			{
-				output = "DP-5";
-				monitorConfig = ''
-					Option "PreferredMode" "1920x1080"
-				'';
-			}
-			{
-				output = "HDMI-0";
-				monitorConfig = ''
-					Option "PreferredMode" "2560x1080"
-				'';
-			}
-
-		];
 
     # OpenGL Config
     hardware.opengl = {
