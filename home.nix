@@ -1,8 +1,6 @@
 { config, pkgs, inputs, ... }:
 
 {
-  # TODO -- add as a home-manager module: imports = [ ./programs/nvim/nvim.nix ];
-
 	# Imports
   imports = [
 		inputs.nix-colors.homeManagerModules.default
@@ -36,6 +34,9 @@
     brave
     alacritty
     neofetch
+    acpi
+    brightnessctl
+    alsa-utils
 
     prismlauncher
   ];
@@ -47,6 +48,21 @@
 			  source = dotfiles/awesome;
         recursive = true;
       };
+    ".config/awesome/awesome-wm-widgets" = {
+      source = builtins.fetchGit {
+        url = "https://github.com/streetturtle/awesome-wm-widgets.git";
+        rev = "68ddbd9812979f1862ebd07f1bf5aa409952e935";
+      };
+      recursive = true;
+    };
+
+    ".config/awesome/icons" = {
+      source = builtins.fetchGit {
+        url = "https://github.com/streetturtle/awesome-wm-widgets.git";
+        rev = "68ddbd9812979f1862ebd07f1bf5aa409952e935";
+      };
+      recursive = true;
+    };
 
 		".config/awesome/theme/colors.lua" = {
 			target = ".config/awesome/theme/colors.lua";
@@ -118,7 +134,10 @@ return theme
         core.askPass = "";
         github.user = "savio-henrique";
         init.defaultBranch = "main";
-        safe.directory = "/etc/nixos";
+        safe.directory = [
+          "/etc/nixos"
+          "/etc/nixos/dotfiles/awesome/awesome-wm-widgets"
+        ];
       };
     };
   };
