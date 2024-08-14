@@ -3,6 +3,9 @@
 	#	Alacritty configs
 	programs.alacritty.enable = true;
   programs.alacritty.settings = {
+    font = {
+      size = 8.0;
+    };
 		window = {
 	 		opacity = 0.8;
 	 		title = "Terminal";
