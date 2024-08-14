@@ -23,7 +23,6 @@
       fsType = "vfat";
       options = [ "fmask=0022" "dmask=0022" ];
     };
-
   swapDevices =
     [ { device = "/dev/disk/by-uuid/8d746c94-8ca3-4291-932f-7aeeb7a49b27"; }
     ];
@@ -35,6 +34,7 @@
   networking.useDHCP = lib.mkDefault true;
   # networking.interfaces.enp2s0f1.useDHCP = lib.mkDefault true;
   # networking.interfaces.wlp3s0.useDHCP = lib.mkDefault true;
+  boot.kernelParams = [ "psmouse.synaptics_intertouch=0"];
 
   nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
   hardware.cpu.intel.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
