@@ -165,6 +165,7 @@ return theme
     ma = "tmux attach -t";
     mr = "tmux rename-session -t";
     dev = "nix develop --command fish";
+    netm = "sudo nmtui";
   };
 
   programs.home-manager.enable = true;
