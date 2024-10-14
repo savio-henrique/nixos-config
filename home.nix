@@ -37,6 +37,7 @@
     acpi
     brightnessctl
     alsa-utils
+    obsidian
 
     prismlauncher
   ];
