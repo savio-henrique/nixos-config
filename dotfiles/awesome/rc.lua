@@ -18,6 +18,13 @@ local hotkeys_popup = require("awful.hotkeys_popup")
 -- when client with a matching name is opened:
 require("awful.hotkeys_popup.keys")
 
+
+-- Widgets
+local battery_widget = require("awesome-wm-widgets.batteryarc-widget.batteryarc")
+local volume_widget = require("awesome-wm-widgets.volume-widget.volume")
+local brightness_widget = require("awesome-wm-widgets.brightness-widget.brightness")
+
+
 -- {{{ Error handling
 -- Check if awesome encountered an error during startup and fell back to
 -- another config (This code will only ever execute for the fallback config)
@@ -212,7 +219,25 @@ awful.screen.connect_for_each_screen(function(s)
             layout = wibox.layout.fixed.horizontal,
             mykeyboardlayout,
             wibox.widget.systray(),
+						brightness_widget{
+							type = "arc",
+							program = "brightnessctl",
+							step = 5,
+							timeout = 1,
+							tooltip = true,
+						},
+						volume_widget{
+							widget_type = "vertical_bar",
+							mixer_cmd = "pavucontrol",
+							step = 5,
+							card = 0,
+							device = "default",
+							mixctrl = "Master",
+						},
             mytextclock,
+						battery_widget{
+							show_current_level = true;
+						},
             s.mylayoutbox,
         },
     }
@@ -334,8 +359,16 @@ globalkeys = gears.table.join(
 
     -- Flameshot Keybind
     awful.key({ modkey, "Control", "Shift" }, "p", function() awful.util.spawn("flameshot gui") end,
-              {description = "take a screenshot", group = "apps"})
-    
+              {description = "take a screenshot", group = "apps"}),
+
+		-- Brightness controls
+		awful.key({}, "XF86MonBrightnessUp", function() brightness_widget:inc(5) end, {description = "increase brightness", group = "custom"}),
+		awful.key({}, "XF86MonBrightnessDown", function() brightness_widget:dec(5) end, {description = "decrease brightness", group = "custom"}),
+
+		-- Volume controls
+		awful.key({}, "XF86AudioRaiseVolume", function() volume_widget:inc(5) end, {description = "increase volume", group = "custom"}),
+		awful.key({}, "XF86AudioLowerVolume", function() volume_widget:dec(5) end, {description = "decrease volume", group = "custom"}),
+		awful.key({}, "XF86AudioMute", function() volume_widget:toggle() end, {description = "mute volume", group = "custom"})
 )
 
 clientkeys = gears.table.join(

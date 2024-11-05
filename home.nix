@@ -1,8 +1,6 @@
 { config, pkgs, inputs, ... }:
 
 {
-  # TODO -- add as a home-manager module: imports = [ ./programs/nvim/nvim.nix ];
-
 	# Imports
   imports = [
 		inputs.nix-colors.homeManagerModules.default
@@ -24,21 +22,36 @@
 
   # Packages
   home.packages = with pkgs; [
-    obs-studio
 		ffmpeg
 		vlc
 		davinci-resolve
     flameshot
     discord
+    vesktop
     docker
     docker-compose
     spotify
-    gimp
     brave
     alacritty
     neofetch
+    helvum
 
+    # Utils
+    onlyoffice-bin
+    libreoffice
+    corefonts
+    unzip
+    gimp
+    obsidian
+
+    # Widget Utils
+    acpi
+    brightnessctl
+    alsa-utils
+
+    # Games
     prismlauncher
+    osu-lazer
   ];
 
   # File links
@@ -49,7 +62,23 @@
         recursive = true;
       };
 
-		".config/awesome/theme/colors.lua" = {
+    ".config/awesome/awesome-wm-widgets" = {
+      source = builtins.fetchGit {
+        url = "https://github.com/streetturtle/awesome-wm-widgets.git";
+        rev = "68ddbd9812979f1862ebd07f1bf5aa409952e935";
+      };
+      recursive = true;
+    };
+
+    ".config/awesome/icons" = {
+      source = builtins.fetchGit {
+        url = "https://github.com/streetturtle/awesome-wm-widgets.git";
+        rev = "68ddbd9812979f1862ebd07f1bf5aa409952e935";
+      };
+      recursive = true;
+    };
+
+   	".config/awesome/theme/colors.lua" = {
 			target = ".config/awesome/theme/colors.lua";
 			text = ''
 local xresources = require("beautiful.xresources")
@@ -119,6 +148,10 @@ return theme
         core.askPass = "";
         github.user = "savio-henrique";
         init.defaultBranch = "main";
+        safe.directory = [
+          "/etc/nixos"
+          "/etc/nixos/dotfiles/awesome/awesome-wm-widgets"
+        ];
       };
     };
   };
@@ -149,4 +182,15 @@ return theme
   };
 
   programs.home-manager.enable = true;
+  programs.obs-studio = {
+    enable = true;
+    plugins = with pkgs; [
+      obs-studio-plugins.input-overlay
+      obs-studio-plugins.obs-multi-rtmp
+      obs-studio-plugins.obs-composite-blur
+      obs-studio-plugins.obs-move-transition
+      obs-studio-plugins.obs-pipewire-audio-capture
+      obs-studio-plugins.obs-teleport
+    ];
+  };
 }
