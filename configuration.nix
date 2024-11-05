@@ -38,6 +38,16 @@
   # Nixpkg config
   nixpkgs.config.allowUnfree = true;
 
+  # Garbage Collector configuration
+  nix.gc = {
+    automatic = true;
+    dates = "weekly";
+    options = "--delete-older-than 15d";
+  };
+
+  # Installing Docker the nix way
+  virtualisation.docker.enable = true;
+
   # Select internationalisation properties.
   # i18n.defaultLocale = "en_US.UTF-8";
   # console = {
@@ -83,9 +93,6 @@
 
   # Define user groups
   users.groups = {
-    docker = { 
-      gid = 1003;
-    };
     nixos-dev = {
       gid = 1010;
     };
