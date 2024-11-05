@@ -35,6 +35,7 @@
 			friendly-snippets
 			vim-nix
       vim-jsx-typescript
+      vim-wakatime
 
       nvim-web-devicons
 
