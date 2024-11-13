@@ -83,7 +83,7 @@
   # make pipewire realtime-capable
   security.rtkit.enable = true;
 
-  # udev rule to not suspend usb
+  # Udev Rules
   services.udev.extraRules = ''
     ACTION=="add", DRIVER=="usb", ATTR{power/control}:="on"
   '';

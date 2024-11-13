@@ -26,7 +26,7 @@ in
 
     # Keyboard xserver config
     services.xserver.xkb.layout = "us,br";
-    services.xserver.xkb.options = "altwin:menu,altwin:swap_lalt_lwin,grp:rctrl_rshift_toggle";
+    services.xserver.xkb.options = "altwin:menu,altwin:swap_lalt_lwin,grp:rctrl_rshift_toggle,caps:escape";
 
 		# Dual Monitor Setup
 
