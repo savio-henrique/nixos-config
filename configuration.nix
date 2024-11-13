@@ -12,6 +12,7 @@
       ./users/main-user.nix
       ./video/picom/picom.nix
       ./video/video.nix
+      ./video/hotplug/default.nix
     ];
 
   # Use the GRUB 2 boot loader.
@@ -62,6 +63,10 @@
   # Video Configuration
   video.enable = true;
   video.wm = "awesome";
+
+  # Enable Monitor Hotplug
+  hotplug.enable = true;
+
 
   # Picom configuration
   picom.enable = true;
