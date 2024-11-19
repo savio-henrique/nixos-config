@@ -26,15 +26,15 @@ in
       fadeSteps = [ (0.4) (0.4) ];
 
       # Opacity
-      activeOpacity = 0.95;
-      inactiveOpacity = 0.65;
+      activeOpacity = 1;
+      inactiveOpacity = 0.8;
       menuOpacity= 0.8;
       opacityRules = [
-				"80:class_g = 'Bar'"
+				"100:class_g = 'Bar'"
 				"100:class_g = 'slop'"
 				"100:class_g = 'XTerm'"
 				"100:class_g = 'alacritty'"
-				"90:class_g = 'discord'"
+				"100:class_g = 'discord'"
 				"100:class_g = 'obs'"
 				"100:class_g = 'brave'"
 				"100:class_g = 'dmenu'"

@@ -193,4 +193,5 @@ return theme
       obs-studio-plugins.obs-teleport
     ];
   };
+  services.flameshot.enable = true;
 }
