@@ -359,6 +359,8 @@ globalkeys = gears.table.join(
     -- Program Keybind
     awful.key({ modkey, "Control" }, "f", function() awful.util.spawn("brave") end,
               {description = "open web browser", group = "apps"}),
+    awful.key({ modkey, "Control" }, "s", function() awful.util.spawn("spotify") end,
+              {description = "open Spotify", group = "apps"}),
 
     -- Flameshot Keybind
     awful.key({ modkey, "Control", "Shift" }, "p", function() awful.util.spawn("flameshot gui") end,
