@@ -10,6 +10,7 @@
     extraLuaConfig = ''
 			${builtins.readFile ./config/keymaps.lua}
 			${builtins.readFile ./config/options.lua}
+			${builtins.readFile ./config/colors.lua}
     '';
 
 		extraPackages = with pkgs; [
@@ -51,7 +52,7 @@
 			{
 			  plugin = lualine-nvim;
 			  type = "lua";
-        config = "require('lualine').setup({icons_enabled = true, theme = 'jellybeans',})";
+        config = "require('lualine').setup({icons_enabled = true, theme = 'base16-twilight',})";
 			}
 
 			{
