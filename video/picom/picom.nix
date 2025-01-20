@@ -23,12 +23,12 @@ in
       backend = "glx";
       fade = true;
       fadeDelta = 4;
-      fadeSteps = [ (0.4) (0.4) ];
+      fadeSteps = [ 0.4 0.4 ];
 
       # Opacity
       activeOpacity = 1;
-      inactiveOpacity = 0.8;
-      menuOpacity= 0.8;
+      inactiveOpacity = 0.95;
+      menuOpacity= 0.95;
       opacityRules = [
 				"100:class_g = 'Bar'"
 				"100:class_g = 'slop'"

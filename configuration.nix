@@ -23,6 +23,7 @@
   # boot.loader.efi.efiSysMountPoint = "/boot/efi";
   # Define on which hard drive you want to install Grub.
   # boot.loader.grub.device = "nodev"; # or "nodev" for efi only
+  boot.kernelModules = ["kvm-amd" "kvm-intel"];
 
   networking.hostName = "saviohc"; # Define your hostname.
   # Pick only one of the below networking options.
@@ -48,6 +49,8 @@
 
   # Installing Docker the nix way
   virtualisation.docker.enable = true;
+  # Enable Machine Virtualization 
+  virtualisation.libvirtd.enable = true;
 
   # Select internationalisation properties.
   # i18n.defaultLocale = "en_US.UTF-8";
@@ -65,14 +68,13 @@
   video.wm = "awesome";
 
   # Enable Monitor Hotplug
-  hotplug.enable = true;
-
+  hotplug.enable = false;
 
   # Picom configuration
   picom.enable = true;
 
   # Enable CUPS to print documents.
-  # services.printing.enable = true;
+  services.printing.enable = true;
 
   # Enable fish
   programs.fish.enable = true;

@@ -38,13 +38,19 @@ in
 				'';
 			}
 			{
-				output = "HDMI-0";
+        output = "HDMI-0";
+        primary = true;
 				monitorConfig = ''
 					Option "PreferredMode" "2560x1080"
 				'';
 			}
 
-		];
+    ];
+
+    environment.systemPackages = with pkgs; [
+      arandr
+      mons
+    ];
 
     # OpenGL Config
     hardware.graphics = {
@@ -63,7 +69,7 @@ in
 
       nvidiaSettings = true;
 
-      package = config.boot.kernelPackages.nvidiaPackages.production;
+      package = config.boot.kernelPackages.nvidiaPackages.stable;
     };
   };
 }
