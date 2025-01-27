@@ -11,7 +11,7 @@ in
       type = lib.types.str;
       default = "awesome";
       description = ''
-				window manager
+        window manager
       '';
     };
   };
@@ -28,23 +28,22 @@ in
     services.xserver.xkb.layout = "us,br";
     services.xserver.xkb.options = "altwin:menu,altwin:swap_lalt_lwin,grp:rctrl_rshift_toggle,caps:escape";
 
-		# Dual Monitor Setup
+    # Dual Monitor Setup
 
-		services.xserver.xrandrHeads = [
-			{
-				output = "DP-5";
-				monitorConfig = ''
-					Option "PreferredMode" "1920x1080"
-				'';
-			}
-			{
+    services.xserver.xrandrHeads = [
+      {
+        output = "DP-5";
+        monitorConfig = ''
+          Option "PreferredMode" "1920x1080"
+        '';
+      }
+      {
         output = "HDMI-0";
         primary = true;
-				monitorConfig = ''
-					Option "PreferredMode" "2560x1080"
-				'';
-			}
-
+        monitorConfig = ''
+            Option "PreferredMode" "2560x1080"
+        '';
+      }
     ];
 
     environment.systemPackages = with pkgs; [

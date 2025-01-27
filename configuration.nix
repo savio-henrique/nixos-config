@@ -158,7 +158,7 @@
     usbutils
 
     rofi
-		ripgrep
+    ripgrep
   ];
 
 

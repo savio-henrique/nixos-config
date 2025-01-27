@@ -9,7 +9,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-		nix-colors.url = "github:misterio77/nix-colors";
+      nix-colors.url = "github:misterio77/nix-colors";
   };
 
   outputs = {self, nixpkgs, ... }@inputs:
@@ -18,15 +18,13 @@
       pkgs = nixpkgs.legacyPackages.${system};
     in
     { 
-    
       nixosConfigurations.saviohc = nixpkgs.lib.nixosSystem {
-          specialArgs = {inherit inputs;};
-          modules = [
-            ./configuration.nix
-            inputs.home-manager.nixosModules.default
-          ];
-        };
+        specialArgs = {inherit inputs;};
+        modules = [
+          ./configuration.nix
+          inputs.home-manager.nixosModules.default
+        ];
+      };
 
     };
-
 }

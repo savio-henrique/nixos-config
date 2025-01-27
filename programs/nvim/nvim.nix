@@ -1,25 +1,25 @@
 { lib, pkgs, config , ... }:
 {
   programs.neovim = {
- 	enable = true; 
-			
-	viAlias = true;
-	vimAlias = true;
-	vimdiffAlias = true;
+    enable = true;
+    
+    viAlias = true;
+    vimAlias = true;
+    vimdiffAlias = true;
 
     extraLuaConfig = ''
-	  ${builtins.readFile ./config/keymaps.lua}
-	  ${builtins.readFile ./config/options.lua}
-	  ${builtins.readFile ./config/colors.lua}
+      ${builtins.readFile ./config/keymaps.lua}
+      ${builtins.readFile ./config/options.lua}
+      ${builtins.readFile ./config/colors.lua}
     '';
 
-	extraPackages = with pkgs; [
+    extraPackages = with pkgs; [
       nodePackages.typescript-language-server
       docker-compose-language-service
       vscode-langservers-extracted
       lua-language-server
-	  yaml-language-server
-	  vim-language-server
+      yaml-language-server
+      vim-language-server
       phpactor
       nixd
 
@@ -27,14 +27,13 @@
       wl-clipboard
     ];
 
-	plugins = with pkgs.vimPlugins; [
-		
-	  neodev-nvim
-	  cmp_luasnip
+    plugins = with pkgs.vimPlugins; [
+      neodev-nvim
+      cmp_luasnip
       cmp-nvim-lsp
-	  luasnip
-	  friendly-snippets
-	  vim-nix
+      luasnip
+      friendly-snippets
+      vim-nix
       vim-jsx-typescript
       vim-wakatime
 
@@ -61,43 +60,43 @@
         config = "${builtins.readFile ./config/plugin/undotree.lua}";
       }
 
-	  {
-		plugin = copilot-vim;
-		type = "lua";
+      {
+        plugin = copilot-vim;
+        type = "lua";
         config = "${builtins.readFile ./config/plugin/copilot.lua}";
-	  }
+      }
 
-	  {
-	    plugin = lualine-nvim;
-		type = "lua";
+      {
+        plugin = lualine-nvim;
+        type = "lua";
         config = "require('lualine').setup({icons_enabled = true, theme = 'base16-twilight',})";
-	  }
+      }
 
-	  {
-		plugin = comment-nvim;
-		type = "lua";
+      {
+        plugin = comment-nvim;
+        type = "lua";
         config = "require('Comment').setup()";
-	  }
+      }
 
-	  {
-		plugin = nvim-lspconfig;
-		type = "lua";
-		config = "${builtins.readFile ./config/plugin/lsp.lua}";
-	  }
+      {
+        plugin = nvim-lspconfig;
+        type = "lua";
+        config = "${builtins.readFile ./config/plugin/lsp.lua}";
+      }
 
-	  {
-		plugin = nvim-cmp;
-		type = "lua";
-		config = "${builtins.readFile ./config/plugin/cmp.lua}";
-	  }
+      {
+        plugin = nvim-cmp;
+        type = "lua";
+        config = "${builtins.readFile ./config/plugin/cmp.lua}";
+      }
 
-	  {
-	    plugin = telescope-nvim;
-		type = "lua";
-		config = "${builtins.readFile ./config/plugin/telescope.lua}";
-	  }
+      {
+        plugin = telescope-nvim;
+        type = "lua";
+        config = "${builtins.readFile ./config/plugin/telescope.lua}";
+      }
 
-	  {
+      {
         plugin = (nvim-treesitter.withPlugins (p : [
           p.tree-sitter-nix
           p.tree-sitter-vim

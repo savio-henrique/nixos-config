@@ -29,25 +29,25 @@ capabilities.textDocument.completion.completionItem.snippetSupport = true;
 
 require('neodev').setup()
 require('lspconfig').lua_ls.setup {
-    on_attach = on_attach,
-    capabilities = capabilities,
-	root_dir = function()
-        return vim.loop.cwd()
-    end,
-	cmd = { "lua-language-server" },
-    settings = {
-        Lua = {
-						diagnostics = {
-								globals = {'vim'},
-						},
-            workspace = { checkThirdParty = false },
-            telemetry = { enable = false },
-        },
-    }
+  on_attach = on_attach,
+  capabilities = capabilities,
+  root_dir = function()
+  return vim.loop.cwd()
+  end,
+  cmd = { "lua-language-server" },
+  settings = {
+    Lua = {
+      diagnostics = {
+        globals = {'vim'},
+      },
+      workspace = { checkThirdParty = false },
+      telemetry = { enable = false },
+    },
+  }
 }
 
 require('lspconfig').cssls.setup {
-		capabilities = capabilities,
+  capabilities = capabilities,
 }
 
 require('lspconfig').jsonls.setup {}
@@ -55,7 +55,7 @@ require('lspconfig').jsonls.setup {}
 require('lspconfig').eslint.setup{}
 
 require('lspconfig').html.setup {
-		capabilities = capabilities,
+  capabilities = capabilities,
 }
 
 require('lspconfig').phpactor.setup{}
