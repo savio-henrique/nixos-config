@@ -12,18 +12,27 @@
       nix-colors.url = "github:misterio77/nix-colors";
   };
 
-  outputs = {self, nixpkgs, ... }@inputs:
+  outputs = {self, home-manager, nixpkgs, ... }@inputs:
     let
+      inherit (self) outputs;
       system = "x86_64-linux";
       pkgs = nixpkgs.legacyPackages.${system};
     in
-    { 
-      nixosConfigurations.saviohc = nixpkgs.lib.nixosSystem {
-        specialArgs = {inherit inputs;};
-        modules = [
-          ./configuration.nix
-          inputs.home-manager.nixosModules.default
-        ];
+      { 
+      nixosConfigurations = {
+        desktop = nixpkgs.lib.nixosSystem {
+          specialArgs = {inherit inputs outputs;};
+          modules = [
+            ./hosts/desktop
+          ];
+        };
+      };
+      homeConfigurations = {
+        "desktop@saviohc" = home-manager.lib.homeManagerConfiguration {
+          pkgs = pkgs;
+          extraSpecialArgs = {inherit inputs outputs;};
+          modules = [./home/saviohc/saviohc.nix];
+        };
       };
 
     };
