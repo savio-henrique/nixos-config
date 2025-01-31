@@ -1,4 +1,3 @@
-[4;35m'Nenhum cidadão tem o direito de ser um amador em matéria de treinamento físico. Que desgraça é para o homem envelhecer sem nunca ver a beleza e a força do que o seu corpo é capaz.'[0m [1;35m- [1;95m Sócrates
 # Edit this configuration file to define what should be installed on
 # your system. Help is available in the configuration.nix(5) man page, on
 # https://search.nixos.org/options and in the NixOS manual (`nixos-help`).
@@ -25,9 +24,9 @@
   # Define on which hard drive you want to install Grub.
   # boot.loader.grub.device = "nodev"; # or "nodev" for efi only
 
-  networking.hostName = "saviohc"; # Define your hostname.
+  networking.hostName = "majora"; # Define your hostname.
   # Pick only one of the below networking options.
-  # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
+  networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
   networking.networkmanager.enable = true;  # Easiest to use and most distros use this by default.
 
   # Set your time zone.
@@ -38,17 +37,6 @@
   # networking.proxy.noProxy = "127.0.0.1,localhost,internal.domain";
 
   # Nixpkg config
-  nixpkgs.config.allowUnfree = true;
-
-  # Garbage Collector configuration
-  nix.gc = {
-    automatic = true;
-    dates = "weekly";
-    options = "--delete-older-than 15d";
-  };
-
-  # Installing Docker the nix way
-  virtualisation.docker.enable = true;
 
   # Select internationalisation properties.
   # i18n.defaultLocale = "en_US.UTF-8";
@@ -58,16 +46,12 @@
   #   useXkbConfig = true; # use xkb.options in tty.
   # };
 
-  # NIXOS Configuration 
-  nix.settings.experimental-features = ["nix-command" "flakes"];
-
   # Video Configuration
   video.enable = true;
   video.wm = "awesome";
 
   # Enable Monitor Hotplug
   hotplug.enable = true;
-
 
   # Picom configuration
   picom.enable = true;
