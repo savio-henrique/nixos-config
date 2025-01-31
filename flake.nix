@@ -41,6 +41,7 @@
             ./hosts/majora
           ];
         };
+        # Minecraft Server / Home Server
         cyrus = nixpkgs.lib.nixosSystem {
           specialArgs = {inherit inputs outputs;};
           modules = [
