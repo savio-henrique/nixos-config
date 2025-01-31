@@ -21,15 +21,15 @@
     in
       { 
       nixosConfigurations = {
-        desktop = nixpkgs.lib.nixosSystem {
+        chrono = nixpkgs.lib.nixosSystem {
           specialArgs = {inherit inputs outputs;};
           modules = [
-            ./hosts/desktop
+            ./hosts/chrono
           ];
         };
       };
       homeConfigurations = {
-        "desktop@saviohc" = home-manager.lib.homeManagerConfiguration {
+        "chrono@saviohc" = home-manager.lib.homeManagerConfiguration {
           pkgs = pkgs;
           extraSpecialArgs = {inherit inputs outputs;};
           modules = [./home/saviohc/saviohc.nix];
