@@ -35,4 +35,3 @@
 {
   imports = [../common ./configuration.nix];
 }
-
