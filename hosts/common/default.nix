@@ -8,6 +8,7 @@
   imports = [
     inputs.home-manager.nixosModules.home-manager
     ./openssh.nix
+    ./users.nix
   ];
 
   home-manager.useGlobalPkgs = true;
