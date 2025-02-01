@@ -19,6 +19,7 @@ Utilizing the SaschaKoenig's [Nixos Config Playlist](https://www.youtube.com/wat
 ---
 # Future Additions and Changes to my Environment
 - [x] Add an 'openssh' module to work on all my hosts.
+- [ ] Add git conventional commits function to my shell.
 - [ ] Add 'sops-nix' to my configuration to encrypt secrets.
 - [ ] Add a 'docker' module to work on all my hosts.
 - [ ] Add a 'kubernetes' module to work on all my hosts.
@@ -37,4 +38,6 @@ Utilizing the SaschaKoenig's [Nixos Config Playlist](https://www.youtube.com/wat
 - [ ] Add a 'gaming' module to work in my gaming hosts.
 - [ ] Add a 'virtualization' module to work in my hosts.
 - [ ] Add a 'obs-studio' module to work in my visual hosts.
+- [ ] Add a 'minecraft-server' module to use on cyrus.
+- [ ] Add a 'webserver' module to use on cyrus.
 
