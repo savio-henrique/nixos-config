@@ -21,10 +21,16 @@
   outputs = {self, home-manager, nixpkgs, ... }@inputs:
     let
       inherit (self) outputs;
-      system = "x86_64-linux";
-      pkgs = nixpkgs.legacyPackages.${system};
-    in
-      { 
+      systems = [
+        "aarch64-linux"
+        "i686-linux"
+        "x86_64-linux"
+        "aarch64-darwin"
+        "x86_64-darwin"
+      ];
+      forAllSystems = nixpkgs.lib.genAttrs systems;
+    in { 
+      packages = forAllSystems (system: import ./pkgs nixpkgs.legacyPackages.${system});
       overlays = import ./overlays {inherit inputs;};
       nixosConfigurations = {
         # Personal Desktop
@@ -51,7 +57,6 @@
       };
       homeConfigurations = {
         "saviohc@chrono" = home-manager.lib.homeManagerConfiguration {
-          pkgs = pkgs;
           extraSpecialArgs = {inherit inputs outputs;};
           modules = [
             ./home/saviohc/chrono.nix 
@@ -59,7 +64,6 @@
           ];
         };
         "saviohc@majora" = home-manager.lib.homeManagerConfiguration {
-          pkgs = pkgs;
           extraSpecialArgs = {inherit inputs outputs;};
           modules = [
             ./home/saviohc/majora.nix 
@@ -67,7 +71,7 @@
           ];
         };
         "saviohc@cyrus" = home-manager.lib.homeManagerConfiguration {
-          pkgs = pkgs;
+          pkgs = nixpkgs.legacyPackages."x86_64-linux";
           extraSpecialArgs = {inherit inputs outputs;};
           modules = [
             ./home/saviohc/cyrus.nix 
