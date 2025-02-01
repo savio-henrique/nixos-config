@@ -9,10 +9,6 @@
     [ # Include the results of the hardware scan.
       ./hardware-configuration.nix
       inputs.home-manager.nixosModules.default
-      ./users/main-user.nix
-      ./video/picom/picom.nix
-      ./video/video.nix
-      ./video/hotplug/default.nix
     ];
 
   # Use the GRUB 2 boot loader.
@@ -36,21 +32,6 @@
   # networking.proxy.default = "http://user:password@proxy:port/";
   # networking.proxy.noProxy = "127.0.0.1,localhost,internal.domain";
 
-  # Nixpkg config
-  nixpkgs.config.allowUnfree = true;
-
-  # Garbage Collector configuration
-  nix.gc = {
-    automatic = true;
-    dates = "weekly";
-    options = "--delete-older-than 15d";
-  };
-
-  # Installing Docker the nix way
-  virtualisation.docker.enable = true;
-  # Enable Machine Virtualization 
-  virtualisation.libvirtd.enable = true;
-
   # Select internationalisation properties.
   # i18n.defaultLocale = "en_US.UTF-8";
   # console = {
@@ -58,19 +39,6 @@
   #   keyMap = "us";
   #   useXkbConfig = true; # use xkb.options in tty.
   # };
-
-  # NIXOS Configuration 
-  nix.settings.experimental-features = ["nix-command" "flakes"];
-
-  # Video Configuration
-  video.enable = true;
-  video.wm = "awesome";
-
-  # Enable Monitor Hotplug
-  hotplug.enable = false;
-
-  # Picom configuration
-  picom.enable = true;
 
   # Enable CUPS to print documents.
   services.printing.enable = true;
@@ -96,28 +64,6 @@
 
   # Enable touchpad support (enabled default in most desktopManager).
   services.libinput.enable = true;
-
-  # Define user groups
-  users.groups = {
-    nixos-dev = {
-      gid = 1010;
-    };
-  };
-
-  # Define a user account. Don't forget to set a password with ‘passwd’.
-  main-user.enable = true;
-  main-user.userName = "saviohc";
-  main-user.name = "Savio Henrique";
-  main-user.groups = [ "docker" "wheel" "nixos-dev" "users" ];
-
-  # Home Manager config
-  home-manager.useGlobalPkgs = true;
-  home-manager = {
-    extraSpecialArgs = { inherit inputs; };
-    users = {
-      "saviohc" = import ./home.nix;
-    };
-  };
 
   # Game configs
   programs.gamemode.enable = true;

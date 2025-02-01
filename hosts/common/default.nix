@@ -8,13 +8,15 @@
   imports = [
     inputs.home-manager.nixosModules.home-manager
     ./openssh.nix
-    ./users.nix
+    ./users
   ];
 
-  home-manager.useGlobalPkgs = true;
+  home-manager.useUserPackages = true;
   home-manager.extraSpecialArgs = {
     inherit inputs outputs;
   };
+
+  time.timeZone = "America/Sao_Paulo";
 
   nixpkgs = {
     overlays = builtins.attrValues outputs.overlays;

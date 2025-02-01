@@ -60,14 +60,12 @@
           extraSpecialArgs = {inherit inputs outputs;};
           modules = [
             ./home/saviohc/chrono.nix 
-            ./home/saviohc/saviohc.nix
           ];
         };
         "saviohc@majora" = home-manager.lib.homeManagerConfiguration {
           extraSpecialArgs = {inherit inputs outputs;};
           modules = [
             ./home/saviohc/majora.nix 
-            ./home/saviohc/saviohc.nix
           ];
         };
         "saviohc@cyrus" = home-manager.lib.homeManagerConfiguration {
@@ -75,7 +73,6 @@
           extraSpecialArgs = {inherit inputs outputs;};
           modules = [
             ./home/saviohc/cyrus.nix 
-            ./home/saviohc/saviohc.nix
           ];
         };
       };
