@@ -60,16 +60,6 @@
   # Enable touchpad support (enabled default in most desktopManager).
   # services.libinput.enable = true;
 
-  # Define a user account. Don't forget to set a password with ‘passwd’.
-  users.users.saviohc = {
-    isNormalUser = true;
-    extraGroups = [ "wheel" "networkmanager" ]; # Enable ‘sudo’ for the user.
-    packages = with pkgs; [
-      tree
-    ];
-  };
-
-  # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
     vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
