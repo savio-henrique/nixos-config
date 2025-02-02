@@ -49,11 +49,24 @@
             ./hosts/common/optional/video.nix
           ];
         };
-        # Minecraft Server / Home Server
+        # Home Server
         cyrus = nixpkgs.lib.nixosSystem {
           specialArgs = {inherit inputs outputs;};
           modules = [
             ./hosts/cyrus
+          ];
+        };
+        # Minecraft Server
+        # geno = nixpkgs.lib.nixosSystem {
+        #   specialArgs = {inherit inputs outputs;};
+        #   modules = [
+        #     ./hosts/geno
+        #   ];
+        # };
+        ohana = nixpkgs.lib.nixosSystem {
+          specialArgs = {inherit inputs outputs;};
+          modules = [
+            ./hosts/ohana
           ];
         };
       };
@@ -75,6 +88,20 @@
           extraSpecialArgs = {inherit inputs outputs;};
           modules = [
             ./home/saviohc/cyrus.nix 
+          ];
+        };
+        # "saviohc@geno" = home-manager.lib.homeManagerConfiguration {
+        #   pkgs = nixpkgs.legacyPackages."x86_64-linux";
+        #   extraSpecialArgs = {inherit inputs outputs;};
+        #   modules = [
+        #     ./home/saviohc/geno.nix 
+        #   ];
+        # };
+        "saviohc@ohana" = home-manager.lib.homeManagerConfiguration {
+          pkgs = nixpkgs.legacyPackages."x86_64-linux";
+          extraSpecialArgs = {inherit inputs outputs;};
+          modules = [
+            ./home/saviohc/ohana.nix 
           ];
         };
       };
