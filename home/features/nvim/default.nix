@@ -6,6 +6,10 @@
     EDITOR = "nvim";
   };
 
+  home.packages = [
+    (pkgs.nerdfonts.override { fonts= [ "SourceCodePro" "FiraCode" "JetBrainsMono" "SymbolsNerdFont"];})
+  ];
+
   # Neovim Config
   programs.neovim = {
     enable = true;

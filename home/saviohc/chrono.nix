@@ -1,4 +1,4 @@
 { config, ... }: 
 { 
-  imports = [ ./home.nix ../common ../features/awesome ../features/alacritty ]; 
+  imports = [ ./home.nix ../common ../common/visual.nix ]; 
 }

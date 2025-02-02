@@ -8,7 +8,7 @@
   users.users.saviohc = {
     isNormalUser = true;
     initialHashedPassword = "$y$j9T$nhvjL36HtJMFx8OFgKGkk/$1RKnk2Mfx1EOCQI7QHyIa.a4qZ6eJ8AThvVjHYoGc78";
-    description = "Sávio Henrique User";
+    description = "Sávio Henrique";
     extraGroups = [ 
       "wheel"
       "networkmanager"
