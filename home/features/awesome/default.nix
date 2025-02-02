@@ -1,6 +1,6 @@
 {pkgs, config, lib, ...}:
 {
-  home.file = with config.colorScheme.palette; lib.mkIf (config.networking.hostName == "chrono" || config.networking.hostName == "majora") {
+  home.file = with config.colorScheme.palette; {
     ".config/awesome" = {
       source = ./config;
       recursive = true;

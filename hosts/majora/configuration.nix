@@ -45,9 +45,6 @@
   # Enable CUPS to print documents.
   services.printing.enable = true;
 
-  # Enable fish
-  programs.fish.enable = true;
-
   # Enable sound.
   services.pipewire = {
     enable = true;
@@ -67,19 +64,6 @@
   # Enable touchpad support (enabled default in most desktopManager).
   services.libinput.enable = true;
 
-  # Game configs
-  programs.gamemode.enable = true;
-  programs.steam = {
-    enable = true;
-    remotePlay.openFirewall = true;
-    dedicatedServer.openFirewall = true;
-  };
-
-  # Add custom fonts
-  fonts.packages = with pkgs; [
-    nerdfonts
-  ];
-
   # Enable dconf
   programs.dconf.enable = true;
 
@@ -87,23 +71,17 @@
   # $ nix search wget
   environment.systemPackages = with pkgs; [
     vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
-    neovim
     xterm
     curl
     wget
-    htop
-    alacritty
-    neofetch
     pcmanfm
-    git
     tree
     firefox
     dmenu
-    tmux
+    lshw
     fwupd
     xorg.xev
     pavucontrol
-    usbutils
 
     rofi
   ];

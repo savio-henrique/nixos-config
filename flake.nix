@@ -38,6 +38,7 @@
           specialArgs = {inherit inputs outputs;};
           modules = [
             ./hosts/chrono
+            ./hosts/common/optional/video.nix
           ];
         };
         # Laptop
@@ -45,6 +46,7 @@
           specialArgs = {inherit inputs outputs;};
           modules = [
             ./hosts/majora
+            ./hosts/common/optional/video.nix
           ];
         };
         # Minecraft Server / Home Server
