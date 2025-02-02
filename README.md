@@ -19,20 +19,22 @@ Utilizing the SaschaKoenig's [Nixos Config Playlist](https://www.youtube.com/wat
 ---
 # Future Additions and Changes to my Environment
 - [x] Add an 'openssh' module to work on all my hosts.
-- [ ] Add git conventional commits function to my shell.
+- [x] Add git conventional commits function to my shell.
 - [ ] Add 'sops-nix' to my configuration to encrypt secrets.
 - [ ] Add a 'docker' module to work on all my hosts.
 - [ ] Add a 'kubernetes' module to work on all my hosts.
-- [ ] Add a 'tmux' module with all tmux config throughout my hosts. [Wiki](https://nixos.wiki/wiki/Tmux)
-- [ ] Update the 'neovim' module with all neovim config to work throughout my hosts. [Wiki](https://nixos.wiki/wiki/Neovim)
-- [ ] Add a 'shell' module with all shell config.
-- - [ ] Add a 'fish' module with all fish config to work throughout my hosts. [Wiki](https://nixos.wiki/wiki/Fish)
-- - [ ] Add an 'aliases' module to set my aliases across the hosts.
-- [ ] Add an 'alacritty' module with all alacritty config to work in my visual hosts.
-- [ ] Add an 'awesomewm' module with all awesomewm config to work in my visual hosts.
+- [x] Add a 'tmux' module with all tmux config throughout my hosts. [Wiki](https://nixos.wiki/wiki/Tmux)
+- - [ ] Add new tmux configs
+- [x] Update the 'neovim' module with all neovim config to work throughout my hosts. [Wiki](https://nixos.wiki/wiki/Neovim)
+- [x] Add a 'shell' module with all shell config.
+- - [x] Add a 'fish' module with all fish config to work throughout my hosts. [Wiki](https://nixos.wiki/wiki/Fish)
+- - [x] Add an 'aliases' module to set my aliases across the hosts.
+- - > Aliases set on the module that it is related
+- [x] Add an 'alacritty' module with all alacritty config to work in my visual hosts.
+- [x] Add an 'awesomewm' module with all awesomewm config to work in my visual hosts.
 - - [ ] Add configurations to have modular widgets working.
-- [ ] Add an 'git' module to work in my hosts.
-- [ ] Update the 'picom' module to work with all visual hosts.
+- [x] Add an 'git' module to work in my hosts.
+- [x] Update the 'picom' module to work with all visual hosts.
 - [ ] Add a 'rofi' module to work in my visual hosts.
 - [ ] Add a 'vesktop' module to work in my visual hosts.
 - [ ] Add a 'gaming' module to work in my gaming hosts.
