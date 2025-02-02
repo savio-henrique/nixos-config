@@ -7,7 +7,7 @@
   };
 
   home.packages = [
-    (pkgs.nerdfonts.override { fonts= [ "SourceCodePro" "FiraCode" "JetBrainsMono" "SymbolsNerdFont"];})
+    (pkgs.nerdfonts.override { fonts= [ "SourceCodePro" "FiraCode" "JetBrainsMono" ];})
   ];
 
   # Neovim Config
