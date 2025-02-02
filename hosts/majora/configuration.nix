@@ -9,10 +9,6 @@
     [ # Include the results of the hardware scan.
       ./hardware-configuration.nix
       inputs.home-manager.nixosModules.default
-      ./users/main-user.nix
-      ./video/picom/picom.nix
-      ./video/video.nix
-      ./video/hotplug/default.nix
     ];
 
   # Use the GRUB 2 boot loader.
@@ -26,7 +22,7 @@
 
   networking.hostName = "majora"; # Define your hostname.
   # Pick only one of the below networking options.
-  networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
+  # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
   networking.networkmanager.enable = true;  # Easiest to use and most distros use this by default.
 
   # Set your time zone.
@@ -45,16 +41,6 @@
   #   keyMap = "us";
   #   useXkbConfig = true; # use xkb.options in tty.
   # };
-
-  # Video Configuration
-  video.enable = true;
-  video.wm = "awesome";
-
-  # Enable Monitor Hotplug
-  hotplug.enable = true;
-
-  # Picom configuration
-  picom.enable = true;
 
   # Enable CUPS to print documents.
   services.printing.enable = true;
@@ -80,28 +66,6 @@
 
   # Enable touchpad support (enabled default in most desktopManager).
   services.libinput.enable = true;
-
-  # Define user groups
-  users.groups = {
-    nixos-dev = {
-      gid = 1010;
-    };
-  };
-
-  # Define a user account. Don't forget to set a password with ‘passwd’.
-  main-user.enable = true;
-  main-user.userName = "saviohc";
-  main-user.name = "Savio Henrique";
-  main-user.groups = [ "docker" "wheel" "nixos-dev" "users" ];
-
-  # Home Manager config
-  home-manager.useGlobalPkgs = true;
-  home-manager = {
-    extraSpecialArgs = { inherit inputs; };
-    users = {
-      "saviohc" = import ./home.nix;
-    };
-  };
 
   # Game configs
   programs.gamemode.enable = true;
@@ -142,7 +106,6 @@
     usbutils
 
     rofi
-		ripgrep
   ];
 
 
@@ -155,17 +118,6 @@
   # };
 
   # List services that you want to enable:
-
-  # Enable the OpenSSH daemon.
-  services.openssh = {
-    enable = true;
-    settings = {
-      PasswordAuthentication = true;
-      PermitRootLogin = "no";
-
-      GatewayPorts = "clientspecified";
-    };
-  };
 
   # Open ports in the firewall.
   # networking.firewall.allowedTCPPorts = [ ... ];
