@@ -3,6 +3,7 @@ let
   cfg = config.video;
 in {
   imports = [
+    ./picom.nix
     ./nvidia.nix
   ];
 
