@@ -9,17 +9,19 @@
     ../features/awesome
     ../features/alacritty.nix
     ../features/vesktop
+    ../features/obs
   ];
   awesome.enable = true;
+
 
   home.packages = with pkgs; [
     # Tools
     pavucontrol
-    xterm
     rofi
     dmenu
     pcmanfm
     libreoffice
+    corefonts
 
     # Applications
     spotify
