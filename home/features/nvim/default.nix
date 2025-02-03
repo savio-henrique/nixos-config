@@ -1,4 +1,4 @@
-{ lib, pkgs, config , ... }:
+{base16 }: { lib, pkgs, config , ... }:
 {
 
   # Session Variables
@@ -133,7 +133,7 @@
 
       {
         plugin = base16-nvim;
-        config = "colorscheme base16-twilight";
+        config = "colorscheme base16-${base16}";
       }
 
       # {

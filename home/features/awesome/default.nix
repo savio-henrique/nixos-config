@@ -4,6 +4,7 @@ let
 
   # Default rc.lua without custom widgets
   rc = builtins.readFile ./config/rc.lua;
+  th = builtins.readFile ./config/theme.lua;
 in {
   options = {
     awesome = {
@@ -26,6 +27,13 @@ in {
         type = lib.types.bool;
         default = false;
         description = "Volume widget";
+      };
+
+      # Background
+      background = lib.mkOption {
+        type = lib.types.string;
+        default = "berserk-8.png";
+        description = "Background image";
       };
 
     };
@@ -98,8 +106,12 @@ in {
             [ "--WIDGET_REQUIRE"  "--WIDGET_DEFINITION" "--WIDGET_BINDING"]
             [ "${requires}" "${definitions}" "${bindings}" ]
             "${text}";
-        # Theme
-        theme = config.colorScheme.palette;
+        # Palette
+        palette = config.colorScheme.palette;
+        theme = builtins.replaceStrings
+          [ "--BACKGROUND" ]
+          [ "${awesome.background}" ]
+          "${th}";
       in {
 
         ".config/awesome/rc.lua" = {
@@ -109,6 +121,11 @@ in {
         ".config/awesome/theme" = {
           source = ./config/theme;
           recursive = true;
+        };
+
+        ".config/awesome/theme/theme.lua" = {
+          target = ".config/awesome/theme/theme.lua";
+          text= "${theme}";
         };
 
         ".config/awesome/awesome-wm-widgets" = {
@@ -135,22 +152,22 @@ in {
             local theme = {}
 
             -- Theme Colors
-            theme.bg_normal     = "#${theme.base00}"
-            theme.bg_focus      = "#${theme.base03}"
-            theme.bg_urgent     = "#${theme.base08}"
-            theme.bg_minimize   = "#${theme.base02}"
+            theme.bg_normal     = "#${palette.base00}"
+            theme.bg_focus      = "#${palette.base03}"
+            theme.bg_urgent     = "#${palette.base08}"
+            theme.bg_minimize   = "#${palette.base02}"
             theme.bg_systray    = theme.bg_normal
-            
-            theme.fg_normal     = "#${theme.base06}"
-            theme.fg_focus      = "#${theme.base07}"
-            theme.fg_urgent     = "#${theme.base07}"
-            theme.fg_minimize   = "#${theme.base07}"
-
+                                      
+            theme.fg_normal     = "#${palette.base06}"
+            theme.fg_focus      = "#${palette.base07}"
+            theme.fg_urgent     = "#${palette.base07}"
+            theme.fg_minimize   = "#${palette.base07}"
+                                      
             theme.useless_gap   = dpi(4)
             theme.border_width  = dpi(2)
-            theme.border_normal = "#${theme.base0F}"
-            theme.border_focus  = "#${theme.base09}"
-            theme.border_marked = "#${theme.base0E}"
+            theme.border_normal = "#${palette.base0F}"
+            theme.border_focus  = "#${palette.base09}"
+            theme.border_marked = "#${palette.base0E}"
             
             theme.titlebar_bg_color  = theme.border_focus
             theme.titlebar_fg_color  = theme.border_focus

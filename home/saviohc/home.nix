@@ -1,15 +1,17 @@
 { config, pkgs, inputs, ... }:
-
-{
+let 
+  # Change base16 theme
+  base16 = "gotham";
+in {
   # Imports
   imports = [
     inputs.nix-colors.homeManagerModules.default
     ../features/cli
-    ../features/nvim
+    (import ../features/nvim { base16 = base16;})
     # ./programs/freecad/freecad.nix
   ];
 
-  colorScheme = inputs.nix-colors.colorSchemes.twilight;
+  colorScheme = inputs.nix-colors.colorSchemes."${base16}";
 
   # User config
   home.username = "saviohc";
