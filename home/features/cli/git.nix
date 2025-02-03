@@ -55,7 +55,7 @@ let
         git commit -m ":pencil: $first_arg: $second_arg"
         ;;
       style)
-        git commit -m ":framed_picture: $first_arg: $second_arg"
+        git commit -m ":paintbruhs: $first_arg: $second_arg"
         ;;
       refactor)
         git commit -m ":gear: $first_arg: $second_arg"
