@@ -36,6 +36,13 @@ in {
         description = "Background image";
       };
 
+      # Runner command
+      runner = lib.mkOption {
+        type = lib.types.string;
+        default = "rofi -show drun";
+        description = "Runner command";
+      };
+
     };
   };
 
@@ -103,8 +110,8 @@ in {
           # Text
           text = rc;
           in builtins.replaceStrings 
-            [ "--WIDGET_REQUIRE"  "--WIDGET_DEFINITION" "--WIDGET_BINDING"]
-            [ "${requires}" "${definitions}" "${bindings}" ]
+            [ "--WIDGET_REQUIRE"  "--WIDGET_DEFINITION" "--WIDGET_BINDING" "--RUNNERCOMMAND"]
+            [ "${requires}" "${definitions}" "${bindings}" "${awesome.runner}" ]
             "${text}";
         # Palette
         palette = config.colorScheme.palette;

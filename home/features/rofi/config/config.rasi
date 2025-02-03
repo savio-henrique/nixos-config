@@ -1,0 +1,66 @@
+configuration {
+  display-drun: "Applications:";
+  display-window: "Windows:";
+  display-ssh: "Host:";
+  drun-display-format: "{icon} {name}";
+  modi: "window,run,drun,ssh";
+  show-icons: true;
+}
+
+@theme "/home/saviohc/.config/rofi/theme.rasi"
+
+window {
+  width: 45%;
+  border: 3;
+  border-radius : 10;
+  border-color: @fg;
+  padding: 5;
+}
+
+element {
+  padding: 12;
+  text-color: @text;
+  margin:3;
+  border-radius:10;
+}
+
+element selected {
+  background-color: @bg-alt;
+  text-color: @fg;
+}
+
+element-text {
+  background-color: inherit;
+  text-color: inherit;
+  vertical-align: 0.5;
+}
+
+element-icon {
+  size: 30;
+}
+
+entry {
+  background-color: inherit;
+  text-color: inherit;
+}
+
+prompt {
+  background-color: inherit;
+  text-color: inherit;
+}
+
+inputbar {
+  background-color: @bg-alt;
+  border-radius: 10;
+  margin: 10;
+  text-color: @text;
+  padding: 12;
+  children: [prompt, entry];
+}
+
+listview {
+  background-color: @bg;
+  columns: 1;
+  lines: 8;
+  padding: 10;
+}

@@ -17,9 +17,8 @@
   home.packages = with pkgs; [
     # Tools
     pavucontrol
-    rofi
-    dmenu
     pcmanfm
+    dmenu
     libreoffice
     corefonts
 

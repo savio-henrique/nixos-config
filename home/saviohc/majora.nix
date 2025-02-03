@@ -6,10 +6,12 @@
     ../common 
     ../common/visual.nix 
     ../features/awesome
+    ../features/rofi
   ]; 
 
   awesome.brightness = true;
   awesome.volume = true;
   awesome.battery = true;
   awesome.background = "badtzmaru-1.png";
+  awesome.runner = "rofi -show drun";
 }
