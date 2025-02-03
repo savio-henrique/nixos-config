@@ -9,6 +9,7 @@
     ../features/awesome
     ../features/alacritty.nix
   ];
+  awesome.enable = true;
 
   home.packages = with pkgs; [
     # Tools

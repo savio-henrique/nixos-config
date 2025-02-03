@@ -32,7 +32,7 @@ Utilizing the SaschaKoenig's [Nixos Config Playlist](https://www.youtube.com/wat
 - - > Aliases set on the module that it is related
 - [x] Add an 'alacritty' module with all alacritty config to work in my visual hosts.
 - [x] Add an 'awesomewm' module with all awesomewm config to work in my visual hosts.
-- - [ ] Add configurations to have modular widgets working.
+- - [x] Add configurations to have modular widgets working.
 - [x] Add an 'git' module to work in my hosts.
 - [x] Update the 'picom' module to work with all visual hosts.
 - [ ] Add a 'rofi' module to work in my visual hosts.
@@ -40,6 +40,6 @@ Utilizing the SaschaKoenig's [Nixos Config Playlist](https://www.youtube.com/wat
 - [ ] Add a 'gaming' module to work in my gaming hosts.
 - [ ] Add a 'virtualization' module to work in my hosts.
 - [ ] Add a 'obs-studio' module to work in my visual hosts.
-- [ ] Add a 'minecraft-server' module to use on cyrus.
+- [x] Add a 'minecraft-server' module to use on ohana.
 - [ ] Add a 'webserver' module to use on cyrus.
 

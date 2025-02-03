@@ -17,15 +17,9 @@ local hotkeys_popup = require("awful.hotkeys_popup")
 -- Enable hotkeys help widget for VIM and other apps
 -- when client with a matching name is opened:
 require("awful.hotkeys_popup.keys")
--- Require Monitor Hot Plug from https://github.com/dluksza/screenful
-require("awful.remote")
-require("screenful")
-
 
 -- Widgets
-local battery_widget = require("awesome-wm-widgets.batteryarc-widget.batteryarc")
-local volume_widget = require("awesome-wm-widgets.volume-widget.volume")
-local brightness_widget = require("awesome-wm-widgets.brightness-widget.brightness")
+--WIDGET_REQUIRE
 
 
 -- {{{ Error handling
@@ -222,25 +216,10 @@ awful.screen.connect_for_each_screen(function(s)
             layout = wibox.layout.fixed.horizontal,
             mykeyboardlayout,
             wibox.widget.systray(),
-						brightness_widget{
-							type = "arc",
-							program = "brightnessctl",
-							step = 5,
-							timeout = 1,
-							tooltip = true,
-						},
-						volume_widget{
-							widget_type = "vertical_bar",
-							mixer_cmd = "pavucontrol",
-							step = 5,
-							card = 0,
-							device = "default",
-							mixctrl = "Master",
-						},
+            -- Custom Widget Placeholder
+            --WIDGET_DEFINITION
+            -- End Custom Widget Placeholder
             mytextclock,
-						battery_widget{
-							show_current_level = true;
-						},
             s.mylayoutbox,
         },
     }
@@ -364,16 +343,9 @@ globalkeys = gears.table.join(
 
     -- Flameshot Keybind
     awful.key({ modkey, "Control", "Shift" }, "p", function() awful.util.spawn("flameshot gui") end,
-              {description = "take a screenshot", group = "apps"}),
+              {description = "take a screenshot", group = "apps"})
 
-		-- Brightness controls
-		awful.key({}, "XF86MonBrightnessUp", function() brightness_widget:inc(5) end, {description = "increase brightness", group = "custom"}),
-		awful.key({}, "XF86MonBrightnessDown", function() brightness_widget:dec(5) end, {description = "decrease brightness", group = "custom"}),
-
-		-- Volume controls
-		awful.key({}, "XF86AudioRaiseVolume", function() volume_widget:inc(5) end, {description = "increase volume", group = "custom"}),
-		awful.key({}, "XF86AudioLowerVolume", function() volume_widget:dec(5) end, {description = "decrease volume", group = "custom"}),
-		awful.key({}, "XF86AudioMute", function() volume_widget:toggle() end, {description = "mute volume", group = "custom"})
+    --WIDGET_BINDING
 )
 
 clientkeys = gears.table.join(
