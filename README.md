@@ -36,7 +36,7 @@ Utilizing the SaschaKoenig's [Nixos Config Playlist](https://www.youtube.com/wat
 - [x] Add an 'git' module to work in my hosts.
 - [x] Update the 'picom' module to work with all visual hosts.
 - [ ] Add a 'rofi' module to work in my visual hosts.
-- [ ] Add a 'vesktop' module to work in my visual hosts.
+- [x] Add a 'vesktop' module to work in my visual hosts.
 - [ ] Add a 'gaming' module to work in my gaming hosts.
 - [ ] Add a 'virtualization' module to work in my hosts.
 - [ ] Add a 'obs-studio' module to work in my visual hosts.

@@ -8,6 +8,7 @@
   imports = [
     ../features/awesome
     ../features/alacritty.nix
+    ../features/vesktop
   ];
   awesome.enable = true;
 
