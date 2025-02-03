@@ -1,8 +1,5 @@
-{ config, pkgs, inputs, ... }:
-let 
-  # Change base16 theme
-  base16 = "gotham";
-in {
+{base16} : { config, pkgs, inputs, ... }:
+{
   # Imports
   imports = [
     inputs.nix-colors.homeManagerModules.default
