@@ -41,5 +41,6 @@ Utilizing the SaschaKoenig's [Nixos Config Playlist](https://www.youtube.com/wat
 - [ ] Add a 'virtualization' module to work in my hosts.
 - [ ] Add a 'obs-studio' module to work in my visual hosts.
 - [x] Add a 'minecraft-server' module to use on ohana.
+- [ ] Add a 'sound' module to work in my visual hosts.
 - [ ] Add a 'webserver' module to use on cyrus.
 

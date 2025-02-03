@@ -50,6 +50,10 @@ in {
     services.displayManager.defaultSession = "none+awesome";
     services.xserver.videoDrivers = ["nvidia"];
 
+    # Remove XTerm
+    services.xserver.excludePackages = [ pkgs.xterm ];
+    services.xserver.desktopManager.xterm.enable = false;
+
     # Keyboard xserver config
     services.xserver.xkb.layout = "us,br";
     services.xserver.xkb.options = "altwin:menu,altwin:swap_lalt_lwin,grp:rctrl_rshift_toggle,caps:escape";
