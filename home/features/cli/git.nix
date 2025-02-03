@@ -46,35 +46,35 @@ let
     # Check if the first arg is a valid commit type
     case $first_arg in 
       feat)
-        echo ":sparkles: $first_arg: $second_arg"
+        git commit -m ":sparkles: $first_arg: $second_arg"
         ;;
       fix)
-        echo ":wrench: $first_arg: $second_arg"
+        git commit -m ":wrench: $first_arg: $second_arg"
         ;;
       docs)
-        echo ":pencil: $first_arg: $second_arg"
+        git commit -m ":pencil: $first_arg: $second_arg"
         ;;
       style)
-        echo ":framed_picture: $first_arg: $second_arg"
+        git commit -m ":framed_picture: $first_arg: $second_arg"
         ;;
       refactor)
-        echo ":gear: $first_arg: $second_arg"
+        git commit -m ":gear: $first_arg: $second_arg"
         ;;
       perf)
-        echo ":bar_chart: $first_arg: $second_arg"
+        git commit -m ":bar_chart: $first_arg: $second_arg"
         ;;
       test)
-        echo ":test_tube: $first_arg: $second_arg"
+        git commit -m ":test_tube: $first_arg: $second_arg"
         ;;
       chore)
-        echo ":broom: $first_arg: $second_arg"
+        git commit -m ":broom: $first_arg: $second_arg"
         ;;
       *)
         if [ -z "$second_arg" ]; then
           echo "Your commit message is: '$first_arg'. Are you sure? ([y]es/[n]o)"
           read answer
           if [ "$answer" = "y" ] || [ "$answer" = "yes" ]; then
-            echo "$first_arg"
+            git commit -m "$first_arg"
             exit 0
           else 
             echo "Please provide a valid message."
@@ -110,7 +110,7 @@ in {
       init.defaultBranch = "main";
       safe.directory = [
         "/etc/nixos"
-        # "/etc/nixos/dotfiles/awesome/awesome-wm-widgets"
+        "/Projects/*"
       ];
     };
   };
