@@ -40,77 +40,80 @@
       wl-clipboard
     ];
 
-    plugins = with pkgs.vimPlugins; [
-      neodev-nvim
-      cmp_luasnip
-      cmp-nvim-lsp
-      luasnip
-      friendly-snippets
-      vim-nix
-      vim-jsx-typescript
-      vim-wakatime
+    plugins = let
+      pkg = pkgs.vimPlugins;
+      theme = base16;
+    in [
+      pkg.neodev-nvim
+      pkg.cmp_luasnip
+      pkg.cmp-nvim-lsp
+      pkg.luasnip
+      pkg.friendly-snippets
+      pkg.vim-nix
+      pkg.vim-jsx-typescript
+      pkg.vim-wakatime
 
-      nvim-web-devicons
+      pkg.nvim-web-devicons
 
-      markdown-preview-nvim
-      copilot-cmp
+      pkg.markdown-preview-nvim
+      pkg.copilot-cmp
 
       {
-        plugin = vim-fugitive;
+        plugin = pkg.vim-fugitive;
         type = "lua";
         config = "${builtins.readFile ./config/plugin/fugitive.lua}";
       }
 
       {
-        plugin = indent-blankline-nvim;
+        plugin = pkg.indent-blankline-nvim;
         type = "lua";
         config = "require('ibl').setup()";
       }
 
       {
-        plugin = undotree;
+        plugin = pkg.undotree;
         type = "lua";
         config = "${builtins.readFile ./config/plugin/undotree.lua}";
       }
 
       {
-        plugin = copilot-vim;
+        plugin = pkg.copilot-vim;
         type = "lua";
         config = "${builtins.readFile ./config/plugin/copilot.lua}";
       }
 
       {
-        plugin = lualine-nvim;
+        plugin = pkg.lualine-nvim;
         type = "lua";
         config = "require('lualine').setup({icons_enabled = true, theme = 'base16-twilight',})";
       }
 
       {
-        plugin = comment-nvim;
+        plugin = pkg.comment-nvim;
         type = "lua";
         config = "require('Comment').setup()";
       }
 
       {
-        plugin = nvim-lspconfig;
+        plugin = pkg.nvim-lspconfig;
         type = "lua";
         config = "${builtins.readFile ./config/plugin/lsp.lua}";
       }
 
       {
-        plugin = nvim-cmp;
+        plugin = pkg.nvim-cmp;
         type = "lua";
         config = "${builtins.readFile ./config/plugin/cmp.lua}";
       }
 
       {
-        plugin = telescope-nvim;
+        plugin = pkg.telescope-nvim;
         type = "lua";
         config = "${builtins.readFile ./config/plugin/telescope.lua}";
       }
 
       {
-        plugin = (nvim-treesitter.withPlugins (p : [
+        plugin = (pkg.nvim-treesitter.withPlugins (p : [
           p.tree-sitter-nix
           p.tree-sitter-vim
           p.tree-sitter-bash
@@ -132,12 +135,12 @@
       }
 
       {
-        plugin = base16-nvim;
-        config = "colorscheme base16-${base16}";
+        plugin = pkg.base16-nvim;
+        config = "colorscheme base16-${theme}";
       }
 
       # {
-      #   plugin = kanagawa-nvim;
+      #   plugin = pkg.kanagawa-nvim;
       # 	config = "colorscheme kanagawa-dragon";
       # }
 	];
