@@ -22,7 +22,7 @@ Utilizing the SaschaKoenig's [Nixos Config Playlist](https://www.youtube.com/wat
 - [x] Add an 'awesomewm' module with all awesomewm config to work in my visual hosts.
 - - [x] Add configurations to have modular widgets working.
 - [x] Update the 'picom' module to work with all visual hosts.
-- [ ] Add a 'rofi' module to work in my visual hosts.
+- [x] Add a 'rofi' module to work in my visual hosts.
 - [x] Add a 'vesktop' module to work in my visual hosts.
 - [x] Add a 'shell' module with all shell config.
 - - [x] Add a 'fish' module with all fish config to work throughout my hosts. [Wiki](https://nixos.wiki/wiki/Fish)
