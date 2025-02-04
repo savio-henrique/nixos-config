@@ -33,7 +33,11 @@
 #:w
 # networking.hostName = "nixos"; # Define your hostname.
 {
-  imports = [../common ../common/optional/video.nix ../common/optional/prime.nix ./configuration.nix];
+  imports = [
+    ../common
+    ../common/optional/video.nix
+    ../common/optional/prime.nix
+    ./configuration.nix];
 
   video.enable = true;
   video.dual = false;

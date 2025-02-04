@@ -2,7 +2,6 @@
 {
   services.picom = {
     enable = true;
-    package = pkgs.picom;
     backend = "glx";
     fade = true;
     fadeDelta = 4;
@@ -16,10 +15,9 @@
       "100:class_g = 'Bar'"
       "100:class_g = 'slop'"
       "100:class_g = 'alacritty'"
-      "100:class_g = 'vesktop"
+      "100:class_g = 'vesktop'"
       "100:class_g = 'obs'"
       "100:class_g = 'brave'"
-      "100:class_g = 'dmenu'"
       "100:class_g = 'rofi'"
     ];
 
