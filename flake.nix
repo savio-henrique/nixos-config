@@ -5,17 +5,17 @@
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
     nixpkgs-stable.url = "github:nixos/nixpkgs/nixos-24.05";
 
+    sops-nix = {
+      url = "github:mic92/sops-nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+    
     home-manager = {
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
     nix-minecraft.url = "github:Infinidoge/nix-minecraft";
-    
-    sops-nix = {
-      url = "github:mic92/sops-nix";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
     
     nix-colors.url = "github:misterio77/nix-colors";
   };
@@ -32,6 +32,7 @@
       ];
       forAllSystems = nixpkgs.lib.genAttrs systems;
     in { 
+      
       packages = forAllSystems (system: import ./pkgs nixpkgs.legacyPackages.${system});
       overlays = import ./overlays {inherit inputs;};
       nixosConfigurations = {

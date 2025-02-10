@@ -51,12 +51,23 @@
       pkg.friendly-snippets
       pkg.vim-nix
       pkg.vim-jsx-typescript
-      pkg.vim-wakatime
 
       pkg.nvim-web-devicons
 
       pkg.markdown-preview-nvim
       pkg.copilot-cmp
+
+      {
+        plugin = pkg.vim-wakatime;
+        type = "lua";
+        config = ''
+          local keyFile = io.open("${config.sops.secrets.wakatime-key.path}", "r")
+          local key = keyFile:read("*all")
+          local wakatimeFile = io.open("${config.home.homeDirectory}/.wakatime.cfg", "w")
+          wakatimeFile:write("[settings]\ndebug = false\nhidefilenames = false\nignore =\n\tCOMMIT_EDITMSG$\n\tPULLREQ_EDITMSG$\n\tMERGE_MSG$\n\tTAG_EDITMSG$\napi_key="..key)
+          wakatimeFile:close()
+        '';
+      }
 
       {
         plugin = pkg.vim-fugitive;
@@ -144,5 +155,9 @@
       # 	config = "colorscheme kanagawa-dragon";
       # }
 	];
+  };
+
+  sops.secrets.wakatime-key = {
+    sopsFile = ../../../hosts/common/secrets.yaml;
   };
 }
