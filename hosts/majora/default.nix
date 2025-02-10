@@ -34,7 +34,7 @@
 # networking.hostName = "nixos"; # Define your hostname.
 {
   imports = [
-    ../common
+    ../common/global
     ../common/optional/video.nix
     ../common/optional/prime.nix
     ./configuration.nix];

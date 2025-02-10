@@ -8,7 +8,8 @@
   imports = [
     inputs.home-manager.nixosModules.home-manager
     ./openssh.nix
-    ./users
+    ./sops.nix
+    ../users
   ];
 
   home-manager.useUserPackages = true;

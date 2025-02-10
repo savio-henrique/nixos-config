@@ -18,19 +18,6 @@
   # Nixpkgs config
   nixpkgs.config.allowUnfree = true;
 
-  # Packages
-  # home.packages = with pkgs; [  
-  #   ffmpeg
-  #   vlc
-  #   davinci-resolve
-  #   docker
-  #   docker-compose
-  #
-  #   # Games
-  #   prismlauncher
-  #   osu-lazer
-  # ];
-
   programs.home-manager.enable = true;
 }
 

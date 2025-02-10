@@ -32,5 +32,5 @@
 # Please also change your hostname accordingly:
 # networking.hostName = "nixos"; # Define your hostname.
 {
-  imports = [../common ../common/optional/minecraft-server ./configuration.nix];
+  imports = [../common/global ../common/optional/minecraft-server ./configuration.nix];
 }

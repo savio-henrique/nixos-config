@@ -7,7 +7,7 @@
   # User Configuration
   users.users.saviohc = {
     isNormalUser = true;
-    initialHashedPassword = "$y$j9T$nhvjL36HtJMFx8OFgKGkk/$1RKnk2Mfx1EOCQI7QHyIa.a4qZ6eJ8AThvVjHYoGc78";
+    hashedPasswordFile = config.sops.secrets.saviohc-password.path;
     description = "Sávio Henrique";
     extraGroups = [ 
       "wheel"
@@ -30,6 +30,11 @@
 
     # Packages from Home-manager
     packages = [ inputs.home-manager.packages.${pkgs.system}.default ];
+  };
+
+  sops.secrets.saviohc-password = {
+    sopsFile = ./secrets.yaml;
+    neededForUsers = true;
   };
 
   # Home manager user
