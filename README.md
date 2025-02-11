@@ -44,7 +44,7 @@ Utilizing the SaschaKoenig's [Nixos Config Playlist](https://www.youtube.com/wat
 - [ ] Add a 'gaming' module to work in my gaming hosts.
 
 ### :lock: Hard stuff
-- [ ] Add 'sops-nix' to my configuration to encrypt secrets.
+- [x] Add 'sops-nix' to my configuration to encrypt secrets.
 - [ ] Add a 'docker' module to work on all my hosts.
 - [ ] Add a 'kubernetes' module to work on all my hosts.
 - [ ] Add a 'virtualization' module to work in my hosts.
