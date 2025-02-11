@@ -31,7 +31,7 @@ Utilizing the SaschaKoenig's [Nixos Config Playlist](https://www.youtube.com/wat
 > Aliases are set on the module that it is related
 - [x] Add an 'alacritty' module with all alacritty config to work in my visual hosts.
 - [x] Add a 'tmux' module with all tmux config throughout my hosts. [Wiki](https://nixos.wiki/wiki/Tmux)
-- - [ ] Add new tmux configs
+- - [x] Add new tmux configs
 - - [ ] Add new tmux custom theming. Like [this](https://github.com/janoamaral/tokyo-night-tmux)
 - [x] Update the 'neovim' module with all neovim config to work throughout my hosts. [Wiki](https://nixos.wiki/wiki/Neovim)
 - [ ] Add a 'spotify'/'spicetify' module to work on visual hosts.
