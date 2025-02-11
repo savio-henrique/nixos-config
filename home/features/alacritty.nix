@@ -4,10 +4,18 @@
   programs.alacritty = {
     enable = true;
     settings = {
+      env = {
+        TERM = "xterm-256color";
+      };
+      font = {
+        size = 10;
+      };
       window = {
         opacity = 0.8;
         title = "Terminal";
         dynamic_title = false;
+        blur = true;
+        padding = { x = 3; y = 3;};
       };
       colors = with config.colorScheme.palette; {
         bright = {

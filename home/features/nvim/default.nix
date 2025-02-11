@@ -56,6 +56,7 @@
 
       pkg.markdown-preview-nvim
       pkg.copilot-cmp
+      pkg.vim-tmux-navigator
 
       {
         plugin = pkg.vim-wakatime;
