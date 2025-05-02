@@ -38,7 +38,6 @@
   # services.xserver.enable = true;
 
 
-  
 
   # Configure keymap in X11
   # services.xserver.xkb.layout = "us";
@@ -75,7 +74,7 @@
 
   # List services that you want to enable:
 
-  # networking.firewall.allowedTCPPorts = [ ... ];
+  networking.firewall.allowedTCPPorts = [ 80 5432 ];
   # networking.firewall.allowedUDPPorts = [ ... ];
   # Or disable the firewall altogether.
   # networking.firewall.enable = false;

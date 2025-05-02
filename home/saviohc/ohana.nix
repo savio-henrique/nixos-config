@@ -11,7 +11,9 @@ let
     tmux -S /run/minecraft/"$first_arg".sock attach
   '';
 in { 
-  imports = [ ./home.nix ../common ]; 
+  imports = [ 
+    (import ./home.nix {base16 = "black-metal-dark-funeral";})
+    ../common ]; 
   home.packages = [
     mcsv
   ];
