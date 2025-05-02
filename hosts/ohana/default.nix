@@ -35,7 +35,20 @@
   imports = [
     ../common/global
     ../common/optional/minecraft-server
-    ../common/optional/firefly
+    ../common/optional/firefly.nix
     ./configuration.nix
   ];
+
+  # Configure SOPS
+  sops.secrets = {
+    firefly-key = {
+      sopsFile = ./secrets.yaml;
+      owner = "firefly-iii";
+    };
+
+    firefly-db-password= {
+      sopsFile = ./secrets.yaml;
+      owner = "firefly-iii";
+    };
+  };
 }

@@ -1,18 +1,5 @@
 { lib, pkgs, config , ... }:
 {
-  # Configure SOPS
-  sops.secrets = {
-    firefly-key = {
-      sopsFile = ./secrets.yaml;
-      neededForUsers = true;
-    };
-
-    firefly-db-password= {
-      sopsFile = ./secrets.yaml;
-      neededForUsers = true;
-    };
-  };
-
   # Configure Firefly III
   services.nginx = {
     enable = true;
@@ -41,7 +28,7 @@
   # Configure PostgreSQL Container
   virtualisation.docker.enable = true;
 
-  virtualization.docker.rootless = {
+  virtualisation.docker.rootless = {
     enable = true;
     setSocketVariable = true;
   };
@@ -51,12 +38,10 @@
     containers.firefly-db = {
       image = "postgres:latest";
       autoStart = true;
-      ports = [ { hostPort = 5432; containerPort = 5432; } ];
+      ports = ["5432:5432"];
       volumes = [
-        {
-          hostPath = "/var/lib/postgresql/data";
-          containerPath = "/var/lib/postgresql/data";
-        }
+          (config.sops.secrets.firefly-db-password.path + ":/run/secrets/firefly-db-password:ro")
+          "/var/lib/postgresql/data:/var/lib/postgresql/data"
       ];
       environment = {
         POSTGRES_USER = "firefly";
