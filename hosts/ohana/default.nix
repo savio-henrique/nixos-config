@@ -35,7 +35,7 @@
   imports = [
     ../common/global
     ../common/optional/minecraft-server
-    ../common/optional/firefly.nix
+    ../common/optional/firefly
     ./configuration.nix
   ];
 
