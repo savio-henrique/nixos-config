@@ -43,12 +43,16 @@
   sops.secrets = {
     firefly-key = {
       sopsFile = ./secrets.yaml;
-      owner = "firefly-iii";
+      group = "www-data";
     };
 
     firefly-db-password= {
       sopsFile = ./secrets.yaml;
-      owner = "firefly-iii";
+      group = "www-data";
+    };
+    firefly-db-env= {
+      sopsFile = ./secrets.yaml;
+      group = "www-data";
     };
   };
 }

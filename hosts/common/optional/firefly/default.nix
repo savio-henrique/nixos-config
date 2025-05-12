@@ -1,24 +1,22 @@
 { lib, pkgs, config , ... }:
+# let 
+#   epoint = pkgs.writeScriptBin "epoint" ''
+#     #!/usr/bin/env bash
+#
+#     key= cat ${config.sops.secrets.firefly-key.path};
+#
+#     password= cat ${config.sops.secrets.firefly-db-password.path};
+#
+#     export APP_KEY=$key
+#     export DB_PASSWORD=$password
+#     exec docker-php-serversideup-entrypoint "$@" 
+#   '';
+# in
 {
+  # environment.systemPackages = [
+  #   epoint
+  # ];
 
-  # services.firefly-iii = {
-  #   
-  #   enable = true;
-  #   enableNginx = true;
-  #   virtualHost = "0.0.0.0";
-  #   settings = {
-  #     APP_ENV = "production"; 
-  #     APP_KEY_FILE = config.sops.secrets.firefly-key.path;
-  #     DB_CONNECTION = "pgsql";
-  #     DB_HOST = "localhost";
-  #     DB_PORT = 5432;
-  #     DB_DATABASE = "firefly";
-  #     DB_USERNAME = "firefly";
-  #     DB_PASSWORD_FILE = config.sops.secrets.firefly-db-password.path;
-  #   };
-  # };
-
-  # Configure PostgreSQL Container
   virtualisation.docker.enable = true;
 
   virtualisation.docker.rootless = {
@@ -32,26 +30,27 @@
       firefly_iii_core = {
         image = "fireflyiii/core:latest";
         autoStart = true;
-        restartPolicy = "always";
         ports = ["80:8080"];
         hostname = "firefly-iii";
+        user = "www-data:www-data";
         volumes = [
-            (config.sops.secrets.firefly-key.path + ":/run/secrets/firefly-key:ro")
-            (config.sops.secrets.firefly-db-password.path + ":/run/secrets/firefly-db-password:ro")
-            "/var/lib/firefly-iii/storage:/var/www/html/storage"
+            "firefly_iii_upload:/var/www/html/storage/upload"
         ];
         environment = {
           APP_ENV = "production"; 
           APP_URL = "http://localhost:8080";
-          APP_KEY_FILE = config.sops.secrets.firefly-key.path;
           DB_CONNECTION = "pgsql";
-          DB_HOST = "firefly-db";
-          DB_PORT = 5432;
+          DB_HOST = "172.17.0.2";
+          DB_PORT = "5432";
           DB_DATABASE = "firefly";
           DB_USERNAME = "firefly";
-          DB_PASSWORD_FILE = config.sops.secrets.firefly-db-password.path;
           TZ = "America/Sao_Paulo";
+          DEFAULT_LANGUAGE = "pt_BR";
         };
+        environmentFiles = [
+          config.sops.secrets.firefly-db-env.path
+          config.sops.secrets.firefly-key.path
+        ];
         dependsOn = [ "firefly_iii_db" ];
       };
       firefly_iii_db = {
@@ -59,7 +58,7 @@
         autoStart = true;
         hostname = "firefly-db";
         volumes = [
-            (config.sops.secrets.firefly-db-password.path + ":/run/secrets/firefly-db-password:ro")
+            (config.sops.secrets.firefly-db-password.path +":"+config.sops.secrets.firefly-db-password.path+":ro")
             "/var/lib/postgresql/data:/var/lib/postgresql/data"
         ];
         environment = {

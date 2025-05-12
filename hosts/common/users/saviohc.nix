@@ -12,6 +12,7 @@
     extraGroups = [ 
       "wheel"
       "networkmanager"
+      "www-data"
       "docker"
       "libvirtd"
       "kvm"
@@ -34,6 +35,7 @@
 
   sops.secrets.saviohc-password = {
     sopsFile = ./secrets.yaml;
+    owner = "saviohc";
     neededForUsers = true;
   };
 
