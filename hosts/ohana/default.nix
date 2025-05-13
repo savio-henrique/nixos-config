@@ -35,7 +35,7 @@
   imports = [
     ../common/global
     ../common/optional/minecraft-server
-    ../common/optional/firefly
+    ../common/optional/containers 
     ./configuration.nix
   ];
 
@@ -53,6 +53,14 @@
     firefly-db-env= {
       sopsFile = ./secrets.yaml;
       group = "www-data";
+    };
+  };
+
+  oci-config = {
+    enable  = true;
+    firefly-iii = {
+      enable = true;
+      port = 8080;
     };
   };
 }
