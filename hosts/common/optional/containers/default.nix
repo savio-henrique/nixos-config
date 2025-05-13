@@ -2,6 +2,7 @@
 let 
   oci-config = config.oci-config;
 in {
+
   options.oci-config = {
     enable = lib.mkOption {
       default = true;
@@ -60,22 +61,26 @@ in {
   };
 
   config = lib.mkIf oci-config.enable {
-    virtualisation.${oci-config.engine}.enable = true;
-    virtualisation.${oci-config.engine} = lib.mkIf (oci-config.engine == "docker") { 
+    virtualisation.${oci-config.engine} = if (oci-config.engine == "docker") then {
+      enable = true;
       rootless = {
         enable = true;
         setSocketVariable = true;
       };
+    } else {
+      enable = true;
     };
 
     virtualisation.oci-containers = {
       backend = oci-config.engine;
-      containers = {}
+      containers = let
+        firefly =  (import ./firefly {inherit config; port = builtins.toString oci-config.firefly-iii.port;});
+      in {}
         # Firefly III
-        // lib.optionalAttrs (oci-config.firefly-iii.enable) {
-          firefly_iii_core = import ./containers/firefly-iii-core.nix {inherit config; port = builtins.toString oci-config.firefly-iii.port;};
-          firefly_iii_db = import ./containers/firefly-iii-db.nix {inherit config;};
-          #firefly_iii_cron = import ./containers/firefly-iii-cron.nix {inherit config;};
+      // lib.optionalAttrs (oci-config.firefly-iii.enable) {
+        firefly_iii_core = firefly.firefly_iii_core;
+        firefly_iii_db = firefly.firefly_iii_db;
+        #firefly_iii_cron = firefly.firefly_iii_cron;
 
           };
     };
