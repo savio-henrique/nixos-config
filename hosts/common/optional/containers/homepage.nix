@@ -1,0 +1,6 @@
+{config}:
+{
+  homepage = {
+    image = "ghcr.io/gethomepage/homepage:latest"
+  }
+}

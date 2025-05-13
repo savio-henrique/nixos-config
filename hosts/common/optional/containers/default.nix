@@ -29,10 +29,12 @@ in {
       };
     };
 
-    pi-hole = lib.mkOption {
-      default = false;
-      type = lib.types.bool;
-      description = "Enable Pi-Hole";
+    pi-hole = {
+      enable = lib.mkOption {
+        default = false;
+        type = lib.types.bool;
+        description = "Enable Pi-Hole";
+      };
     };
 
     grafana = lib.mkOption {
@@ -74,16 +76,25 @@ in {
     virtualisation.oci-containers = {
       backend = oci-config.engine;
       containers = let
-        firefly =  (import ./firefly {inherit config; port = builtins.toString oci-config.firefly-iii.port;});
+        # Import container modules
+        firefly = (import ./firefly.nix {inherit config; port = builtins.toString oci-config.firefly-iii.port;});
+        pi-hole = (import ./pi-hole.nix {inherit config;});
       in {}
         # Firefly III
       // lib.optionalAttrs (oci-config.firefly-iii.enable) {
         firefly_iii_core = firefly.firefly_iii_core;
         firefly_iii_db = firefly.firefly_iii_db;
         #firefly_iii_cron = firefly.firefly_iii_cron;
-
-          };
+      }
+        # Pi-Hole
+      // lib.optionalAttrs (oci-config.pi-hole.enable) {
+        pi-hole = pi-hole.pi-hole;
+        unbound = pi-hole.unbound;
+      };
+        # Grafana
     };
 
+    # Enable Unbound 
+    
   };
 }

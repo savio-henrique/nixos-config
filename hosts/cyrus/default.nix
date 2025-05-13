@@ -32,5 +32,34 @@
 # Please also change your hostname accordingly:
 # networking.hostName = "nixos"; # Define your hostname.
 {
-  imports = [../common/global ./configuration.nix];
+  imports = [
+    ../common/global
+    ../common/optional/containers
+    ./configuration.nix
+  ];
+
+  sops.secrets = {
+    pihole-api-key = {
+      sopsFile = ./secrets.yaml;
+      group = "www-data";
+    };
+    pihole-password-env = {
+      sopsFile = ./secrets.yaml;
+      group = "www-data";
+    };
+    pihole-password = {
+      sopsFile = ./secrets.yaml;
+      group = "www-data";
+    };
+    unbound-config = {
+      sopsFile = ./secrets.yaml;
+      group = "www-data";
+    };
+  };
+
+  oci-config = {
+    enable  = true;
+    pi-hole.enable = true;
+  };
+
 }
