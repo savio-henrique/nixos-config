@@ -21,6 +21,7 @@ Utilizing the SaschaKoenig's [Nixos Config Playlist](https://www.youtube.com/wat
 ### :paintbrush: Customization and theming
 - [x] Add an 'awesomewm' module with all awesomewm config to work in my visual hosts.
 - - [x] Add configurations to have modular widgets working.
+- - [ ] Turn terminal configuration on 'rc.lua' dynamical and configurable by feature flag
 - [x] Update the 'picom' module to work with all visual hosts.
 - [x] Add a 'rofi' module to work in my visual hosts.
 - [x] Add a 'vesktop' module to work in my visual hosts.
@@ -50,8 +51,27 @@ Utilizing the SaschaKoenig's [Nixos Config Playlist](https://www.youtube.com/wat
 
 ### :lock: Hard stuff
 - [x] Add 'sops-nix' to my configuration to encrypt secrets.
-- [ ] Add a 'docker' module to work on all my hosts.
-- [ ] Add a 'kubernetes' module to work on all my hosts.
-- [ ] Add a 'virtualization' module to work in my hosts.
-- [ ] Add a 'webserver' module to use on cyrus.
 
+### :house: Homelab stuff
+
+#### OCI Containers
+- [x] Add virtualization module to work with OCI Containers.
+- - [ ] Migrate containers to the virtualization module.
+
+#### k3s
+- [ ] Add a 'k3s' module to work on all my hosts.
+- - [ ] Migrate container services to k3s.
+
+#### Services
+- [ ] Add 'firefly-iii'.
+- - [x] As a oci-container.
+- - [ ] As a k3s service.
+- [ ] Add 'vaultwarden'.
+- - [ ] As a oci-container.
+- - [ ] As a k3s service.
+- [ ] Add 'pi-hole' and 'unbound'.
+- - [x] As a oci-container.
+- - [ ] As a k3s service.
+- [ ] Add 'homepage'.
+- - [ ] As a oci-container.
+- - [ ] As a k3s service.
