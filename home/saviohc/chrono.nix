@@ -9,7 +9,7 @@
   ]; 
 
   # Change the base16  theme for the host
-  home-cfg.base16 = "tarot";
+  home-cfg.base16 = "ayu-dark";
 
   awesome.background = "berserk-1.png";
   awesome.runner = "rofi -show drun";
