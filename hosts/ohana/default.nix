@@ -42,16 +42,31 @@
   # Configure SOPS
   sops.secrets = {
     firefly-key = {
-      sopsFile = ./secrets.yaml;
+      sopsFile = ../common/secrets.yaml;
       group = "www-data";
     };
-
     firefly-db-password= {
-      sopsFile = ./secrets.yaml;
+      sopsFile = ../common/secrets.yaml;
       group = "www-data";
     };
     firefly-db-env= {
-      sopsFile = ./secrets.yaml;
+      sopsFile = ../common/secrets.yaml;
+      group = "www-data";
+    };
+    pihole-api-key = {
+      sopsFile = ../common/secrets.yaml;
+      group = "www-data";
+    };
+    pihole-password-env = {
+      sopsFile = ../common/secrets.yaml;
+      group = "www-data";
+    };
+    pihole-password = {
+      sopsFile = ../common/secrets.yaml;
+      group = "www-data";
+    };
+    unbound-config = {
+      sopsFile = ../common/secrets.yaml;
       group = "www-data";
     };
   };

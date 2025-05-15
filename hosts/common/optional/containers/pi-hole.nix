@@ -14,11 +14,9 @@
       "etc-pihole:/etc/pihole"
       "/var/log/pihole:/var/log/pihole"
     ];
-    user = "www-data:www-data";
     environment = {
       TZ = "America/Sao_Paulo";
       FTLCONF_dns_listeningMode = "all";
-      DNSMASQ_USER="www-data";
     };
     environmentFiles = [
       config.sops.secrets.pihole-password-env.path
