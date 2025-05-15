@@ -23,5 +23,6 @@
     postman
     jetbrains.phpstorm
     dbeaver-bin
+    vivaldi
   ];
 }
