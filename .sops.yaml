@@ -1,0 +1,55 @@
+keys:
+  # Users
+  - &users:
+    - &saviohc age19xa5u3rmqrsymy22rty6v9ldjxn7xrujg6cj9qfe7ky32y8y8sts644h5j
+  # Hosts
+  - &hosts:
+    - &chrono age19xa5u3rmqrsymy22rty6v9ldjxn7xrujg6cj9qfe7ky32y8y8sts644h5j
+    - &majora age132qmztydp7l5tn99vz7drn7a6shvkypwaa2z9t234tp63qw65pdqs3ewxt
+    - &ohana age1z62pvccq0tpvhq8utknff7tjxez7axuqrapcul8cxta7mz275s3stnuh84
+    - &cyrus age1m3fpx29rdt48c5qeyzgnva03374snuuzq5y08ahnltm886u6jvpscxnkyq
+
+creation_rules:
+  # By host
+  - path_regex: hosts/chrono/secrets.yaml$
+    key_groups:
+      - age:
+        - *chrono
+        - *saviohc
+
+  - path_regex: hosts/majora/secrets.yaml$
+    key_groups:
+      - age:
+        - *majora
+        - *saviohc
+
+  - path_regex: hosts/ohana/secrets.yaml$
+    key_groups:
+      - age:
+        - *ohana
+        - *saviohc
+
+  - path_regex: hosts/cyrus/secrets.yaml$
+    key_groups:
+      - age:
+        - *cyrus
+        - *saviohc
+
+  # Common
+  - path_regex: hosts/common/secrets.yaml$
+    key_groups:
+      - age:
+        - *chrono
+        - *majora
+        - *ohana
+        - *cyrus
+        - *saviohc
+  
+  # Users
+  - path_regex: hosts/common/users/secrets.yaml$
+    key_groups:
+      - age:
+        - *chrono
+        - *majora
+        - *ohana
+        - *saviohc
