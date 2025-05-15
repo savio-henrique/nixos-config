@@ -124,7 +124,7 @@ in {
     gp = "git push";
     ga = "git add";
     gaa = "git add --all";
-    gl = "git log";
+    gl = "git log --oneline --graph --decorate -n 15";
     gd = "git diff";
     gr = "git restore";
     grs = "git restore --staged";
