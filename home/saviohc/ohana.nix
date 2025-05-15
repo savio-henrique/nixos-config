@@ -12,7 +12,7 @@ let
   '';
 in { 
   imports = [ 
-    (import ./home.nix {base16 = "black-metal-dark-funeral";})
+    ./home.nix 
     ../common ]; 
   home.packages = [
     mcsv

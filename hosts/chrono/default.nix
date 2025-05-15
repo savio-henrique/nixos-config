@@ -32,7 +32,12 @@
 # Please also change your hostname accordingly:
 # networking.hostName = "nixos"; # Define your hostname.
 {
-  imports = [../common/global ../common/optional/video.nix ../common/optional/picom.nix ./configuration.nix];
+  imports = [
+    ../common/global
+    ../common/optional/video.nix
+    ../common/optional/picom.nix
+    ./configuration.nix
+  ];
 
   video.enable = true;
   video.dual = true;
