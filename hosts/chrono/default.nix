@@ -36,9 +36,16 @@
     ../common/global
     ../common/optional/video.nix
     ../common/optional/picom.nix
+    ../common/optional/containers
     ./configuration.nix
   ];
 
   video.enable = true;
   video.dual = true;
+
+
+  oci-config = {
+    enable = true;
+    engine = "docker";
+  };
 }
