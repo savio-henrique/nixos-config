@@ -47,5 +47,6 @@
   oci-config = {
     enable = true;
     engine = "docker";
+    rootless = false;
   };
 }

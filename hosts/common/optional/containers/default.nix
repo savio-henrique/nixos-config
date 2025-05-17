@@ -15,6 +15,13 @@ in {
       type = lib.types.str;
       description = "Container engine to use";
     };
+
+    rootless = lib.mkOption {
+      default = true;
+      type = lib.types.bool;
+      description = "Enable rootless containers";
+    };
+
     firefly-iii = {
       enable = lib.mkOption {
         default = false;
@@ -63,14 +70,13 @@ in {
   };
 
   config = lib.mkIf oci-config.enable {
-    virtualisation.${oci-config.engine} = if (oci-config.engine == "docker") then {
+    virtualisation.${oci-config.engine} = {
       enable = true;
+    } // lib.optionalAttrs (oci-config.engine=="docker" && oci-config.rootless) {
       rootless = {
         enable = true;
         setSocketVariable = true;
       };
-    } else {
-      enable = true;
     };
 
     virtualisation.oci-containers = {
