@@ -1,5 +1,6 @@
 # Common configuration for all hosts
 {
+  pkgs,
   lib,
   inputs,
   outputs,
@@ -10,6 +11,11 @@
     ./openssh.nix
     ./sops.nix
     ../users
+  ];
+
+  environment.systemPackages = with pkgs; [
+    usbutils
+    curl
   ];
 
   home-manager.useUserPackages = true;

@@ -6,6 +6,7 @@
     ../common/visual.nix 
     ../features/awesome
     ../features/rofi
+    ../features/steam.nix
   ]; 
 
   # Change the base16  theme for the host
@@ -16,8 +17,4 @@
   awesome.battery = true;
   awesome.background = "badtzmaru-1.png";
   awesome.runner = "rofi -show drun";
-
-  home.packages = with pkgs; [
-    steam
-  ];
 }

@@ -41,11 +41,11 @@
   #   useXkbConfig = true; # use xkb.options in tty.
   # };
 
+  # Set CPU governor to "performance"
+  powerManagement.cpuFreqGovernor = "performance";
+
   # Enable CUPS to print documents.
   services.printing.enable = true;
-
-  # Enable fish
-  programs.fish.enable = true;
 
   # Enable sound.
   services.pipewire = {
@@ -55,24 +55,20 @@
     pulse.enable = true;
   };
 
+  # Enable Gamemode
+  programs.gamemode.enable = true;
+
   # make pipewire realtime-capable
   security.rtkit.enable = true;
 
   # Udev Rules
   services.udev.extraRules = ''
     ACTION=="add", DRIVER=="usb", ATTR{power/control}:="on"
+    SUBSYSTEM=="usb", ATTR{idProduct}=="3106", ATTR{idVendor}=="2dc8", ENV{ID_INPUT_JOYSTICK}="1", TAG+="uaccess"
   '';
 
   # Enable touchpad support (enabled default in most desktopManager).
   services.libinput.enable = true;
-
-  # Game configs
-  programs.gamemode.enable = true;
-  programs.steam = {
-    enable = true;
-    remotePlay.openFirewall = true;
-    dedicatedServer.openFirewall = true;
-  };
 
   # Add custom fonts
   fonts.packages = with pkgs; [
@@ -103,8 +99,8 @@
   # services.openssh.enable = true;
 
   # Open ports in the firewall.
-  # networking.firewall.allowedTCPPorts = [ ... ];
-  # networking.firewall.allowedUDPPorts = [ ... ];
+  networking.firewall.allowedTCPPorts = [ 80 5432 ];
+  networking.firewall.allowedUDPPorts = [ 80 5432 ];
   # Or disable the firewall altogether.
   # networking.firewall.enable = false;
 

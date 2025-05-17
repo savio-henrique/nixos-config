@@ -6,6 +6,7 @@
     ../common/visual.nix
     ../features/awesome
     ../features/rofi
+    ../features/steam.nix
   ]; 
 
   # Change the base16  theme for the host
@@ -16,7 +17,6 @@
 
   home.packages = with pkgs; [
     ffmpeg
-    steam
     davinci-resolve
     prismlauncher
     calibre
