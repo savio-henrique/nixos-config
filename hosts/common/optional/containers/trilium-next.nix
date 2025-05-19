@@ -11,7 +11,7 @@
         "/etc/localtime:/etc/localtime:ro"
     ];
     environment = {
-      TRILIUM_DATA_DIR = dir;
+      TRILIUM_DATA_DIR = "/home/node/trilium-data";
     };
   };
 }

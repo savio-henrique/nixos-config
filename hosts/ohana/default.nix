@@ -80,7 +80,7 @@
     trilium = {
       enable = true;
       port = 8081;
-      dir = "/var/lib/trilium-data";
+      dir = "/home/saviohc/trilium-data";
     };
   };
 }
