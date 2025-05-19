@@ -44,6 +44,26 @@ in {
       };
     };
 
+    trilium = {
+      enable = lib.mkOption {
+        default = false;
+        type = lib.types.bool;
+        description = "Enable Trilium";
+      };
+
+      port = lib.mkOption {
+        default = 8080;
+        type = lib.types.int;
+        description = "Port for Trilium";
+      };
+
+      dir = lib.mkOption {
+        default = "/var/lib/trilium-data";
+        type = lib.types.path;
+        description = "Directory for Trilium data";
+      };
+    };
+
     grafana = lib.mkOption {
       default = false;
       type = lib.types.bool;
@@ -85,6 +105,7 @@ in {
         # Import container modules
         firefly = (import ./firefly.nix {inherit config; port = builtins.toString oci-config.firefly-iii.port;});
         pi-hole = (import ./pi-hole.nix {inherit config;});
+        trilium = (import ./trilium-next.nix {inherit config; port = builtins.toString oci-config.trilium.port; dir = oci-config.trilium.dir;});
       in {}
         # Firefly III
       // lib.optionalAttrs (oci-config.firefly-iii.enable) {
@@ -96,11 +117,12 @@ in {
       // lib.optionalAttrs (oci-config.pi-hole.enable) {
         pi-hole = pi-hole.pi-hole;
         unbound = pi-hole.unbound;
-      };
-        # Grafana
-    };
+      }
+        # Trilium
+      // lib.optionalAttrs (oci-config.trilium.enable) {
 
-    # Enable Unbound 
-    
+        trilium_server = trilium.trilium_server;
+      };
+    };
   };
 }

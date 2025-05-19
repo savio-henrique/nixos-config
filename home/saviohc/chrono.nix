@@ -23,5 +23,6 @@
     jetbrains.phpstorm
     dbeaver-bin
     vivaldi
+    trilium-desktop
   ];
 }

@@ -77,5 +77,10 @@
       enable = true;
       port = 8080;
     };
+    trilium = {
+      enable = true;
+      port = 8081;
+      dir = "/var/lib/trilium-data";
+    };
   };
 }
