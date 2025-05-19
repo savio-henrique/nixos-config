@@ -2,6 +2,9 @@
 let 
   oci-config = config.oci-config;
 in {
+  imports = [
+    ./homepage
+  ];
 
   options.oci-config = {
     enable = lib.mkOption {
@@ -64,6 +67,19 @@ in {
       };
     };
 
+    homepage = {
+      enable = lib.mkOption {
+        default = false;
+        type = lib.types.bool;
+        description = "Enable Homepage";
+      };
+      dir = lib.mkOption {
+        default = "/var/lib/homepage";
+        type = lib.types.path;
+        description = "Directory for homepage configuration";
+      };
+    };
+
     grafana = lib.mkOption {
       default = false;
       type = lib.types.bool;
@@ -74,12 +90,6 @@ in {
       default = false;
       type = lib.types.bool;
       description = "Enable Miniflux";
-    };
-
-    homepage = lib.mkOption {
-      default = false;
-      type = lib.types.bool;
-      description = "Enable Homepage";
     };
 
     vaultwarden = lib.mkOption {
@@ -106,6 +116,7 @@ in {
         firefly = (import ./firefly.nix {inherit config; port = builtins.toString oci-config.firefly-iii.port;});
         pi-hole = (import ./pi-hole.nix {inherit config;});
         trilium = (import ./trilium-next.nix {inherit config; port = builtins.toString oci-config.trilium.port; dir = oci-config.trilium.dir;});
+        homepage-container = (import ./homepage.nix {inherit config; dir = oci-config.homepage.dir;});
       in {}
         # Firefly III
       // lib.optionalAttrs (oci-config.firefly-iii.enable) {
@@ -120,9 +131,17 @@ in {
       }
         # Trilium
       // lib.optionalAttrs (oci-config.trilium.enable) {
-
         trilium_server = trilium.trilium_server;
+      }
+        # Homepage
+      // lib.optionalAttrs (oci-config.homepage.enable) {
+        homepage = homepage-container.homepage;  
       };
+    };
+
+    homepage = {
+      enable = oci-config.homepage.enable;
+      config-dir = oci-config.homepage.dir;
     };
   };
 }

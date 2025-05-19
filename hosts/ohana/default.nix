@@ -53,6 +53,10 @@
       sopsFile = ../common/secrets.yaml;
       group = "www-data";
     };
+    firefly-api-key = {
+      sopsFile = ../common/secrets.yaml;
+      group = "www-data";
+    };
     pihole-api-key = {
       sopsFile = ../common/secrets.yaml;
       group = "www-data";
@@ -81,6 +85,10 @@
       enable = true;
       port = 8081;
       dir = "/home/saviohc/trilium-data";
+    };
+    homepage = {
+      enable = true;
+      dir = "/home/saviohc/homepage-config";
     };
   };
 }

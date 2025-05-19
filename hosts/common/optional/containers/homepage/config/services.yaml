@@ -1,0 +1,19 @@
+---
+# For configuration options and examples, please see:
+# https://gethomepage.dev/configs/services/
+
+- Personal:
+    - Miniflux:
+        href: https://miniflux.app/docs/requirements.html
+        description: Read the news
+    - Grafana: 
+        href: https://grafana.com/
+        description: Monitor your services
+
+- Websites:
+    - Uptime Kuma:
+        href: https://uptimekuma.org/
+        description: Monitor your services
+    - Curriculum:
+        href: http://localhost/
+        description: My personal curriculum Website

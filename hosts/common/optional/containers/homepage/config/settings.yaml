@@ -1,0 +1,30 @@
+---
+# For configuration options and examples, please see:
+# https://gethomepage.dev/configs/settings/
+
+language: pt-BR
+
+title: My Personal Homepage
+background: 
+  image: https://collectionapi.metmuseum.org/api/collection/v1/iiif/45434/134438/main-image
+  blur: md 
+  brightness: 50
+  opacity: 50
+
+cardBlur: md 
+theme: dark
+color: neutral
+
+providers:
+  openweathermap: openweathermapapikey
+  weatherapi: weatherapiapikey
+
+showStats: true
+
+## Layout
+
+layout:
+  Personal:
+    style: row
+    columns: 3
+  Websites:
