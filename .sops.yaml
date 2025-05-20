@@ -52,4 +52,5 @@ creation_rules:
         - *chrono
         - *majora
         - *ohana
+        - *cyrus
         - *saviohc
