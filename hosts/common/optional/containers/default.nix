@@ -155,7 +155,7 @@ in {
       containers = let
         # Import container modules
         firefly = (import ./firefly.nix {inherit config; port = builtins.toString oci-config.firefly-iii.port; network = oci-config.network;});
-        pi-hole = (import ./pi-hole.nix {inherit config;});
+        pi-hole = (import ./pi-hole.nix {inherit config; network = oci-config.network;});
         trilium = (import ./trilium-next.nix {inherit config; port = builtins.toString oci-config.trilium.port; dir = oci-config.trilium.dir; network = oci-config.network;});
         homepage-container = (import ./homepage.nix {inherit config; dir = oci-config.homepage.dir; network = oci-config.network;});
         vaultwarden = (import ./vaultwarden.nix {inherit config; port = builtins.toString oci-config.vaultwarden.port; dir = oci-config.vaultwarden.dir; network = oci-config.network;});

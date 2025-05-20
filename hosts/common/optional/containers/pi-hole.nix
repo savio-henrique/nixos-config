@@ -1,4 +1,4 @@
-{config}:
+{config, network}:
 {
   pi-hole = {
     image = "pihole/pihole:latest";
@@ -21,6 +21,9 @@
     environmentFiles = [
       config.sops.secrets.pihole-password-env.path
     ];
+    extraOptions = [
+      "--network=${network}"
+    ];
   };
   unbound = {
     image = "mvance/unbound:latest";
@@ -33,6 +36,9 @@
     volumes = [
       (config.sops.secrets.unbound-config.path+":/opt/unbound/etc/unbound/unbound.conf")
       "/var/log/unbound:/var/log/unbound"
+    ];
+    extraOptions = [
+      "--network=${network}"
     ];
   };
 
