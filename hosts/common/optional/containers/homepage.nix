@@ -1,4 +1,4 @@
-{config, dir}:
+{config, dir, network}:
 {
   homepage = {
     image = "ghcr.io/gethomepage/homepage:latest";
@@ -14,5 +14,8 @@
       HOMEPAGE_ALLOWED_HOSTS = "*";
       HOMEPAGE_FILE_FIREFLY_KEY = config.sops.secrets.firefly-api-key.path;
     };
+    extraOptions = [
+      "--network=${network}"
+    ];
   };
 }

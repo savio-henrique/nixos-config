@@ -1,10 +1,10 @@
-{config,port}:
+{config,port,network}:
 {
   firefly_iii_core = let url= ("http://192.168.1.12:"+port); in {
     image = "fireflyiii/core:latest";
     autoStart = true;
     ports = [(port + ":8080")];
-    hostname = "firefly-iii";
+    hostname = "firefly_iii_core";
     user = "www-data:www-data";
     volumes = [
         "firefly_iii_upload:/var/www/html/storage/upload"
@@ -16,14 +16,14 @@
       "homepage.href" = url;
       "homepage.description" = "Personal Finance Manager.";
       "homepage.widget.type"= "firefly";
-      "homepage.widget.url"= "172.17.0.3:8080";
+      "homepage.widget.url"= "firefly_iii_core:8080";
       "homepage.widget.key"= "{{HOMEPAGE_FILE_FIREFLY_KEY}}";
     };
     environment = {
       APP_ENV = "production"; 
       APP_URL = url;
       DB_CONNECTION = "pgsql";
-      DB_HOST = "172.17.0.2";
+      DB_HOST = "firefly_iii_db";
       DB_PORT = "5432";
       DB_DATABASE = "firefly";
       DB_USERNAME = "firefly";
@@ -33,14 +33,16 @@
     environmentFiles = [
       config.sops.secrets.firefly-db-env.path
       config.sops.secrets.firefly-key.path
-      config.sops.secrets.firefly-api-key.path
     ];
     dependsOn = [ "firefly_iii_db" ];
+    extraOptions = [
+      "--network=${network}"
+    ];
   };
   firefly_iii_db = {
     image = "postgres:latest";
     autoStart = true;
-    hostname = "firefly-db";
+    hostname = "firefly_iii_db";
     volumes = [
         (config.sops.secrets.firefly-db-password.path +":"+config.sops.secrets.firefly-db-password.path+":ro")
         "/var/lib/postgresql/data:/var/lib/postgresql/data"
@@ -50,5 +52,8 @@
       POSTGRES_PASSWORD_FILE = config.sops.secrets.firefly-db-password.path;
       POSTGRES_DB = "firefly";
     };
+    extraOptions = [
+      "--network=${network}"
+    ];
   };
 }
