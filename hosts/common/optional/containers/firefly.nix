@@ -1,6 +1,6 @@
 {config,port,network}:
 {
-  firefly_iii_core = let url= ("http://192.168.1.12:"+port); in {
+  firefly_iii_core = let url= ("http://firefly.homelab:"+port); in {
     image = "fireflyiii/core:latest";
     autoStart = true;
     ports = [(port + ":8080")];
@@ -16,7 +16,7 @@
       "homepage.href" = url;
       "homepage.description" = "Personal Finance Manager.";
       "homepage.widget.type"= "firefly";
-      "homepage.widget.url"= "firefly_iii_core:8080";
+      "homepage.widget.url"= url;
       "homepage.widget.key"= "{{HOMEPAGE_FILE_FIREFLY_KEY}}";
     };
     environment = {

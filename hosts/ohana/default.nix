@@ -73,6 +73,14 @@
       sopsFile = ../common/secrets.yaml;
       group = "www-data";
     };
+    vaultwarden-db-password = {
+      sopsFile = ../common/secrets.yaml;
+      group = "www-data";
+    };
+    vaultwarden-env = {
+      sopsFile = ../common/secrets.yaml;
+      group = "www-data";
+    };
   };
 
   oci-config = {
@@ -89,6 +97,11 @@
     homepage = {
       enable = true;
       dir = "/home/saviohc/homepage-config";
+    };
+    vaultwarden = {
+      enable = true;
+      port = 8082;
+      dir = "/home/saviohc/vaultwarden/";
     };
   };
 }

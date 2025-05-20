@@ -1,6 +1,6 @@
 {config, port, dir, network}:
 {
-  trilium_server = {
+  trilium_server = let url = ("http://trilium.homelab:"+port); in {
     image = "triliumnext/notes:v0.93.0";
     autoStart = true;
     ports = [(port + ":8080")];
@@ -14,7 +14,7 @@
       "homepage.group" = "Personal";
       "homepage.name" = "Trilium";
       "homepage.icon" = "https://avatars.githubusercontent.com/u/160046342?s=200&v=4";
-      "homepage.href" = "trilium_server:${port}";
+      "homepage.href" = url;
       "homepage.description" = "Personal Note-taking app.";
     };
     environment = {
