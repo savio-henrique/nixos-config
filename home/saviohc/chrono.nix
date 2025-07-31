@@ -24,5 +24,8 @@
     dbeaver-bin
     vivaldi
     trilium-desktop
+    element-desktop
+    zotero
+    qimgv
   ];
 }
