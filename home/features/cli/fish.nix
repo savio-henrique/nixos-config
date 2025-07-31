@@ -46,7 +46,7 @@ in {
     e = "exit";
 
     # Nixos Aliases
-    rebuild = "sudo nixos-rebuild switch --flake \'/etc/nixos#saviohc\'";
+    rebuild = "sudo nixos-rebuild switch --flake ./#chrono";
     perms = "sudo chmod -R 775 /etc/nixos && sudo chown -R root:nixos-dev /etc/nixos";
     flake = "nix flake update";
     dev = "nix develop --command fish";
