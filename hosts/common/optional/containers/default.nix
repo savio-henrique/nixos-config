@@ -31,6 +31,14 @@ in {
       description = "Docker network to use";
     };
 
+    cloudflare = {
+      enable = lib.mkOption {
+        default = false;
+        type = lib.types.bool;
+        description = "Enable Cloudflared tunneling";
+      };
+    };
+
     firefly-iii = {
       enable = lib.mkOption {
         default = false;
@@ -159,6 +167,7 @@ in {
         trilium = (import ./trilium-next.nix {inherit config; port = builtins.toString oci-config.trilium.port; dir = oci-config.trilium.dir; network = oci-config.network;});
         homepage-container = (import ./homepage.nix {inherit config; dir = oci-config.homepage.dir; network = oci-config.network;});
         vaultwarden = (import ./vaultwarden.nix {inherit config; port = builtins.toString oci-config.vaultwarden.port; dir = oci-config.vaultwarden.dir; network = oci-config.network;});
+         cloudflare = (import ./cloudflare.nix {inherit config; network = oci-config.network;});
       in {}
         # Firefly III
       // lib.optionalAttrs (oci-config.firefly-iii.enable) {
@@ -183,12 +192,11 @@ in {
       // lib.optionalAttrs (oci-config.vaultwarden.enable) {
         vaultwarden = vaultwarden.vaultwarden;
         vaultwarden_db = vaultwarden.vaultwarden_db;
+      }
+        # Cloudflare
+      // lib.optionalAttrs (oci-config.cloudflare.enable) {
+        cloudflared = cloudflare.cloudflared;
       };
-    };
-
-    homepage = {
-      enable = oci-config.homepage.enable;
-      config-dir = oci-config.homepage.dir;
     };
   };
 }

@@ -31,6 +31,7 @@
 #
 # Please also change your hostname accordingly:
 # networking.hostName = "nixos"; # Define your hostname.
+{ config, ...}:
 {
   imports = [
     ../common/global
@@ -81,10 +82,18 @@
       sopsFile = ../common/secrets.yaml;
       group = "www-data";
     };
+    cloudflare-token = {
+      sopsFile = ../common/secrets.yaml;
+      path = "/usr/share/cloudflared/cloudflare-token";
+      mode = "0444";
+    };
   };
 
   oci-config = {
     enable  = true;
+    cloudflare = {
+      enable = true;
+    };
     firefly-iii = {
       enable = true;
       port = 8080;
