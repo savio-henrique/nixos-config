@@ -35,7 +35,6 @@
 {
   imports = [
     ../common/global
-    ../common/optional/minecraft-server
     ../common/optional/containers 
     ./configuration.nix
   ];
@@ -113,4 +112,8 @@
       dir = "/home/saviohc/vaultwarden/";
     };
   };
+
+  services.tailscale.enable = true;
+
+
 }

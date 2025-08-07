@@ -49,4 +49,6 @@
     engine = "docker";
     rootless = false;
   };
+
+  services.tailscale.enable = true;
 }
