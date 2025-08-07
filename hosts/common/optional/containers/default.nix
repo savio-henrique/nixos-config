@@ -198,5 +198,11 @@ in {
         cloudflared = cloudflare.cloudflared;
       };
     };
+
+    # Enable systemd services for Homepage Configuration
+    homepage = {
+      enable = oci-config.homepage.enable;
+      config-dir = oci-config.homepage.dir;
+    };
   };
 }
