@@ -1,7 +1,7 @@
 {config, port, dir, network}:
 {
   trilium_server = let url = ("http://trilium.homelab:"+port); in {
-    image = "triliumnext/notes:v0.93.0";
+    image = "triliumnext/notes:stable";
     autoStart = true;
     ports = [(port + ":8080")];
     hostname = "trilium_server";

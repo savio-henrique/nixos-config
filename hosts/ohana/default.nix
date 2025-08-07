@@ -86,6 +86,10 @@
       path = "/usr/share/cloudflared/cloudflare-token";
       mode = "0444";
     };
+    trilium-etapi-token = {
+      sopsFile = ../common/secrets.yaml;
+      mode = "0444";
+    };
   };
 
   oci-config = {
@@ -110,6 +114,10 @@
       enable = true;
       port = 8082;
       dir = "/home/saviohc/vaultwarden/";
+    };
+    prometheus = {
+      enable = true;
+      port = 9090;
     };
   };
 

@@ -25,6 +25,24 @@ in {
       description = "Enable rootless containers";
     };
 
+    updates = {
+      enable = lib.mkOption {
+        default = true;
+        type = lib.types.bool;
+        description = "Enable automatic updates for OCI containers";
+      };
+      schedule = lib.mkOption {
+        default = "Mon 04:00"; # Every Monday at 4 AM
+        type = lib.types.str;
+        description = "Cron schedule for automatic updates (in cron format)";
+      };
+      restartsAt = lib.mkOption {
+        default = "Tue 04:00"; # Every Tuesday at 4 AM
+        type = lib.types.str;
+        description = "Cron schedule for automatic container restarts (in cron format)";
+      };
+    };
+
     network = lib.mkOption {
       default = "homelab-network";
       type = lib.types.str;
@@ -121,6 +139,19 @@ in {
       description = "Enable Grafana";
     };
 
+    prometheus = {
+      enable = lib.mkOption {
+        default = false;
+        type = lib.types.bool;
+        description = "Enable Prometheus";
+      };
+      port = lib.mkOption {
+        default = 9090;
+        type = lib.types.int;
+        description = "Port for Prometheus";
+      };
+    };
+
     miniflux = lib.mkOption {
       default = false;
       type = lib.types.bool;
@@ -148,9 +179,70 @@ in {
       };
     };
 
+    # Enable automatic updates for OCI containers
+
+    # Systemd timer for updating containers
+    systemd.timers.oci-container-updates = lib.mkIf oci-config.updates.enable {
+      description = "Timer for OCI Container Updates";
+      wantedBy = [ "timers.target" ];
+      timerConfig = {
+        Unit = "oci-container-updates.service";
+        OnCalendar = oci-config.updates.schedule;
+        Persistent = true;
+      };
+    };
+
+    # Systemd service for updating containers
+    systemd.services.oci-container-updates = lib.mkIf oci-config.updates.enable {
+      description = "OCI Container Updates";
+      wantedBy = [ "multi-user.target" ];
+      serviceConfig = {
+        Type = "oneshot";
+        RemainAfterExit = true;
+        ExecStart = lib.getExe (pkgs.writeShellScriptBin "oci-container-updates" ''
+          images=$(${pkgs.${oci-config.engine}}/bin/${oci-config.engine} ps --format "{{.Image}}" | sort -u)
+
+          for image in $images; do
+            ${pkgs.${oci-config.engine}}/bin/${oci-config.engine} pull "$image"
+          done
+        '');
+      };
+    };
+
+    # Restart Containers
+    systemd.timers.oci-container-restart = lib.mkIf oci-config.updates.enable {
+      description = "Timer for OCI Container Restart";
+      wantedBy = [ "timers.target" ];
+      timerConfig = {
+        Unit = "oci-container-restart.service";
+        OnCalendar = oci-config.updates.restartsAt;
+        Persistent = true;
+      };
+    };
+
+    systemd.services.oci-container-restart = lib.mkIf oci-config.updates.enable {
+      description = "OCI Container Restart";
+      wantedBy = [ "multi-user.target" ];
+      serviceConfig = {
+        Type = "oneshot";
+        RemainAfterExit = true;
+        ExecStart = lib.getExe (pkgs.writeShellScriptBin "oci-container-restart" ''
+          containers=$(${pkgs.systemd}}/bin/systemctl list-units | grep .service | grep ${oci-config.engine}- | awk -F' ' '{print $1}' | sort -u)
+
+          for container in $containers; do
+            ${pkgs.systemd}/bin/systemctl try-restart "$container"
+          done
+        '');
+      };
+    };
+
     # Enable OCI containers
     virtualisation.${oci-config.engine} = {
       enable = true;
+      autoPrune = {
+        enable = true;
+        flags = [ "--all" ];
+      };
     } // lib.optionalAttrs (oci-config.engine=="docker" && oci-config.rootless) {
       rootless = {
         enable = true;
@@ -167,7 +259,8 @@ in {
         trilium = (import ./trilium-next.nix {inherit config; port = builtins.toString oci-config.trilium.port; dir = oci-config.trilium.dir; network = oci-config.network;});
         homepage-container = (import ./homepage.nix {inherit config; dir = oci-config.homepage.dir; network = oci-config.network;});
         vaultwarden = (import ./vaultwarden.nix {inherit config; port = builtins.toString oci-config.vaultwarden.port; dir = oci-config.vaultwarden.dir; network = oci-config.network;});
-         cloudflare = (import ./cloudflare.nix {inherit config; network = oci-config.network;});
+        cloudflare = (import ./cloudflare.nix {inherit config; network = oci-config.network;});
+        prometheus = (import ./prometheus.nix {inherit config; port = builtins.toString oci-config.prometheus.port; network = oci-config.network;});
       in {}
         # Firefly III
       // lib.optionalAttrs (oci-config.firefly-iii.enable) {
@@ -196,6 +289,10 @@ in {
         # Cloudflare
       // lib.optionalAttrs (oci-config.cloudflare.enable) {
         cloudflared = cloudflare.cloudflared;
+      }
+      # Prometheus
+      // lib.optionalAttrs (oci-config.prometheus.enable) {
+        prometheus = prometheus.prometheus;
       };
     };
 
