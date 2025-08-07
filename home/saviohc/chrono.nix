@@ -19,7 +19,6 @@
     davinci-resolve
     prismlauncher
     calibre
-    postman
     jetbrains.phpstorm
     dbeaver-bin
     vivaldi
@@ -27,5 +26,7 @@
     element-desktop
     zotero
     qimgv
+    bruno
+    audacity
   ];
 }
