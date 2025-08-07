@@ -44,6 +44,7 @@
             ./hosts/common/optional/video.nix
           ];
         };
+
         # Laptop
         majora = nixpkgs.lib.nixosSystem {
           specialArgs = {inherit inputs outputs;};
@@ -52,7 +53,8 @@
             ./hosts/common/optional/video.nix
           ];
         };
-        # Home Server
+
+        # DNS Server
         cyrus = nixpkgs.lib.nixosSystem {
           specialArgs = {inherit inputs outputs;};
           modules = [
@@ -66,6 +68,8 @@
         #     ./hosts/geno
         #   ];
         # };
+
+        # Homelab Server
         ohana = nixpkgs.lib.nixosSystem {
           specialArgs = {inherit inputs outputs;};
           modules = [
