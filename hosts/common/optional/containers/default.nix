@@ -179,63 +179,6 @@ in {
       };
     };
 
-    # Enable automatic updates for OCI containers
-
-    # Systemd timer for updating containers
-    systemd.timers.oci-container-updates = lib.mkIf oci-config.updates.enable {
-      description = "Timer for OCI Container Updates";
-      wantedBy = [ "timers.target" ];
-      timerConfig = {
-        Unit = "oci-container-updates.service";
-        OnCalendar = oci-config.updates.schedule;
-        Persistent = true;
-      };
-    };
-
-    # Systemd service for updating containers
-    systemd.services.oci-container-updates = lib.mkIf oci-config.updates.enable {
-      description = "OCI Container Updates";
-      wantedBy = [ "multi-user.target" ];
-      serviceConfig = {
-        Type = "oneshot";
-        RemainAfterExit = true;
-        ExecStart = lib.getExe (pkgs.writeShellScriptBin "oci-container-updates" ''
-          images=$(${pkgs.${oci-config.engine}}/bin/${oci-config.engine} ps --format "{{.Image}}" | sort -u)
-
-          for image in $images; do
-            ${pkgs.${oci-config.engine}}/bin/${oci-config.engine} pull "$image"
-          done
-        '');
-      };
-    };
-
-    # Restart Containers
-    systemd.timers.oci-container-restart = lib.mkIf oci-config.updates.enable {
-      description = "Timer for OCI Container Restart";
-      wantedBy = [ "timers.target" ];
-      timerConfig = {
-        Unit = "oci-container-restart.service";
-        OnCalendar = oci-config.updates.restartsAt;
-        Persistent = true;
-      };
-    };
-
-    systemd.services.oci-container-restart = lib.mkIf oci-config.updates.enable {
-      description = "OCI Container Restart";
-      wantedBy = [ "multi-user.target" ];
-      serviceConfig = {
-        Type = "oneshot";
-        RemainAfterExit = true;
-        ExecStart = lib.getExe (pkgs.writeShellScriptBin "oci-container-restart" ''
-          containers=$(${pkgs.systemd}}/bin/systemctl list-units | grep .service | grep ${oci-config.engine}- | awk -F' ' '{print $1}' | sort -u)
-
-          for container in $containers; do
-            ${pkgs.systemd}/bin/systemctl try-restart "$container"
-          done
-        '');
-      };
-    };
-
     # Enable OCI containers
     virtualisation.${oci-config.engine} = {
       enable = true;
@@ -300,6 +243,62 @@ in {
     homepage = {
       enable = oci-config.homepage.enable;
       config-dir = oci-config.homepage.dir;
+    };
+
+    # Enable automatic updates for OCI containers
+    # Systemd timer for updating containers
+    systemd.timers.oci-container-updates = lib.mkIf oci-config.updates.enable {
+      description = "Timer for OCI Container Updates";
+      wantedBy = [ "timers.target" ];
+      timerConfig = {
+        Unit = "oci-container-updates.service";
+        OnCalendar = oci-config.updates.schedule;
+        Persistent = true;
+      };
+    };
+
+    # Systemd service for updating containers
+    systemd.services.oci-container-updates = lib.mkIf oci-config.updates.enable {
+      description = "OCI Container Updates";
+      wantedBy = [ "multi-user.target" ];
+      serviceConfig = {
+        Type = "oneshot";
+        RemainAfterExit = true;
+        ExecStart = lib.getExe (pkgs.writeShellScriptBin "oci-container-updates" ''
+          images=$(${pkgs.${oci-config.engine}}/bin/${oci-config.engine} ps --format "{{.Image}}" | sort -u)
+
+          for image in $images; do
+            ${pkgs.${oci-config.engine}}/bin/${oci-config.engine} pull "$image"
+          done
+        '');
+      };
+    };
+
+    # Restart Containers
+    systemd.timers.oci-container-restart = lib.mkIf oci-config.updates.enable {
+      description = "Timer for OCI Container Restart";
+      wantedBy = [ "timers.target" ];
+      timerConfig = {
+        Unit = "oci-container-restart.service";
+        OnCalendar = oci-config.updates.restartsAt;
+        Persistent = true;
+      };
+    };
+
+    systemd.services.oci-container-restart = lib.mkIf oci-config.updates.enable {
+      description = "OCI Container Restart";
+      wantedBy = [ "multi-user.target" ];
+      serviceConfig = {
+        Type = "oneshot";
+        RemainAfterExit = true;
+        ExecStart = lib.getExe (pkgs.writeShellScriptBin "oci-container-restart" ''
+          containers=$(${pkgs.systemd}}/bin/systemctl list-units | grep .service | grep ${oci-config.engine}- | awk -F' ' '{print $1}' | sort -u)
+
+          for container in $containers; do
+            ${pkgs.systemd}/bin/systemctl try-restart "$container"
+          done
+        '');
+      };
     };
   };
 }
