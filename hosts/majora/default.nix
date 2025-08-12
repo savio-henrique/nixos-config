@@ -41,4 +41,6 @@
 
   video.enable = true;
   video.dual = false;
+
+  services.tailscale.enable = true;
 }
