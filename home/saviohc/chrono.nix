@@ -21,7 +21,6 @@
     jetbrains.phpstorm
     dbeaver-bin
     vivaldi
-    trilium-desktop
     element-desktop
     zotero
     bruno
