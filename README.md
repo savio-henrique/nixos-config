@@ -1,10 +1,9 @@
-# :link: My NixOS configuration
+# :snowflake: My NixOS configuration
 
 A little dive into my ~~madness~~ configuration and its components and modules.
 
-One's personal system configuration is always on WIP, as this is a living beast. Have fun trying to decypher what I'm doing. :laughing:
+One's personal system configuration is always on [WIP](./WIP.md) as this is a living beast. Have fun trying to decypher what I'm doing. :laughing:
 
---- 
 
 ## :gear: Reestructured Configuration
 
@@ -16,62 +15,38 @@ Utilizing the SaschaKoenig's [Nixos Config Playlist](https://www.youtube.com/wat
 * Have different configurations for different machines/hosts.
 
 ---
-# :sparkles: Future Additions and Changes to my Environment
 
-### :paintbrush: Customization and theming
-- [x] Add an 'awesomewm' module with all awesomewm config to work in my visual hosts.
-- - [x] Add configurations to have modular widgets working.
-- - [ ] Turn terminal configuration on 'rc.lua' dynamical and configurable by feature flag
-- [x] Update the 'picom' module to work with all visual hosts.
-- [x] Add a 'rofi' module to work in my visual hosts.
-- [x] Add a 'vesktop' module to work in my visual hosts.
-- [x] Add a 'shell' module with all shell config.
-- - [x] Add a 'fish' module with all fish config to work throughout my hosts. [Wiki](https://nixos.wiki/wiki/Fish)
-- - [x] Add an 'aliases' module to set my aliases across the hosts.
-> [!NOTE]
-> Aliases are set on the module that it is related
-- [x] Add an 'alacritty' module with all alacritty config to work in my visual hosts.
-- [x] Add a 'tmux' module with all tmux config throughout my hosts. [Wiki](https://nixos.wiki/wiki/Tmux)
-- - [x] Add new tmux configs
-- - [ ] Add new tmux custom theming. Like [this](https://github.com/janoamaral/tokyo-night-tmux)
-- [x] Update the 'neovim' module with all neovim config to work throughout my hosts. [Wiki](https://nixos.wiki/wiki/Neovim)
-- [ ] Add a 'spotify'/'spicetify' module to work on visual hosts.
-- - [ ] Add support for spotify specific widget on awesomewm.
-- - [ ] Add playerctl support for spotify.
+# :sparkles: Features
 
-### :computer: Environment stuff
-- [x] Add an 'openssh' module to work on all my hosts.
-- [x] Add an 'git' module to work in my hosts.
-- - [x] Add git conventional commits function to my shell.
-- [x] Add a 'obs-studio' module to work in my visual hosts.
-- [x] Add a 'minecraft-server' module to use on ohana.
-- [ ] Add a 'sound' module to work in my visual hosts.
-- - [ ] Add playerctl config. [PlayerCtl](https://github.com/altdesktop/playerctl)
-- [ ] Add a 'gaming' module to work in my gaming hosts.
+* **Multi-host NixOS configuration**, allowing for different configurations per host, like **server**, **laptop**, **desktop**.
+* Declarative **Theming and Customization** in most of the applications
+* Declarative Self-hosted containerized services like *Firefly III*, *TriliumNext* and *Pi-hole*, using OCI containers.
+* Secret management using [ **sops-nix** ](https://github.com/Mic92/sops-nix).
 
-### :lock: Hard stuff
-- [x] Add 'sops-nix' to my configuration to encrypt secrets.
+## :art: Theming and Customization
 
-### :house: Homelab stuff
+* **AwesomeWM** configuration with modular widgets.
+* **Picom** Compositor configuration for visual hosts.
+* Declarative theming and background configuration with Misterio77's **nix-colors** per host for
+  * AwesomeWM
+  * Alacritty
+  * Neovim
+  * Rofi
+  * Vesktop
+  * Tmux (WIP)
 
-#### OCI Containers
-- [x] Add virtualization module to work with OCI Containers.
-- - [ ] Migrate containers to the virtualization module.
+## :package: Containers and Services
 
-#### k3s
-- [ ] Add a 'k3s' module to work on all my hosts.
-- - [ ] Migrate container services to k3s.
+* Containerized self-hosted services tunneling via **Tailscale VPN** or **Cloudflare Tunnels**
+* Secure secret management with [ **sops-nix** ](https://github.com/Mic92/sops-nix)
+* Self-hosted services
+  * Firefly III
+  * Pi-Hole
+  * Homepage
+  * TriliumNext
+  * Vaultwarden (WIP)
+  * Grafana (WIP)
+  * Prometheus (WIP)
+---
 
-#### Services
-- [ ] Add 'firefly-iii'.
-- - [x] As a oci-container.
-- - [ ] As a k3s service.
-- [ ] Add 'vaultwarden'.
-- - [ ] As a oci-container.
-- - [ ] As a k3s service.
-- [ ] Add 'pi-hole' and 'unbound'.
-- - [x] As a oci-container.
-- - [ ] As a k3s service.
-- [ ] Add 'homepage'.
-- - [ ] As a oci-container.
-- - [ ] As a k3s service.
+*See my next additions and changes on [WIP.md](./WIP.md)*
