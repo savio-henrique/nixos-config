@@ -80,7 +80,12 @@ in {
         pkg.markdown-preview-nvim
         pkg.copilot-cmp
         pkg.vim-tmux-navigator
-        pkg.surround-nvim
+
+        {
+          plugin = pkg.nvim-surround;
+          type = "lua";
+          config = "require('nvim-surround').setup()";
+        }
 
         {
           plugin = pkg.vim-wakatime;
