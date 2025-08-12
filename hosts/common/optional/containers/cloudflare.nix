@@ -6,7 +6,7 @@
     ports = [("7844" + ":7844")];
     hostname = "cloudflared";
     labels = {
-      "homepage.group" = "Infra";
+      "homepage.group" = "Infrastructure";
       "homepage.name" = "Cloudflared";
       "homepage.icon" = "https://cf-assets.www.cloudflare.com/slt3lc6tev37/fdh7MDcUlyADCr49kuUs2/5f780ced9677a05d52b05605be88bc6f/cf-logo-v-rgb.png";
       "homepage.description" = "Cloudflare Tunnel";

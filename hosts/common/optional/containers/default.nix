@@ -133,10 +133,17 @@ in {
 
     };
 
-    grafana = lib.mkOption {
-      default = false;
-      type = lib.types.bool;
-      description = "Enable Grafana";
+    grafana = {
+      enable = lib.mkOption {
+        default = false;
+        type = lib.types.bool;
+        description = "Enable Grafana";
+      };
+      port = lib.mkOption {
+        default = 3000;
+        type = lib.types.int;
+        description = "Port for Grafana";
+      };
     };
 
     prometheus = {
@@ -204,6 +211,7 @@ in {
         vaultwarden = (import ./vaultwarden.nix {inherit config; port = builtins.toString oci-config.vaultwarden.port; dir = oci-config.vaultwarden.dir; network = oci-config.network;});
         cloudflare = (import ./cloudflare.nix {inherit config; network = oci-config.network;});
         prometheus = (import ./prometheus.nix {inherit config; port = builtins.toString oci-config.prometheus.port; network = oci-config.network;});
+        grafana = (import ./grafana.nix {inherit config; port = builtins.toString oci-config.grafana.port; network = oci-config.network;});
       in {}
         # Firefly III
       // lib.optionalAttrs (oci-config.firefly-iii.enable) {
@@ -236,6 +244,10 @@ in {
       # Prometheus
       // lib.optionalAttrs (oci-config.prometheus.enable) {
         prometheus = prometheus.prometheus;
+      }
+        # Grafana
+      // lib.optionalAttrs (oci-config.grafana.enable) {
+        grafana = grafana.grafana;
       };
     };
 
