@@ -15,7 +15,6 @@
   awesome.runner = "rofi -show drun";
 
   home.packages = with pkgs; [
-    ffmpeg
     davinci-resolve
     prismlauncher
     calibre
@@ -25,7 +24,6 @@
     trilium-desktop
     element-desktop
     zotero
-    qimgv
     bruno
     audacity
   ];

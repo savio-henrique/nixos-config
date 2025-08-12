@@ -13,7 +13,6 @@
   ];
   awesome.enable = true;
 
-
   home.packages = with pkgs; [
     # Tools
     pavucontrol
@@ -26,9 +25,10 @@
     spotify
     brave
     firefox
-    obsidian
     flameshot
+    ffmpeg
     vlc
     gimp
+    qimgv
   ];
 }
