@@ -16,7 +16,7 @@
       "homepage.href" = url;
       "homepage.description" = "Personal Finance Manager.";
       "homepage.widget.type"= "firefly";
-      "homepage.widget.url"= url;
+      "homepage.widget.url"= "http://firefly_iii_core:8080";
       "homepage.widget.key"= "{{HOMEPAGE_FILE_FIREFLY_KEY}}";
     };
     environment = {

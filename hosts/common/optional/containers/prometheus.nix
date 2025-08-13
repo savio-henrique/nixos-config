@@ -9,6 +9,8 @@
         external_labels:
           monitor: 'codelab-monitor'
 
+        scrape_failure_log_file: /prometheus/scrape-failures.log
+
       scrape_configs:
         - job_name: 'prometheus'
           scrape_interval: 5s
@@ -33,6 +35,9 @@
     volumes = [
         (configDir + ":/etc/prometheus/prometheus.yml")
       (config.sops.secrets.trilium-etapi-token.path + ":" + config.sops.secrets.trilium-etapi-token.path + ":ro")
+      "prometheus-data:/prometheus"
+        "/etc/timezone:/etc/timezone:ro"
+        "/etc/localtime:/etc/localtime:ro"
     ];
     labels = {
       "homepage.group" = "Infrastructure";
