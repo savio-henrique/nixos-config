@@ -17,4 +17,8 @@
   awesome.battery = true;
   awesome.background = "badtzmaru-1.png";
   awesome.runner = "rofi -show drun";
+
+  home.packages = builtins.attrValues {
+    inherit (pkgs) vivaldi;
+  };
 }

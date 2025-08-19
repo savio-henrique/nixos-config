@@ -26,4 +26,18 @@
     bruno
     audacity
   ];
+
+  # Test Later
+  # home.packages = builtins.attrValues { inherit (pkgs)
+  #   davinci-resolve
+  #   prismlauncher
+  #   calibre
+  #   dbeaver-bin
+  #   vivaldi
+  #   element-desktop
+  #   zotero
+  #   bruno
+  #   audacity;
+  #   inherit (pkgs.jetbrains) phpstorm;
+  # };
 }
