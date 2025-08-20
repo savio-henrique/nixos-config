@@ -304,7 +304,7 @@ in {
         Type = "oneshot";
         RemainAfterExit = true;
         ExecStart = lib.getExe (pkgs.writeShellScriptBin "oci-container-restart" ''
-          containers=$(${pkgs.systemd}}/bin/systemctl list-units | grep .service | grep ${oci-config.engine}- | awk -F' ' '{print $1}' | sort -u)
+          containers=$(${pkgs.systemd}/bin/systemctl list-units | grep .service | grep ${oci-config.engine}- | awk -F' ' '{print $1}' | sort -u)
 
           for container in $containers; do
             ${pkgs.systemd}/bin/systemctl try-restart "$container"
