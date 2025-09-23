@@ -75,11 +75,6 @@
   # Enable touchpad support (enabled default in most desktopManager).
   services.libinput.enable = true;
 
-  # Add custom fonts
-  fonts.packages = with pkgs; [
-    nerdfonts
-  ];
-
   # Enable dconf
   programs.dconf.enable = true;
 
