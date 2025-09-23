@@ -31,14 +31,14 @@ in {
 
       # Background
       background = lib.mkOption {
-        type = lib.types.string;
+        type = lib.types.str;
         default = "berserk-8.png";
         description = "Background image";
       };
 
       # Runner command
       runner = lib.mkOption {
-        type = lib.types.string;
+        type = lib.types.str;
         default = "rofi -show drun";
         description = "Runner command";
       };
