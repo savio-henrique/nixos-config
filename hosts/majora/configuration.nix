@@ -56,11 +56,6 @@
   # make pipewire realtime-capable
   security.rtkit.enable = true;
 
-  # Udev Rules
-  services.udev.extraRules = ''
-    ACTION=="add", DRIVER=="usb", ATTR{power/control}:="on"
-  '';
-
   # Enable touchpad support (enabled default in most desktopManager).
   services.libinput.enable = true;
 
