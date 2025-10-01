@@ -71,6 +71,7 @@ in {
       definition = if awesome.battery then ''
         battery_widget{
           show_current_level = true;
+          path_to_icons = ${home.homeDirectory}/.config/awesome/icons/Arc/status/symbolic/ ;
         },
       '' else "";
     };
@@ -145,8 +146,8 @@ in {
 
         ".config/awesome/icons" = {
           source = builtins.fetchGit {
-            url = "https://github.com/streetturtle/awesome-wm-widgets.git";
-            rev = "68ddbd9812979f1862ebd07f1bf5aa409952e935";
+            url = "https://github.com/horst3180/arc-icon-theme.git";
+            rev = "55a575386a412544c3ed2b5617a61f842ee4ec15";
           };
           recursive = true;
         };
