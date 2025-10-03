@@ -28,21 +28,6 @@ in {
         default = false;
         description = "Volume widget";
       };
-
-      # Background
-      background = lib.mkOption {
-        type = lib.types.str;
-        default = "berserk-8.png";
-        description = "Background image";
-      };
-
-      # Runner command
-      runner = lib.mkOption {
-        type = lib.types.str;
-        default = "rofi -show drun";
-        description = "Runner command";
-      };
-
     };
   };
 
@@ -113,27 +98,27 @@ in {
           text = rc;
           in builtins.replaceStrings 
             [ "--WIDGET_REQUIRE"  "--WIDGET_DEFINITION" "--WIDGET_BINDING" "--RUNNERCOMMAND"]
-            [ "${requires}" "${definitions}" "${bindings}" "${awesome.runner}" ]
+            [ "${requires}" "${definitions}" "${bindings}" "${config.visual.runner}" ]
             "${text}";
         # Palette
-        palette = config.colorScheme.palette;
-        theme = builtins.replaceStrings
-          [ "--BACKGROUND" ]
-          [ "${awesome.background}" ]
-          "${th}";
-      in {
+          palette = config.colorScheme.palette;
+          theme = builtins.replaceStrings
+            [ "--BACKGROUND" ]
+            [ "${config.home-cfg.background}" ]
+            "${th}";
+        in {
 
-        ".config/awesome/rc.lua" = {
-          text = "${widget}";
-        };
-      
-        ".config/awesome/theme" = {
-          source = ./config/theme;
-          recursive = true;
-        };
+          ".config/awesome/rc.lua" = {
+            text = "${widget}";
+          };
+        
+          ".config/awesome/theme" = {
+            source = ./config/theme;
+            recursive = true;
+          };
 
-        ".config/awesome/theme/theme.lua" = {
-          target = ".config/awesome/theme/theme.lua";
+          ".config/awesome/theme/theme.lua" = {
+            target = ".config/awesome/theme/theme.lua";
           text= "${theme}";
         };
 

@@ -4,15 +4,13 @@
     ./home.nix
     ../common 
     ../common/visual.nix
-    ../features/awesome
-    ../features/rofi
   ]; 
 
   # Change the base16  theme for the host
   home-cfg.base16 = "ayu-dark";
+  home-cfg.background = "berserk-1.png";
 
-  awesome.background = "berserk-1.png";
-  awesome.runner = "rofi -show drun";
+  visual.environment = "awesome";
 
   home.packages = with pkgs; [
     davinci-resolve

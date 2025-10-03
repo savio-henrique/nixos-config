@@ -64,9 +64,14 @@ in {
         # Keyboard xserver config
         xkb.layout = "us,br";
         xkb.options = "altwin:menu,altwin:swap_lalt_lwin,grp:rctrl_rshift_toggle,caps:escape";
+      } // lib.optionalAttrs (cfg.environment == "hyprland") {
+        displayManager.sddm.enable = true;
+        displayManager.defaultSession = "";
       };
+
     };
 
+    # Hyprland Config
     programs.hyprland = lib.mkIf (cfg.environment == "hyprland") {
       enable = true;
       withUWSM = true;

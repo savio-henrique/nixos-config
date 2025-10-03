@@ -17,6 +17,12 @@ in{
       description = "Base16 color scheme to use.";
       example = "default";
     };
+    background = lib.mkOption {
+      type = lib.types.str;
+      default = "berserk-1.png";
+      description = "Background image.";
+      example = "berserk-1.png";
+    };
   };
 
   config = {
@@ -27,6 +33,13 @@ in{
     };
 
     colorScheme = inputs.nix-colors.colorSchemes."${home-cfg.base16}";
+
+    home.file = {
+      ".config/wallpapers" = {
+        source = ./wallpapers;
+        recursive = true;
+      };
+    };
 
     sops = {
       defaultSopsFormat = "yaml";
