@@ -8,7 +8,7 @@
 
   video.enable = true;
   video.dual = true;
-  video.environment = "hyprland";
+  video.environment = "awesome";
 
   oci-config = {
     enable = true;

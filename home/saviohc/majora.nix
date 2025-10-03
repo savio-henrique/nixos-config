@@ -3,7 +3,7 @@
   imports = [ 
     ./home.nix
     ../common 
-    ../common/visual.nix 
+    ../common/visual 
     ../features/awesome
     ../features/rofi
     ../features/steam.nix

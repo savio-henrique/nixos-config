@@ -1,14 +1,15 @@
-{config, lib, outputs, pkgs, ...}: 
+{inputs,config, lib, outputs, pkgs, ...}: 
 let 
   visual = config.visual;
 in {
   imports = [
-    ../features/awesome
-    ../features/rofi
-    ../features/hyprland
-    ../features/alacritty.nix
-    ../features/vesktop
-    ../features/obs
+    ./gtk.nix
+    ../../features/awesome
+    ../../features/rofi
+    ../../features/hyprland
+    ../../features/alacritty.nix
+    ../../features/vesktop
+    ../../features/obs
   ];
 
   options.visual = {

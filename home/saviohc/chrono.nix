@@ -3,7 +3,7 @@
   imports = [ 
     ./home.nix
     ../common 
-    ../common/visual.nix
+    ../common/visual
   ]; 
 
   # Change the base16  theme for the host

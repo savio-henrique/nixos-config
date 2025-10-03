@@ -82,43 +82,41 @@ in {
     };
 
   in  lib.mkIf awesome.enable {
-    
-      home.file = let
+    home.file = let
+      # Widget File
+      widget = let
 
-        # Widget File
-        widget = let
+        # Requires
+        requires = brightness_widget.require + battery_widget.require + volume_widget.require;
+        # Definitions
+        definitions = brightness_widget.definition + battery_widget.definition + volume_widget.definition; 
+        # Bindings
+        bindings = brightness_widget.binding + volume_widget.binding;
+        # Text
+        text = rc;
+        in builtins.replaceStrings 
+          [ "--WIDGET_REQUIRE"  "--WIDGET_DEFINITION" "--WIDGET_BINDING" "--RUNNERCOMMAND"]
+          [ "${requires}" "${definitions}" "${bindings}" "${config.visual.runner}" ]
+          "${text}";
+      # Palette
+        palette = config.colorScheme.palette;
+        theme = builtins.replaceStrings
+          [ "--BACKGROUND" ]
+          [ "${config.home-cfg.background}" ]
+          "${th}";
+      in {
 
-          # Requires
-          requires = brightness_widget.require + battery_widget.require + volume_widget.require;
-          # Definitions
-          definitions = brightness_widget.definition + battery_widget.definition + volume_widget.definition; 
-          # Bindings
-          bindings = brightness_widget.binding + volume_widget.binding;
-          # Text
-          text = rc;
-          in builtins.replaceStrings 
-            [ "--WIDGET_REQUIRE"  "--WIDGET_DEFINITION" "--WIDGET_BINDING" "--RUNNERCOMMAND"]
-            [ "${requires}" "${definitions}" "${bindings}" "${config.visual.runner}" ]
-            "${text}";
-        # Palette
-          palette = config.colorScheme.palette;
-          theme = builtins.replaceStrings
-            [ "--BACKGROUND" ]
-            [ "${config.home-cfg.background}" ]
-            "${th}";
-        in {
+        ".config/awesome/rc.lua" = {
+          text = "${widget}";
+        };
+      
+        ".config/awesome/theme" = {
+          source = ./config/theme;
+          recursive = true;
+        };
 
-          ".config/awesome/rc.lua" = {
-            text = "${widget}";
-          };
-        
-          ".config/awesome/theme" = {
-            source = ./config/theme;
-            recursive = true;
-          };
-
-          ".config/awesome/theme/theme.lua" = {
-            target = ".config/awesome/theme/theme.lua";
+        ".config/awesome/theme/theme.lua" = {
+          target = ".config/awesome/theme/theme.lua";
           text= "${theme}";
         };
 
