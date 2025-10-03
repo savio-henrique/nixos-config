@@ -9,7 +9,6 @@
     [ # Include the results of the hardware scan.
       ./hardware-configuration.nix
       inputs.home-manager.nixosModules.default
-      ../common/optional/video.nix
     ];
 
   # Use the GRUB 2 boot loader.

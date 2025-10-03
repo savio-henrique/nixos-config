@@ -1,5 +1,7 @@
 {pkgs, config, lib, ...}:
 {
+  services.xserver.videoDrivers = [ "nvidia" ];
+
   # Nvidia
   hardware.nvidia = {
     modesetting.enable = true;
