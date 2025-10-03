@@ -71,7 +71,7 @@ in {
       definition = if awesome.battery then ''
         battery_widget{
           show_current_level = true;
-          path_to_icons = ${home.homeDirectory}/.config/awesome/icons/Arc/status/symbolic/ ;
+          path_to_icons = ${config.home.homeDirectory}/.config/awesome/icons/Arc/status/symbolic/ ;
         },
       '' else "";
     };
@@ -99,6 +99,7 @@ in {
   in  lib.mkIf awesome.enable {
     
       home.file = let
+
         # Widget File
         widget = let
 
