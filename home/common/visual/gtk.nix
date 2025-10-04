@@ -5,7 +5,7 @@ in {
   gtk = {
     enable = true;
     theme = {
-      name = "generated-theme";
+      name = config.colorScheme.slug;
       package = nix-colors-lib.gtkThemeFromScheme {  
         scheme = config.colorScheme;
       };
