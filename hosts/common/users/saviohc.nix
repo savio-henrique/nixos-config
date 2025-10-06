@@ -16,6 +16,8 @@
       "docker"
       "libvirtd"
       "kvm"
+      "uinput"
+      "input"
     ];
 
     # User Shell Configuration

@@ -16,6 +16,45 @@
     rootless = false;
   };
 
+  # Keyboard Remap Config
+  services.xremap = {
+    userName = "saviohc";
+    withX11 = true;
+    deviceNames = [ "/dev/input/event17" ];
+    config = {
+      modmap = [
+        {
+          name = "gamepad";
+          remap = {
+            "KEY_J" = "KEY_LEFT";
+            "KEY_L" = "KEY_RIGHT";
+            "KEY_I" = "KEY_UP";
+            "KEY_K" = "KEY_DOWN";
+            "KEY_BACKSLASH" = { set_mode = "default";};
+          };
+          mode = "gamepad";
+        }
+      ];
+      keymap = [
+        {
+          name = "default";
+          remap = {
+            "C-BACKSLASH" = { set_mode = "gamepad";};
+            };
+          mode = "default";
+        }
+        {
+          name = "gamepad";
+          remap = {
+            "C-BACKSLASH" = { set_mode = "default";};
+            };
+          mode = "gamepad";
+        }
+      ];
+      default_mode = "default";
+    };
+  };
+
   # VM test configuration
   # virtualisation.vmVariant = {
   #   virtualisation = {

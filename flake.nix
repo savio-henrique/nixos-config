@@ -15,6 +15,8 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    xremap.url = "github:xremap/nix-flake";
+
     nix-minecraft.url = "github:Infinidoge/nix-minecraft";
     
     nix-colors.url = "github:misterio77/nix-colors";
