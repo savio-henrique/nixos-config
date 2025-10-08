@@ -2,6 +2,7 @@
 let
   nix-colors-lib = inputs.nix-colors.lib.contrib { inherit pkgs; };
 in {
+  home.packages = [pkgs.dconf];
   gtk = {
     enable = true;
     theme = {
