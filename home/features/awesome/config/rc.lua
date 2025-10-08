@@ -5,6 +5,7 @@ pcall(require, "luarocks.loader")
 -- Standard awesome library
 local gears = require("gears")
 local awful = require("awful")
+local gfs = require("gears.filesystem")
 require("awful.autofocus")
 -- Widget and layout library
 local wibox = require("wibox")

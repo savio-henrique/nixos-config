@@ -55,8 +55,8 @@ in {
       require = if awesome.battery then "local battery_widget = require(\"awesome-wm-widgets.battery-widget.battery\")" else "";
       definition = if awesome.battery then ''
         battery_widget{
-          show_current_level = true;
-          path_to_icons = ${config.home.homeDirectory}/.config/awesome/icons/Arc/status/symbolic/ ;
+          show_current_level = true,
+          path_to_icons = gfs.get_configuration_dir() .. "icons/Arc/status/symbolic/"
         },
       '' else "";
     };
