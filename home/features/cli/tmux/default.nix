@@ -13,6 +13,7 @@
     extraConfig = ''
       # Set tmux to use colors accordingly
       set -g default-terminal "tmux-256color"
+      set -g default-command ${pkgs.fish}/bin/fish
       set -as terminal-overrides ',xterm*:Tc'
     '';
   };
