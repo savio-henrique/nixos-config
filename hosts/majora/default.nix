@@ -37,6 +37,7 @@
     ../common/global
     ../common/optional/video.nix
     ../common/optional/prime.nix
+    ../common/optional/containers
     ./configuration.nix];
 
   video.enable = true;
