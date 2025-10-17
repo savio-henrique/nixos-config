@@ -28,7 +28,9 @@ capabilities = require('cmp_nvim_lsp').default_capabilities(capabilities)
 capabilities.textDocument.completion.completionItem.snippetSupport = true;
 
 require('neodev').setup()
-require('lspconfig').lua_ls.setup {
+
+vim.lsp.enable('lua_ls')
+vim.lsp.config( 'lua_ls', {
   on_attach = on_attach,
   capabilities = capabilities,
   root_dir = function()
@@ -44,23 +46,28 @@ require('lspconfig').lua_ls.setup {
       telemetry = { enable = false },
     },
   }
-}
-
-require('lspconfig').cssls.setup {
+})
+vim.lsp.enable('cssls')
+vim.lsp.config('cssls' ,{
   capabilities = capabilities,
-}
+})
 
-require('lspconfig').jsonls.setup {}
+vim.lsp.enable('jsonls')
 
-require('lspconfig').eslint.setup{}
+vim.lsp.enable('eslint')
 
-require('lspconfig').html.setup {
+vim.lsp.enable('html')
+vim.lsp.config('html', {
   capabilities = capabilities,
-}
+})
 
-require('lspconfig').phpactor.setup{}
+vim.lsp.enable('phpactor')
 
-require('lspconfig').nixd.setup{}
+vim.lsp.enable('nixd')
 
-require('lspconfig').docker_compose_language_service.setup{}
+vim.lsp.enable('docker_compose_language_service')
+
+vim.lsp.enable('ts_ls')
+
+vim.lsp.enable('yamlls')
 
