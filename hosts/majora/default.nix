@@ -42,5 +42,11 @@
   video.enable = true;
   video.dual = false;
 
+  oci-config = {
+    enable = true;
+    engine = "docker";
+    rootless = false;
+  };
+
   services.tailscale.enable = true;
 }
