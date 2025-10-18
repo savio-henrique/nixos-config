@@ -1,10 +1,16 @@
-{ config, ...}:
+{inputs, config, ...}:
 {
   imports = [
     ../common/global
     ../common/optional/containers 
+    ../common/optional/minecraft-server
     ./configuration.nix
+    inputs.nix-minecraft.nixosModules.minecraft-servers
   ];
+
+
+  # Configure Minecraft Overlay
+  nixpkgs.overlays = [ inputs.nix-minecraft.overlay ];
 
   # Configure SOPS
   sops.secrets = {
@@ -65,7 +71,7 @@
       enable = true;
     };
     firefly-iii = {
-      enable = true;
+      enable = false;
       port = 8080;
     };
     trilium = {
@@ -78,7 +84,7 @@
       dir = "/home/saviohc/homepage-config";
     };
     vaultwarden = {
-      enable = true;
+      enable = false;
       port = 8082;
       dir = "/home/saviohc/vaultwarden/";
     };

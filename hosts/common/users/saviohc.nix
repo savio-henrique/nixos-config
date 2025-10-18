@@ -13,6 +13,7 @@
       "wheel"
       "networkmanager"
       "www-data"
+      "minecraft"
       "docker"
       "libvirtd"
       "kvm"

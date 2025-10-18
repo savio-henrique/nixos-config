@@ -9,9 +9,7 @@
     [ # Include the results of the hardware scan.
       ./hardware-configuration.nix
       inputs.home-manager.nixosModules.home-manager
-      inputs.nix-minecraft.nixosModules.minecraft-servers
     ];
-  nixpkgs.overlays = [ inputs.nix-minecraft.overlay ];
 
   # Use the systemd-boot EFI boot loader.
   boot.loader.systemd-boot.enable = true;
