@@ -20,7 +20,7 @@
   services.xremap = {
     userName = "saviohc";
     withX11 = true;
-    deviceNames = [ "/dev/input/event17" ];
+    deviceNames = [ "USB-HID Gaming Keyboard" ];
     config = {
       modmap = [
         {
