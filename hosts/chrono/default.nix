@@ -18,6 +18,7 @@
 
   # Keyboard Remap Config
   services.xremap = {
+    enable = true;
     userName = "saviohc";
     withX11 = true;
     deviceNames = [ "USB-HID Gaming Keyboard" ];
