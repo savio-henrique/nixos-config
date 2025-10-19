@@ -49,24 +49,27 @@ in {
     picom.enable = cfg.environment == "awesome";
 
     # X11 Config
-    services = lib.mkIf (cfg.environment == "awesome") {
-      xserver = {
+    services = {
+      xserver = lib.mkIf (cfg.environment == "awesome") {
         enable = true;
         windowManager.awesome.enable = true;
         displayManager.lightdm = {
           enable = true;
           greeter.enable = true;
         };
-        displayManager.defaultSession = "none+awesome";
         # Remove XTerm
         excludePackages = [ pkgs.xterm ];
         desktopManager.xterm.enable = false;
         # Keyboard xserver config
         xkb.layout = "us,br";
         xkb.options = "altwin:menu,altwin:swap_lalt_lwin,grp:rctrl_rshift_toggle,caps:escape";
-      } // lib.optionalAttrs (cfg.environment == "hyprland") {
-        displayManager.sddm.enable = true;
-        displayManager.defaultSession = "";
+        };
+
+      displayManager = lib.mkIf (cfg.environment == "hyprland") {
+        sddm.enable = true;
+        defaultSession = "";
+      } // lib.optionalAttrs (cfg.environment == "awesome") {
+          defaultSession = "none+awesome";
       };
 
     };
