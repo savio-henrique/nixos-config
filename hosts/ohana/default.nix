@@ -63,6 +63,18 @@
       sopsFile = ../common/secrets.yaml;
       mode = "0444";
     };
+    kaneo-jwt = {
+      sopsFile = ../common/secrets.yaml;
+      group = "www-data";
+    };
+    kaneo-db-url = {
+      sopsFile = ../common/secrets.yaml;
+      group = "www-data";
+    };
+    kaneo-db-password = {
+      sopsFile = ../common/secrets.yaml;
+      group = "www-data";
+    };
   };
 
   oci-config = {
@@ -95,6 +107,10 @@
     grafana = {
       enable = true;
       port = 9000;
+    };
+    kaneo = {
+      enable = true;
+      port = 3030;
     };
   };
 

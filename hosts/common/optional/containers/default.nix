@@ -165,6 +165,19 @@ in {
       description = "Enable Miniflux";
     };
 
+    kaneo = {
+      enable = lib.mkOption {
+        default = false;
+        type = lib.types.bool;
+        description = "Enable Kaneo";
+      };
+      port = lib.mkOption {
+        default = 5678;
+        type = lib.types.int;
+        description = "Port for Kaneo";
+      };
+    };
+
   };
 
   config = lib.mkIf oci-config.enable {
@@ -212,6 +225,7 @@ in {
         cloudflare = (import ./cloudflare.nix {inherit config; network = oci-config.network;});
         prometheus = (import ./prometheus.nix {inherit config; port = builtins.toString oci-config.prometheus.port; network = oci-config.network;});
         grafana = (import ./grafana.nix {inherit config; port = builtins.toString oci-config.grafana.port; network = oci-config.network;});
+        kaneo = (import ./kaneo.nix {inherit config; port = builtins.toString oci-config.kaneo.port; network = oci-config.network;});
       in {}
         # Firefly III
       // lib.optionalAttrs (oci-config.firefly-iii.enable) {
@@ -248,6 +262,13 @@ in {
         # Grafana
       // lib.optionalAttrs (oci-config.grafana.enable) {
         grafana = grafana.grafana;
+      }
+        # Kaneo
+      // lib.optionalAttrs (oci-config.kaneo.enable) {
+        kaneo_nginx = kaneo.kaneo_nginx;
+        kaneo_frontend = kaneo.kaneo_frontend;
+        kaneo_backend = kaneo.kaneo_backend;
+        kaneo_db = kaneo.kaneo_db;
       };
     };
 
