@@ -13,9 +13,8 @@
           proxy_set_header X-Real-IP $remote_addr;
           proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
         }
-       
         location /api/ {
-          proxy_pass http://kaneo_backend:1337/;
+          proxy_pass http://kaneo_backend:1337;
           proxy_set_header Host $host;
           proxy_set_header X-Real-IP $remote_addr;
           proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
@@ -47,24 +46,29 @@
     ];
   };
   kaneo_frontend = {
-    image = "ghcr.io/usekaneo/web:latest";
+    image = "ghcr.io/usekaneo/web:2.0.3";
     autoStart = true;
     hostname = "kaneo_frontend";
-    environment = {
-      KANEO_API_URL = "/api";
-    };
+    environmentFiles = [
+      config.sops.secrets.kaneo-client-url.path
+      config.sops.secrets.kaneo-api-url.path
+    ];
     dependsOn = [ "kaneo_backend" ];
     extraOptions = [
       "--network=${network}"
     ];
   };
   kaneo_backend = {
-    image = "ghcr.io/usekaneo/api:latest";
+    image = "ghcr.io/usekaneo/api:2.0.3";
     autoStart = true;
     hostname = "kaneo_backend";
     environmentFiles = [
       config.sops.secrets.kaneo-jwt.path
       config.sops.secrets.kaneo-db-url.path
+      config.sops.secrets.kaneo-github-client-id.path
+      config.sops.secrets.kaneo-github-client-secret.path
+      config.sops.secrets.kaneo-client-url.path
+      config.sops.secrets.kaneo-api-url.path
     ];
     dependsOn = [ "kaneo_db" ];
     extraOptions = [

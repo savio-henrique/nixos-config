@@ -3,14 +3,14 @@
   imports = [
     ../common/global
     ../common/optional/containers 
-    ../common/optional/minecraft-server
+    # ../common/optional/minecraft-server
+    # inputs.nix-minecraft.nixosModules.minecraft-servers
     ./configuration.nix
-    inputs.nix-minecraft.nixosModules.minecraft-servers
   ];
 
 
   # Configure Minecraft Overlay
-  nixpkgs.overlays = [ inputs.nix-minecraft.overlay ];
+  # nixpkgs.overlays = [ inputs.nix-minecraft.overlay ];
 
   # Configure SOPS
   sops.secrets = {
@@ -72,6 +72,22 @@
       group = "www-data";
     };
     kaneo-db-password = {
+      sopsFile = ../common/secrets.yaml;
+      group = "www-data";
+    };
+    kaneo-github-client-id = {
+      sopsFile = ../common/secrets.yaml;
+      group = "www-data";
+    };
+    kaneo-github-client-secret = {
+      sopsFile = ../common/secrets.yaml;
+      group = "www-data";
+    };
+    kaneo-client-url = {
+      sopsFile = ../common/secrets.yaml;
+      group = "www-data";
+    };
+    kaneo-api-url = {
       sopsFile = ../common/secrets.yaml;
       group = "www-data";
     };
