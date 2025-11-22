@@ -91,6 +91,30 @@
       sopsFile = ../common/secrets.yaml;
       group = "www-data";
     };
+    kaneo-smtp-host = {
+      sopsFile = ../common/secrets.yaml;
+      group = "www-data";
+    };
+    kaneo-smtp-port = {
+      sopsFile = ../common/secrets.yaml;
+      group = "www-data";
+    };
+    kaneo-smtp-secure = {
+      sopsFile = ../common/secrets.yaml;
+      group = "www-data";
+    };
+    kaneo-smtp-user = {
+      sopsFile = ../common/secrets.yaml;
+      group = "www-data";
+    };
+    kaneo-smtp-password = {
+      sopsFile = ../common/secrets.yaml;
+      group = "www-data";
+    };
+    kaneo-smtp-from-email = {
+      sopsFile = ../common/secrets.yaml;
+      group = "www-data";
+    };
   };
 
   oci-config = {
@@ -111,19 +135,19 @@
       enable = true;
       dir = "/home/saviohc/homepage-config";
     };
-    vaultwarden = {
-      enable = false;
-      port = 8082;
-      dir = "/home/saviohc/vaultwarden/";
-    };
-    prometheus = {
-      enable = true;
-      port = 9090;
-    };
-    grafana = {
-      enable = true;
-      port = 9000;
-    };
+    # vaultwarden = {
+    #   enable = false;
+    #   port = 8082;
+    #   dir = "/home/saviohc/vaultwarden/";
+    # };
+    # prometheus = {
+    #   enable = true;
+    #   port = 9090;
+    # };
+    # grafana = {
+    #   enable = true;
+    #   port = 9000;
+    # };
     kaneo = {
       enable = true;
       port = 3030;
