@@ -45,7 +45,7 @@
     hostname = "firefly_iii_db";
     volumes = [
         (config.sops.secrets.firefly-db-password.path +":"+config.sops.secrets.firefly-db-password.path+":ro")
-        "/var/lib/postgresql/data:/var/lib/postgresql/data"
+        "firefly_postgres:/var/lib/postgresql/18/docker"
     ];
     environment = {
       POSTGRES_USER = "firefly";
