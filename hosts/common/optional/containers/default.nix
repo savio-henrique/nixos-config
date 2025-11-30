@@ -178,6 +178,19 @@ in {
       };
     };
 
+    minecraft = {
+      enable = lib.mkOption {
+        default = false;
+        type = lib.types.bool;
+        description = "Enable Minecraft Server";
+      };
+      port = lib.mkOption {
+        default = 25565;
+        type = lib.types.int;
+        description = "Port for Minecraft Server";
+      };
+    };
+
   };
 
   config = lib.mkIf oci-config.enable {
@@ -226,6 +239,7 @@ in {
         prometheus = (import ./prometheus.nix {inherit config; port = builtins.toString oci-config.prometheus.port; network = oci-config.network;});
         grafana = (import ./grafana.nix {inherit config; port = builtins.toString oci-config.grafana.port; network = oci-config.network;});
         kaneo = (import ./kaneo.nix {inherit config; port = builtins.toString oci-config.kaneo.port; network = oci-config.network;});
+        minecraft = (import ./minecraft.nix {inherit config; port = builtins.toString oci-config.minecraft.port; network = oci-config.network;});
       in {}
         # Firefly III
       // lib.optionalAttrs (oci-config.firefly-iii.enable) {
@@ -255,7 +269,7 @@ in {
       // lib.optionalAttrs (oci-config.cloudflare.enable) {
         cloudflared = cloudflare.cloudflared;
       }
-      # Prometheus
+        # Prometheus
       // lib.optionalAttrs (oci-config.prometheus.enable) {
         prometheus = prometheus.prometheus;
       }
@@ -269,6 +283,10 @@ in {
         kaneo_frontend = kaneo.kaneo_frontend;
         kaneo_backend = kaneo.kaneo_backend;
         kaneo_db = kaneo.kaneo_db;
+      }
+        # Minecraft
+      // lib.optionalAttrs (oci-config.minecraft.enable) {
+        minecraft_server = minecraft.minecraft_server;
       };
     };
 

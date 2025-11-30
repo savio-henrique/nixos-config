@@ -123,7 +123,7 @@
       enable = true;
     };
     firefly-iii = {
-      enable = false;
+      enable = true;
       port = 8080;
     };
     trilium = {
@@ -151,6 +151,10 @@
     kaneo = {
       enable = true;
       port = 3030;
+    };
+    minecraft = {
+      enable = false;
+      port = 25565;
     };
   };
 
