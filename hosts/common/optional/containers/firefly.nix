@@ -29,6 +29,7 @@
       DB_USERNAME = "firefly";
       TZ = "America/Sao_Paulo";
       DEFAULT_LANGUAGE = "pt_BR";
+      TRUSTED_PROXIES = "*";
     };
     environmentFiles = [
       config.sops.secrets.firefly-db-env.path
