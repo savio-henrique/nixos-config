@@ -7,8 +7,8 @@
   ]; 
 
   # Change the base16  theme for the host
-  home-cfg.base16 = "ayu-dark";
-  home-cfg.background = "berserk-1.png";
+  home-cfg.base16 = "uwunicorn";
+  home-cfg.background = "evangelion_1.jpg";
 
   visual.environment = "awesome";
 
