@@ -14,6 +14,8 @@
 
   # Configure SOPS
   sops.secrets = {
+
+    # Firefly Secrets
     firefly-key = {
       sopsFile = ../common/secrets.yaml;
       group = "www-data";
@@ -30,6 +32,8 @@
       sopsFile = ../common/secrets.yaml;
       group = "www-data";
     };
+
+    # PiHole Secrets
     pihole-api-key = {
       sopsFile = ../common/secrets.yaml;
       group = "www-data";
@@ -46,6 +50,8 @@
       sopsFile = ../common/secrets.yaml;
       group = "www-data";
     };
+
+    # Vaultwarden Secrets
     vaultwarden-db-password = {
       sopsFile = ../common/secrets.yaml;
       group = "www-data";
@@ -54,15 +60,21 @@
       sopsFile = ../common/secrets.yaml;
       group = "www-data";
     };
+
+    # Cloudflare Tunnel
     cloudflare-token = {
       sopsFile = ../common/secrets.yaml;
       path = "/usr/share/cloudflared/cloudflare-token";
       mode = "0444";
     };
+
+    # Trilium Secrets
     trilium-etapi-token = {
       sopsFile = ../common/secrets.yaml;
       mode = "0444";
     };
+
+    # Kaneo Secrets
     kaneo-jwt = {
       sopsFile = ../common/secrets.yaml;
       group = "www-data";
@@ -115,7 +127,32 @@
       sopsFile = ../common/secrets.yaml;
       group = "www-data";
     };
+
+
+    # Uptime Kuma Secrets
     uptime-kuma-cloudflared-token = {
+      sopsFile = ../common/secrets.yaml;
+      group = "www-data";
+    };
+
+    # Miniflux Secrets
+    miniflux-admin-username = {
+      sopsFile = ../common/secrets.yaml;
+      group = "www-data";
+    };
+    miniflux-admin-password = {
+      sopsFile = ../common/secrets.yaml;
+      group = "www-data";
+    };
+    miniflux-db-url = {
+      sopsFile = ../common/secrets.yaml;
+      group = "www-data";
+    };
+    miniflux-db-user = {
+      sopsFile = ../common/secrets.yaml;
+      group = "www-data";
+    };
+    miniflux-db-password = {
       sopsFile = ../common/secrets.yaml;
       group = "www-data";
     };
@@ -142,6 +179,10 @@
     uptime-kuma = {
       enable = true;
       port = 8083;
+    };
+    miniflux = {
+      enable = true;
+      port = 8082;
     };
     # vaultwarden = {
     #   enable = false;

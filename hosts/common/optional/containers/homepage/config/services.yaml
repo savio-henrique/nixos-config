@@ -2,7 +2,3 @@
 # For configuration options and examples, please see:
 # https://gethomepage.dev/configs/services/
 
-- Personal:
-    - Miniflux:
-        href: https://miniflux.app/docs/requirements.html
-        description: Read the news

@@ -159,10 +159,17 @@ in {
       };
     };
 
-    miniflux = lib.mkOption {
-      default = false;
-      type = lib.types.bool;
-      description = "Enable Miniflux";
+    miniflux =  {
+      enable = lib.mkOption {
+        default = false;
+        type = lib.types.bool;
+        description = "Enable Miniflux";
+      };
+      port = lib.mkOption {
+        default = 8080;
+        type = lib.types.int;
+        description = "Port for Miniflux";
+      };
     };
 
     kaneo = {
@@ -254,6 +261,7 @@ in {
         kaneo = (import ./kaneo.nix {inherit config; port = builtins.toString oci-config.kaneo.port; network = oci-config.network;});
         minecraft = (import ./minecraft.nix {inherit config; port = builtins.toString oci-config.minecraft.port; network = oci-config.network;});
         uptime-kuma = (import ./uptime-kuma.nix {inherit config; port = builtins.toString oci-config.uptime-kuma.port; network = oci-config.network;});
+        miniflux = (import ./miniflux.nix {inherit config; port = builtins.toString oci-config.miniflux.port; network = oci-config.network;});
       in {}
         # Firefly III
       // lib.optionalAttrs (oci-config.firefly-iii.enable) {
@@ -305,6 +313,11 @@ in {
         # Uptime Kuma
       // lib.optionalAttrs (oci-config.uptime-kuma.enable) {
         uptime_kuma = uptime-kuma.uptime_kuma;
+      }
+        # Miniflux
+      // lib.optionalAttrs (oci-config.miniflux.enable) {
+        miniflux = miniflux.miniflux;
+        miniflux_db = miniflux.miniflux_db;
       };
     };
 
