@@ -191,6 +191,19 @@ in {
       };
     };
 
+    uptime-kuma = {
+      enable = lib.mkOption {
+        default = false;
+        type = lib.types.bool;
+        description = "Enable Uptime Kuma";
+      };
+      port = lib.mkOption {
+        default = 3001;
+        type = lib.types.int;
+        description = "Port for Uptime Kuma";
+      };
+    };
+
   };
 
   config = lib.mkIf oci-config.enable {
@@ -240,6 +253,7 @@ in {
         grafana = (import ./grafana.nix {inherit config; port = builtins.toString oci-config.grafana.port; network = oci-config.network;});
         kaneo = (import ./kaneo.nix {inherit config; port = builtins.toString oci-config.kaneo.port; network = oci-config.network;});
         minecraft = (import ./minecraft.nix {inherit config; port = builtins.toString oci-config.minecraft.port; network = oci-config.network;});
+        uptime-kuma = (import ./uptime-kuma.nix {inherit config; port = builtins.toString oci-config.uptime-kuma.port; network = oci-config.network;});
       in {}
         # Firefly III
       // lib.optionalAttrs (oci-config.firefly-iii.enable) {
@@ -287,6 +301,10 @@ in {
         # Minecraft
       // lib.optionalAttrs (oci-config.minecraft.enable) {
         minecraft_server = minecraft.minecraft_server;
+      } 
+        # Uptime Kuma
+      // lib.optionalAttrs (oci-config.uptime-kuma.enable) {
+        uptime_kuma = uptime-kuma.uptime_kuma;
       };
     };
 

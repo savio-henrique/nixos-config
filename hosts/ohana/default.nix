@@ -115,6 +115,10 @@
       sopsFile = ../common/secrets.yaml;
       group = "www-data";
     };
+    uptime-kuma-cloudflared-token = {
+      sopsFile = ../common/secrets.yaml;
+      group = "www-data";
+    };
   };
 
   oci-config = {
@@ -134,6 +138,10 @@
     homepage = {
       enable = true;
       dir = "/home/saviohc/homepage-config";
+    };
+    uptime-kuma = {
+      enable = true;
+      port = 8083;
     };
     # vaultwarden = {
     #   enable = false;
