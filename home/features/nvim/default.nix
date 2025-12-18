@@ -86,6 +86,12 @@ in {
         pkg.vim-tmux-navigator
 
         {
+          plugin = pkg.nvim-tree-lua;
+          type = "lua";
+          config = "${builtins.readFile ./config/plugin/nvim-tree.lua}";
+        }
+
+        {
           plugin = pkg.nvim-surround;
           type = "lua";
           config = "require('nvim-surround').setup()";
