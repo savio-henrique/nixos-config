@@ -40,10 +40,11 @@ Utilizing the SaschaKoenig's [Nixos Config Playlist](https://www.youtube.com/wat
 * Containerized self-hosted services tunneling via **Tailscale VPN** or **Cloudflare Tunnels**
 * Secure secret management with [ **sops-nix** ](https://github.com/Mic92/sops-nix)
 * Self-hosted services
-  * Firefly III
+  * [Firefly III](https://github.com/firefly-iii/firefly-iii)
   * Pi-Hole
-  * Homepage
-  * TriliumNext
+  * [Homepage](https://github.com/gethomepage/homepage)
+  * [TriliumNext](https://github.com/TriliumNext/Trilium)
+  * [Kaneo](https://github.com/usekaneo/kaneo)
   * Vaultwarden (WIP)
   * Grafana (WIP)
   * Prometheus (WIP)
