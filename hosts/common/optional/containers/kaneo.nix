@@ -46,7 +46,7 @@
     ];
   };
   kaneo_frontend = {
-    image = "ghcr.io/usekaneo/web:2.0.3";
+    image = "ghcr.io/usekaneo/web:2.1.10";
     autoStart = true;
     hostname = "kaneo_frontend";
     environmentFiles = [
@@ -59,11 +59,11 @@
     ];
   };
   kaneo_backend = {
-    image = "ghcr.io/usekaneo/api:2.0.3";
+    image = "ghcr.io/usekaneo/api:2.1.10";
     autoStart = true;
     hostname = "kaneo_backend";
     environment = {
-      SMTP_REQUIRE_TLS = "true";
+      SMTP_REQUIRE_TLS = "false";
     };
     environmentFiles = [
       config.sops.secrets.kaneo-jwt.path
@@ -72,12 +72,12 @@
       config.sops.secrets.kaneo-github-client-secret.path
       config.sops.secrets.kaneo-client-url.path
       config.sops.secrets.kaneo-api-url.path
-      # config.sops.secrets.kaneo-smtp-host.path
-      # config.sops.secrets.kaneo-smtp-port.path
-      # config.sops.secrets.kaneo-smtp-secure.path
-      # config.sops.secrets.kaneo-smtp-user.path
-      # config.sops.secrets.kaneo-smtp-password.path
-      # config.sops.secrets.kaneo-smtp-from-email.path
+      config.sops.secrets.kaneo-smtp-host.path
+      config.sops.secrets.kaneo-smtp-port.path
+      config.sops.secrets.kaneo-smtp-secure.path
+      config.sops.secrets.kaneo-smtp-user.path
+      config.sops.secrets.kaneo-smtp-password.path
+      config.sops.secrets.kaneo-smtp-from-email.path
     ];
     dependsOn = [ "kaneo_db" ];
     extraOptions = [
