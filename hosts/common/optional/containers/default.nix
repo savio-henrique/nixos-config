@@ -211,6 +211,24 @@ in {
       };
     };
 
+    copyparty = {
+      enable = lib.mkOption {
+        default = false;
+        type = lib.types.bool;
+        description = "Enable Copyparty";
+      };
+      port = lib.mkOption {
+        default = 3923;
+        type = lib.types.int;
+        description = "Port for Copyparty";
+      };
+      dir = lib.mkOption {
+        default = "/var/lib/copyparty";
+        type = lib.types.path;
+        description = "Directory for Copyparty data";
+      };
+    };
+
   };
 
   config = lib.mkIf oci-config.enable {
@@ -262,6 +280,7 @@ in {
         minecraft = (import ./minecraft.nix {inherit config; port = builtins.toString oci-config.minecraft.port; network = oci-config.network;});
         uptime-kuma = (import ./uptime-kuma.nix {inherit config; port = builtins.toString oci-config.uptime-kuma.port; network = oci-config.network;});
         miniflux = (import ./miniflux.nix {inherit config; port = builtins.toString oci-config.miniflux.port; network = oci-config.network;});
+        copyparty = (import ./copyparty {inherit config; port = builtins.toString oci-config.copyparty.port; dir = oci-config.copyparty.dir; network = oci-config.network;});
       in {}
         # Firefly III
       // lib.optionalAttrs (oci-config.firefly-iii.enable) {
@@ -318,6 +337,10 @@ in {
       // lib.optionalAttrs (oci-config.miniflux.enable) {
         miniflux = miniflux.miniflux;
         miniflux_db = miniflux.miniflux_db;
+      }
+        # Copyparty
+      // lib.optionalAttrs (oci-config.copyparty.enable) {
+        copyparty = copyparty.copyparty;
       };
     };
 

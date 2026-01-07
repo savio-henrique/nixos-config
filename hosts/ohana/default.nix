@@ -156,6 +156,10 @@
       sopsFile = ../common/secrets.yaml;
       group = "www-data";
     };
+    copyparty-user = {
+      sopsFile = ../common/secrets.yaml;
+      group = "www-data";
+    };
   };
 
   oci-config = {
@@ -183,6 +187,11 @@
     miniflux = {
       enable = true;
       port = 8082;
+    };
+    copyparty = {
+      enable = true;
+      port = 7654;
+      dir = "/home/saviohc/copyparty-data";
     };
     # vaultwarden = {
     #   enable = false;
