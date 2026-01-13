@@ -35,6 +35,16 @@
           };
           mode = "gamepad";
         }
+        {
+          name = "default";
+          remap = {
+            "KEY_LEFTMETA" = "KEY_LEFTALT";
+            "SUPER_L" = "ALT_L";
+            "KEY_RIGHTMETA" = "KEY_RIGHTALT";
+            "SUPER_R" = "ALT_R";
+          };
+          mode = "default";
+        }
       ];
       keymap = [
         {
