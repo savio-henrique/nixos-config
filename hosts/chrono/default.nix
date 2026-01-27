@@ -2,6 +2,7 @@
   imports = [
     ../common/global
     ../common/optional/video.nix
+    ../common/optional/container-toolkit.nix
     ../common/optional/containers
     ./configuration.nix
   ];
