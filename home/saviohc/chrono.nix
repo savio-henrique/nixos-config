@@ -23,6 +23,7 @@
     zotero
     bruno
     audacity
+    grayjay
   ];
 
   # Test Later
