@@ -46,7 +46,7 @@
     ];
   };
   kaneo_frontend = {
-    image = "ghcr.io/usekaneo/web:2.1.10";
+    image = "ghcr.io/usekaneo/web:2.3.3";
     autoStart = true;
     hostname = "kaneo_frontend";
     environmentFiles = [
@@ -59,7 +59,7 @@
     ];
   };
   kaneo_backend = {
-    image = "ghcr.io/usekaneo/api:2.1.10";
+    image = "ghcr.io/usekaneo/api:2.3.3";
     autoStart = true;
     hostname = "kaneo_backend";
     environment = {
