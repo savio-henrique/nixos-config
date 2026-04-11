@@ -23,7 +23,7 @@
     zotero
     bruno
     audacity
-    grayjay
+    discord
   ];
 
   # Test Later
