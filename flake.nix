@@ -78,6 +78,15 @@
             ./hosts/ohana
           ];
         };
+
+        # Work Computer
+        quirrel = nixpkgs.lib.nixosSystem {
+          specialArgs = {inherit inputs outputs;};
+          modules = [
+            ./hosts/quirrel
+            ./hosts/common/optional/video.nix
+          ];
+        };
       };
       homeConfigurations = {
         "saviohc@chrono" = home-manager.lib.homeManagerConfiguration {
@@ -111,6 +120,13 @@
           extraSpecialArgs = {inherit inputs outputs;};
           modules = [
             ./home/saviohc/ohana.nix 
+          ];
+        };
+        "saviohc@quirrel" = home-manager.lib.homeManagerConfiguration {
+          pkgs = nixpkgs.legacyPackages."x86_64-linux";
+          extraSpecialArgs = {inherit inputs outputs;};
+          modules = [
+            ./home/saviohc/quirrel.nix 
           ];
         };
       };
