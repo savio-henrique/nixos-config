@@ -11,6 +11,15 @@
 
   # Change the base16  theme for the host
   home-cfg.base16 = "gotham";
+  # Theme Suggestions
+  # atelier-sulphurpool
+  # ayu-dark
+  # ayu-mirage
+  # blueish
+  # da-one-sea
+  # da-one-ocean
+  # eldritch
+
   home-cfg.background = "hollow-knight-2.jpg";
   visual.runner = "rofi -show drun";
   visual.environment = "awesome";
