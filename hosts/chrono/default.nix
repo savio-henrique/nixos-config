@@ -11,10 +11,22 @@
   video.dual = true;
   video.environment = "awesome";
 
+  sops.secrets = {
+    # Cloudflare Secrets
+    cloudflare-token = {
+      sopsFile = ./secrets.yaml;
+      path = "/usr/share/cloudflared/cloudflare-token";
+      mode = "0444";
+    };
+  };
+
   oci-config = {
     enable = true;
     engine = "docker";
     rootless = false;
+    cloudflare = {
+      enable = true;
+    };
   };
 
   # Keyboard Remap Config
