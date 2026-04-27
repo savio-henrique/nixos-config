@@ -125,13 +125,19 @@ let
     fi
 
     create_ide() {
+      tmux rename-window -t ''${session_name} "IDE-''${ide_number}"
       tmux split-window -v -d
       tmux resize-pane -D 10
       tmux split-window -h
       tmux resize-pane -R 10
-      tmux send-keys -t ''${session_name}.0 "nvim" C-m
-      tmux send-keys -t ''${session_name}.1 ''${command_to_run} C-m
-      tmux rename-window -t ''${session_name} "IDE-''${ide_number}"
+
+      # Change pane directory
+      tmux send-keys -t ''${session_name}:"IDE-''${ide_number}".0 "cd ''${path_to_directory}" C-m
+      tmux send-keys -t ''${session_name}:"IDE-''${ide_number}".1 "cd ''${path_to_directory}" C-m
+      tmux send-keys -t ''${session_name}:"IDE-''${ide_number}".2 "cd ''${path_to_directory}" C-m
+
+      tmux send-keys -t ''${session_name}:"IDE-''${ide_number}".0 "nvim" C-m
+      tmux send-keys -t ''${session_name}:"IDE-''${ide_number}".1 ''${command_to_run} C-m
     }
 
     create_new_ide() {
@@ -140,7 +146,6 @@ let
 
       if [ "$is_attached" = false ] || [[ $(tmux list-panes -t ''${session_name} | wc -l) -gt 1 ]]; then
         tmux new-window -t ''${session_name}
-        cd ''${path_to_directory} || exit 1
       fi
       create_ide $*
     }
