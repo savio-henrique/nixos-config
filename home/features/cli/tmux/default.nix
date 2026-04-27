@@ -4,6 +4,10 @@ let
     # tis - tmux ide session initializer
     # This script initializes a tmux session with a specific layout for development work.
 
+    session_name="work"
+    ide_number=1
+    is_attached=false
+
     # Colors
     RED='\033[0;31m'
     GREEN='\033[0;32m'
@@ -29,6 +33,7 @@ let
       echo -e "    Options:"
       echo -e "    ''${GREEN}command''${CLEAR}: The command to run in the second pane of the tmux session. If no command is provided, the second pane will be left empty."
       echo -e "    -h, --help: Show this help message and exit."
+      echo -e "    -s, --session ''${CYAN}session_name''${CLEAR}: Specify a custom name for the tmux session instead of the default 'work'."
       echo -e "    ''${LIGHT_GRAY}---------------------------------''${CLEAR}"
     }
 
@@ -41,20 +46,49 @@ let
       exit 0
     fi
 
-    if (tmux has-session -t work 2>/dev/null); then
-      echo -e "''${YELLOW}Tmux session 'work' already exists. Attaching to it...''${CLEAR}"
-      tmux attach-session -t work
+    if [ "$first_arg" = "-s" ] || [ "$first_arg" = "--session" ]; then
+      session_name=$2
+      shift 2
+    fi
+
+    if [ -n "$TMUX" ]; then
+      is_attached=true
+      session_name=$(tmux display-message -p '#S')
+    fi
+
+    create_ide() {
+      tmux split-window -v -d
+      tmux resize-pane -D 10
+      tmux split-window -h
+      tmux resize-pane -R 10
+      tmux send-keys -t ''${session_name}.0 "nvim" C-m
+      tmux send-keys -t ''${session_name}.1 $* C-m
+      tmux rename-window -t ''${session_name} "IDE-''${ide_number}"
+    }
+
+    create_new_ide() {
+      current_window_count=$(tmux list-windows -t ''${session_name} | grep -c "IDE")
+      ide_number=$(( $current_window_count + 1))
+
+      if [ "$is_attached" = false ] || [[ $(tmux list-panes -t ''${session_name} | wc -l) -gt 1 ]]; then
+        tmux new-window -t ''${session_name}
+      fi
+      create_ide $*
+    }
+
+    if (tmux has-session -t ''${session_name} 2>/dev/null); then
+
+      create_new_ide $*
+      if [ "$is_attached" = false ]; then
+        tmux attach-session -t ''${session_name}
+      fi
+      exit 0
+    else
+      tmux new-session -d -s ''${session_name}
+      create_ide
+      tmux attach-session -t ''${session_name}
       exit 0
     fi
-    tmux new-session -d -s work
-    tmux split-window -v -d
-    tmux resize-pane -D 10
-    tmux split-window -h
-    tmux resize-pane -R 10
-    tmux send-keys -t work.0 "nvim" C-m
-    tmux send-keys -t work.1 $* C-m
-    tmux rename-window -t work "IDE"
-    tmux attach-session -t work
   '';
 
 in {
