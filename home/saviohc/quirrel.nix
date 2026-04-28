@@ -10,7 +10,7 @@
   ]; 
 
   # Change the base16  theme for the host
-  home-cfg.base16 = "gotham";
+  home-cfg.base16 = "da-one-sea";
   # Theme Suggestions
   # atelier-sulphurpool
   # ayu-dark
@@ -30,5 +30,9 @@
 
   home.packages = builtins.attrValues {
     inherit (pkgs) vivaldi;
+  };
+
+  home.shellAliases = {
+    setmon = "xrandr --output HDMI-1-0 --auto --left-of eDP-1";
   };
 }
