@@ -66,8 +66,9 @@ in {
         };
 
       displayManager = lib.mkIf (cfg.environment == "hyprland") {
+        sddm.wayland.enable = cfg.environment == "hyprland";
         sddm.enable = true;
-        defaultSession = "";
+        defaultSession = "hyprland-uwsm";
       } // lib.optionalAttrs (cfg.environment == "awesome") {
           defaultSession = "none+awesome";
       };

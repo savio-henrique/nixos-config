@@ -41,7 +41,7 @@
     ./configuration.nix];
 
   video.enable = true;
-  video.dual = true;
+  video.environment= "hyprland";
 
   oci-config = {
     enable = true;

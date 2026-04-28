@@ -4,9 +4,6 @@
     ./home.nix
     ../common 
     ../common/visual 
-    ../features/awesome
-    ../features/rofi
-    ../features/steam.nix
   ]; 
 
   # Change the base16  theme for the host
@@ -14,11 +11,7 @@
 
   home-cfg.background = "hollow-knight-2.jpg";
   visual.runner = "rofi -show drun";
-  visual.environment = "awesome";
-
-  awesome.brightness = true;
-  awesome.volume = true;
-  awesome.battery = true;
+  visual.environment = "hyprland";
 
   home.packages = builtins.attrValues {
     inherit (pkgs) vivaldi;
