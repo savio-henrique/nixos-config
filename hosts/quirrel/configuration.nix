@@ -21,6 +21,7 @@
   # boot.loader.grub.device = "nodev"; # or "nodev" for efi only
 
   networking.hostName = "quirrel"; # Define your hostname.
+
   # Pick only one of the below networking options.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
   networking.networkmanager.enable = true;  # Easiest to use and most distros use this by default.
@@ -68,6 +69,8 @@
     vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
     lshw
     overskride
+    wireguard-tools
+    networkmanagerapplet
   ];
 
 
@@ -83,6 +86,9 @@
 
   # Open ports in the firewall.
   networking.firewall.allowedTCPPorts = [ 8081 ];
+  networking.firewall.allowedUDPPorts = [ 51820 ];
+  networking.firewall.checkReversePath = false;
+
   # networking.firewall.allowedUDPPorts = [ ... ];
   # Or disable the firewall altogether.
   # networking.firewall.enable = false;
