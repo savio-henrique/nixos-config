@@ -8,6 +8,7 @@ keys:
     - &majora age132qmztydp7l5tn99vz7drn7a6shvkypwaa2z9t234tp63qw65pdqs3ewxt
     - &ohana age1z62pvccq0tpvhq8utknff7tjxez7axuqrapcul8cxta7mz275s3stnuh84
     - &cyrus age1m3fpx29rdt48c5qeyzgnva03374snuuzq5y08ahnltm886u6jvpscxnkyq
+    - &quirrel age1zfj07x8crcv4hjnpn627rs8qnxkq09fjk6pcguq4ju86wte8g3asrffq5s
 
 creation_rules:
   # By host
@@ -35,6 +36,12 @@ creation_rules:
         - *cyrus
         - *saviohc
 
+  - path_regex: hosts/quirrel/secrets.yaml$
+    key_groups:
+      - age:
+        - *quirrel
+        - *saviohc
+
   # Common
   - path_regex: hosts/common/secrets.yaml$
     key_groups:
@@ -43,6 +50,7 @@ creation_rules:
         - *majora
         - *ohana
         - *cyrus
+        - *quirrel
         - *saviohc
   
   # Users
@@ -53,4 +61,5 @@ creation_rules:
         - *majora
         - *ohana
         - *cyrus
+        - *quirrel
         - *saviohc
