@@ -1,4 +1,4 @@
-{ lib, config, pkgs, inputs, ... }:
+{ lib, config, pkgs, inputs, outputs, ... }:
 let
   home-cfg = config.home-cfg;
 in{
@@ -8,7 +8,7 @@ in{
     inputs.sops-nix.homeManagerModules.sops
     ../features/cli
     ../features/nvim
-  ];
+  ]++ (builtins.attrValues outputs.homeManagerModules);
 
   options.home-cfg = {
     base16 = lib.mkOption {

@@ -9,7 +9,6 @@
   # Change the base16  theme for the host
   home-cfg.base16 = "da-one-sea";
 
-  home-cfg.background = "hollow-knight-2.jpg";
   visual.runner = "rofi -show drun";
   visual.environment = "hyprland";
 
@@ -20,4 +19,27 @@
   home.shellAliases = {
     setmon = "xrandr --output HDMI-1-0 --auto --left-of eDP-1";
   };
+
+  monitors = [
+    {
+      name = "eDP-1";
+      width = 1920;
+      height = 1080;
+      workspace = 1;
+      primary = true;
+      refreshRate = 144;
+      scale = 0.95;
+    }
+    {
+      name = "HDMI-A-1";
+      width = 1920;
+      height = 1080;
+      workspace = 2;
+      primary = false;
+      refreshRate = 144;
+      scale = 1.0;
+    }
+  ];
+
+  wallpaper = "${config.home.homeDirectory}/.config/wallpapers/hollow-knight-2.jpg";
 }
