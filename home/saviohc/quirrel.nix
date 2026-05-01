@@ -27,8 +27,8 @@
       height = 1080;
       workspace = 1;
       primary = true;
-      refreshRate = 144;
-      scale = 0.95;
+      refreshRate = 120;
+      scale = 1.0;
     }
     {
       name = "HDMI-A-1";
@@ -36,7 +36,7 @@
       height = 1080;
       workspace = 2;
       primary = false;
-      refreshRate = 144;
+      refreshRate = 60;
       scale = 1.0;
     }
   ];

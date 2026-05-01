@@ -4,6 +4,7 @@ let
 in {
   imports = [
     ./hyprpaper.nix
+    ./binds.nix
   ];
   options.hypr = {
     enable = lib.mkOption {
@@ -20,40 +21,34 @@ in {
     wayland.windowManager.hyprland = {
       enable = true;
       settings = {
-        "$mod" = "SUPER";
+        "$mod" = "ALT_L";
         "$terminal" = "alacritty";
         "$fileManager" = "pcmanfm";
         "$browser" = "brave";
-        bindm = [
-          "$mod, mouse:272, movewindow"
-          "$mod, mouse:273, resizewindow"
-        ];
+
+        # Configure monitors
         monitor = map (m: "${m.name},${
         if m.enabled
         then "${toString m.width}x${toString m.height}@${toString m.refreshRate},${m.position},${toString m.scale}"
         else "disable"
       }") (config.monitors);
+
+        # Configure Binds
+        bindm = [
+          "$mod, mouse:272, movewindow"
+          "$mod, mouse:273, resizewindow"
+        ];
+
         bind = [
           "$mod, RETURN, exec, $terminal"
           "$mod SHIFT, Q, exec, logout"
           "$mod SHIFT, C, killactive"
-          "$mod SHIFT, F, exec, $browser"
+          "$mod CONTROL, F, exec, $browser"
           "$mod, R, exec, ${config.visual.runner}"
-          "$mod, F, exec, $fileManager"
-          "$mod, E, exec, code"
+          "$mod, F, fullscreen"
           "$mod, mouse_up, workspace, e-1"
           "$mod, mouse_down, workspace, e+1"
-        ] ++ (
-        # workspaces
-        # binds $mod + [shift +] {1..9} to [move to] workspace {1..9}
-        builtins.concatLists (builtins.genList (i:
-            let ws = i + 1;
-            in [
-              "$mod, code:1${toString i}, workspace, ${toString ws}"
-              "$mod SHIFT, code:1${toString i}, movetoworkspace, ${toString ws}"
-            ]
-          )
-          9));
+        ];
         exec-once = [
           "waybar"
         ];
