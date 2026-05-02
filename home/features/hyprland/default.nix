@@ -5,6 +5,7 @@ in {
   imports = [
     ./hyprpaper.nix
     ./binds.nix
+    ./hyprlock.nix
   ];
   options.hypr = {
     enable = lib.mkOption {
