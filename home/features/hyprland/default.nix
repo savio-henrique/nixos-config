@@ -26,6 +26,12 @@ in {
         "$fileManager" = "pcmanfm";
         "$browser" = "brave";
 
+        input = {
+          "kb_layout" = "us,br";
+          "kb_variant" = ",thinkpad";
+          "kb_options" = "grp:rctrl_rshift_toggle,caps:escape";
+        };
+
         # Configure monitors
         monitor = map (m: "${m.name},${
         if m.enabled
