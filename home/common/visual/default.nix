@@ -18,11 +18,6 @@ in {
       default = "awesome";
       description = "Choose your window manager environment.";
     };
-    backgroundPath = lib.mkOption {
-      type = lib.types.str;
-      default = "${config.home.homeDirectory}/.config/wallpapers";
-      description = "Background image path.";
-    };
     runner = lib.mkOption {
       type = lib.types.str;
       default = "rofi -show drun";

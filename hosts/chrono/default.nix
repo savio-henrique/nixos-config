@@ -8,8 +8,7 @@
   ];
 
   video.enable = true;
-  video.dual = true;
-  video.environment = "awesome";
+  video.environment = "hyprland";
 
   sops.secrets = {
     # Cloudflare Secrets

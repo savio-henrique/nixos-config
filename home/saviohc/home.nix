@@ -17,12 +17,6 @@ in{
       description = "Base16 color scheme to use.";
       example = "default";
     };
-    background = lib.mkOption {
-      type = lib.types.str;
-      default = "berserk-1.png";
-      description = "Background image.";
-      example = "berserk-1.png";
-    };
   };
 
   config = {

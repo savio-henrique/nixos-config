@@ -16,9 +16,10 @@
     inherit (pkgs) vivaldi;
   };
 
-  home.shellAliases = {
-    setmon = "xrandr --output HDMI-1-0 --auto --left-of eDP-1";
-  };
+  #  Alias for monitor on xrandr
+  # home.shellAliases = {
+  #   setmon = "xrandr --output HDMI-1-0 --auto --left-of eDP-1";
+  # };
 
   monitors = [
     {

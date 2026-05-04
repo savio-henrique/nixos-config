@@ -8,35 +8,34 @@
 
   # Change the base16  theme for the host
   home-cfg.base16 = "uwunicorn";
-  home-cfg.background = "evangelion_1.jpg";
 
-  visual.environment = "awesome";
+  visual.runner = "rofi -show drun";
+  visual.environment = "hyprland";
 
-  home.packages = with pkgs; [
+  home.packages = builtins.attrValues { inherit (pkgs)
     davinci-resolve
     prismlauncher
     calibre
-    jetbrains.phpstorm
     dbeaver-bin
     vivaldi
     element-desktop
     zotero
     bruno
     audacity
-    discord
+    discord;
+  };
+
+  monitors = [
+    {
+      name = "HDMI-0";
+      width = 2560;
+      height = 1080;
+      workspace = 1;
+      primary = true;
+      refreshRate = 75;
+      scale = 1.0;
+    }
   ];
 
-  # Test Later
-  # home.packages = builtins.attrValues { inherit (pkgs)
-  #   davinci-resolve
-  #   prismlauncher
-  #   calibre
-  #   dbeaver-bin
-  #   vivaldi
-  #   element-desktop
-  #   zotero
-  #   bruno
-  #   audacity;
-  #   inherit (pkgs.jetbrains) phpstorm;
-  # };
+  wallpaper = "${config.home.homeDirectory}/.config/wallpapers/evangelion_1.jpg";
 }
