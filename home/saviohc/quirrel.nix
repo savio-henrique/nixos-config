@@ -28,6 +28,7 @@
       height = 1080;
       workspace = 1;
       primary = true;
+      position = "1920x0";
       refreshRate = 120;
       scale = 1.0;
     }
@@ -37,6 +38,7 @@
       height = 1080;
       workspace = 2;
       primary = false;
+      position = "0x0";
       refreshRate = 60;
       scale = 1.0;
     }
