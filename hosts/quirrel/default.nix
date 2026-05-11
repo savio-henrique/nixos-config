@@ -45,9 +45,10 @@
 
   oci-config = {
     enable = true;
-    engine = "docker";
+    engine = "podman";
     rootless = false;
   };
 
   services.tailscale.enable = true;
+  environment.etc.hosts.mode = "0700";
 }

@@ -13,7 +13,7 @@
   visual.environment = "hyprland";
 
   home.packages = builtins.attrValues {
-    inherit (pkgs) vivaldi;
+    inherit (pkgs) vivaldi grayjay;
   };
 
   #  Alias for monitor on xrandr
