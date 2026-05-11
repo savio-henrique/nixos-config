@@ -1,32 +1,12 @@
 {config,port,network}:
 {
-  kaneo_nginx = let 
+  kaneo_core = let
     url= ("http://kaneo.homelab:"+port); 
-    nginxConfig = ''
-      server {
-        listen 80;
-        server_name localhost;
-       
-        location / {
-          proxy_pass http://kaneo_frontend:5173;
-          proxy_set_header Host $host;
-          proxy_set_header X-Real-IP $remote_addr;
-          proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
-        }
-        location /api/ {
-          proxy_pass http://kaneo_backend:1337;
-          proxy_set_header Host $host;
-          proxy_set_header X-Real-IP $remote_addr;
-          proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
-        }
-      }
-    '';
-    configDir = builtins.toFile "kaneo.conf" nginxConfig;
   in {
-    image = "nginx:1.29.2-alpine";
+    image = "ghcr.io/usekaneo/kaneo:2.7.2";
     autoStart = true;
-    ports = [(port +":80")];
-    hostname = "kaneo_nginx";
+    ports = [(port +":5173")];
+    hostname = "kaneo_core";
     labels = {
       "homepage.group" = "Personal";
       "homepage.name" = "Kaneo";
@@ -34,51 +14,28 @@
       "homepage.href" = url;
       "homepage.description" = "Selfhosted Project Management.";
     };
-    volumes = [
-        (configDir + ":/etc/nginx/conf.d/default.conf:ro")
-    ];
-    dependsOn = [ 
-      "kaneo_frontend"
-      "kaneo_backend"
-    ];
-    extraOptions = [
-      "--network=${network}"
-    ];
-  };
-  kaneo_frontend = {
-    image = "ghcr.io/usekaneo/web:2.3.3";
-    autoStart = true;
-    hostname = "kaneo_frontend";
     environmentFiles = [
       config.sops.secrets.kaneo-client-url.path
-      config.sops.secrets.kaneo-api-url.path
-    ];
-    dependsOn = [ "kaneo_backend" ];
-    extraOptions = [
-      "--network=${network}"
-    ];
-  };
-  kaneo_backend = {
-    image = "ghcr.io/usekaneo/api:2.3.3";
-    autoStart = true;
-    hostname = "kaneo_backend";
-    environment = {
-      SMTP_REQUIRE_TLS = "false";
-    };
-    environmentFiles = [
       config.sops.secrets.kaneo-jwt.path
       config.sops.secrets.kaneo-db-url.path
       config.sops.secrets.kaneo-github-client-id.path
       config.sops.secrets.kaneo-github-client-secret.path
-      config.sops.secrets.kaneo-client-url.path
-      config.sops.secrets.kaneo-api-url.path
+      config.sops.secrets.kaneo-github-app-id.path
+      config.sops.secrets.kaneo-github-webhook-secret.path
+      config.sops.secrets.kaneo-github-private-key.path
+      config.sops.secrets.kaneo-github-app-name.path
       config.sops.secrets.kaneo-smtp-host.path
       config.sops.secrets.kaneo-smtp-port.path
       config.sops.secrets.kaneo-smtp-secure.path
       config.sops.secrets.kaneo-smtp-user.path
-      config.sops.secrets.kaneo-smtp-password.path
       config.sops.secrets.kaneo-smtp-from-email.path
+      config.sops.secrets.kaneo-smtp-password.path
+      config.sops.secrets.kaneo-smtp-require-tls.path
     ];
+    environment = {
+      DISABLE_GUEST_ACCESS = "true";
+      DISABLE_REGISTRATION = "false";
+    };
     dependsOn = [ "kaneo_db" ];
     extraOptions = [
       "--network=${network}"

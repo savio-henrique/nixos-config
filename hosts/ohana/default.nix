@@ -95,11 +95,23 @@
       sopsFile = ../common/secrets.yaml;
       group = "www-data";
     };
-    kaneo-client-url = {
+    kaneo-github-app-id = {
       sopsFile = ../common/secrets.yaml;
       group = "www-data";
     };
-    kaneo-api-url = {
+    kaneo-github-webhook-secret = {
+      sopsFile = ../common/secrets.yaml;
+      group = "www-data";
+    };
+    kaneo-github-private-key = {
+      sopsFile = ../common/secrets.yaml;
+      group = "www-data";
+    };
+    kaneo-github-app-name = {
+      sopsFile = ../common/secrets.yaml;
+      group = "www-data";
+    };
+    kaneo-client-url = {
       sopsFile = ../common/secrets.yaml;
       group = "www-data";
     };
@@ -124,6 +136,10 @@
       group = "www-data";
     };
     kaneo-smtp-from-email = {
+      sopsFile = ../common/secrets.yaml;
+      group = "www-data";
+    };
+    kaneo-smtp-require-tls = {
       sopsFile = ../common/secrets.yaml;
       group = "www-data";
     };

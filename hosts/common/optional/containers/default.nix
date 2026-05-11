@@ -320,9 +320,7 @@ in {
       }
         # Kaneo
       // lib.optionalAttrs (oci-config.kaneo.enable) {
-        kaneo_nginx = kaneo.kaneo_nginx;
-        kaneo_frontend = kaneo.kaneo_frontend;
-        kaneo_backend = kaneo.kaneo_backend;
+        kaneo_core = kaneo.kaneo_core;
         kaneo_db = kaneo.kaneo_db;
       }
         # Minecraft
