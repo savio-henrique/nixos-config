@@ -30,7 +30,7 @@ in {
         input = {
           "kb_layout" = "us,br";
           "kb_variant" = ",thinkpad";
-          "kb_options" = "grp:rctrl_rshift_toggle,caps:escape";
+          "kb_options" = "grp:menu_toggle,caps:escape";
         };
 
         # Configure monitors

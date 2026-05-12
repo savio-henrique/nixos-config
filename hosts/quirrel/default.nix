@@ -49,6 +49,26 @@
     rootless = false;
   };
 
+  # Keyboard Remap Config
+  services.xremap = {
+    enable = true;
+    userName = "saviohc";
+    withHypr = true;
+    config = {
+      modmap = [
+        {
+          name = "default";
+          remap = {
+            "KEY_RIGHTSHIFT" = "KEY_BACKSPACE";
+            "SHIFT_R" = "BACKSPACE";
+          };
+          mode = "default";
+        }
+      ];
+      default_mode = "default";
+    };
+  };
+
   services.tailscale.enable = true;
   environment.etc.hosts.mode = "0700";
 }
