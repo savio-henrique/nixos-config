@@ -3,7 +3,7 @@ let
   visual = config.visual;
 in {
   imports = [
-    ./gtk.nix
+    ./stylix.nix
     ../../features/awesome
     ../../features/rofi
     ../../features/hyprland
@@ -32,6 +32,8 @@ in {
     hypr = lib.mkIf (visual.environment == "hyprland") {
       enable = true;
     };
+
+    gtk.gtk4.enable = false;
 
 
     home.packages = with pkgs; [

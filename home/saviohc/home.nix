@@ -1,32 +1,19 @@
 { lib, config, pkgs, inputs, outputs, ... }:
-let
-  home-cfg = config.home-cfg;
-in{
+{
   # Imports
   imports = [
-    inputs.nix-colors.homeManagerModules.default
     inputs.sops-nix.homeManagerModules.sops
+    inputs.stylix.homeModules.stylix
     ../features/cli
     ../features/nvim
   ]++ (builtins.attrValues outputs.homeManagerModules);
-
-  options.home-cfg = {
-    base16 = lib.mkOption {
-      type = lib.types.str;
-      default = "twilight";
-      description = "Base16 color scheme to use.";
-      example = "default";
-    };
-  };
 
   config = {
 
     nvim = {
       enable = true;
-      base16 = home-cfg.base16;
+      base16 = config.colorscheme;
     };
-
-    colorScheme = inputs.nix-colors.colorSchemes."${home-cfg.base16}";
 
     home.file = {
       ".config/wallpapers" = {

@@ -3,7 +3,6 @@ let
   cfg = config.hypr; 
 in {
   imports = [
-    ./hyprpaper.nix
     ./binds.nix
     ./hyprlock.nix
   ];
@@ -21,6 +20,7 @@ in {
 
     wayland.windowManager.hyprland = {
       enable = true;
+      configType = "lua";
       settings = {
         "$mod" = "ALT_L";
         "$terminal" = "alacritty";

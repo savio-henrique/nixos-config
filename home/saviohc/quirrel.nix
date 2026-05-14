@@ -7,7 +7,7 @@
   ]; 
 
   # Change the base16  theme for the host
-  home-cfg.base16 = "da-one-sea";
+  colorscheme = "da-one-sea";
 
   visual.runner = "rofi -show drun";
   visual.environment = "hyprland";

@@ -19,7 +19,10 @@
 
     nix-minecraft.url = "github:Infinidoge/nix-minecraft";
     
-    nix-colors.url = "github:misterio77/nix-colors";
+    stylix = {
+      url = "github:nix-community/stylix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs = {self, home-manager, nixpkgs, ... }@inputs:

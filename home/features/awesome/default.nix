@@ -99,10 +99,10 @@ in {
           [ "${requires}" "${definitions}" "${bindings}" "${config.visual.runner}" ]
           "${text}";
       # Palette
-        palette = config.colorScheme.palette;
+        palette = config.lib.stylix.colors;
         theme = builtins.replaceStrings
           [ "--BACKGROUND" ]
-          [ "${config.home-cfg.background}" ]
+          [ "${config.wallpaper}" ]
           "${th}";
       in {
 

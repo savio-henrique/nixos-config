@@ -33,7 +33,7 @@
     ];
 
     # Packages from Home-manager
-    packages = [ inputs.home-manager.packages.${pkgs.system}.default ];
+    packages = [ inputs.home-manager.packages.${pkgs.stdenv.hostPlatform.system}.default ];
   };
 
   sops.secrets.saviohc-password = {

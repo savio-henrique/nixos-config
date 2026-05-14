@@ -4,7 +4,7 @@
     rofi
   ];
 
-  home.file = with config.colorScheme.palette; {
+  home.file = with config.lib.stylix.colors; {
     ".config/rofi" = {
       source = ./config;
       recursive = true;

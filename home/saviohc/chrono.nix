@@ -7,7 +7,7 @@
   ]; 
 
   # Change the base16  theme for the host
-  home-cfg.base16 = "uwunicorn";
+  colorscheme = "uwunicorn";
 
   visual.runner = "rofi -show drun";
   visual.environment = "hyprland";
@@ -22,6 +22,8 @@
     zotero
     bruno
     audacity
+    devenv
+    vscode
     discord;
   };
 
@@ -37,5 +39,6 @@
     }
   ];
 
-  wallpaper = "${config.home.homeDirectory}/.config/wallpapers/evangelion_1.jpg";
+  wallpaper = "evangelion_1.jpg";
+  wallpaperPath = "${config.home.homeDirectory}/.config/wallpapers/${config.wallpaper}";
 }

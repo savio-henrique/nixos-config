@@ -4,12 +4,7 @@
     vesktop
   ];
 
-  home.file = with config.colorScheme.palette; {
-    ".config/vesktop/settings.json" = {
-      target = ".config/vesktop/settings.json";
-      source = ./config/settings.json;
-    };
-
+  home.file = with config.lib.stylix.colors; {
     ".config/vesktop/settings" = {
       source = ./config/settings;
       recursive = true;

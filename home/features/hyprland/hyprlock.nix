@@ -1,5 +1,7 @@
 {config, lib, ...}: {
-  programs.hyprlock = {
+  programs.hyprlock = let 
+    color = config.lib.stylix.colors.base06; 
+  in {
     enable = true;
     settings = {
       general = {
@@ -26,7 +28,7 @@
         size = "800, 90";
         dots_size = toString (0.25 * monitor.scale);
         placeholder_text = "";
-        font_color = "rgb(${config.colorScheme.palette.base06})";
+        font_color = "rgb(${color})";
         position = "0, -20%";
         # $FAIL is moves to another label
         fail_text = "";
@@ -40,14 +42,14 @@
         {
           monitor = monitor.name;
           text = "$TIME";
-          color = "rgb(${config.colorScheme.palette.base06})";
+          color = "rgb(${color})";
           font_size = toString (builtins.floor (140 * monitor.scale));
           position = "0 0";
         }
         {
           monitor = monitor.name;
           text = "$FAIL";
-          color = "rgb(${config.colorScheme.palette.base06})";
+          color = "rgb(${color})";
           font_size = toString (builtins.floor (18 * monitor.scale));
           position = "0, -40%";
         }

@@ -131,14 +131,16 @@ in {
   # Git configs
   programs.git = {
     enable = true;
-    userName = "Sávio Henrique";
-    userEmail = "savio.c.mendes@gmail.com";
+    settings = {
+      user = {
+        name = "Sávio Henrique";
+        email = "savio.c.mendes@gmail.com";
+      };
 
-    aliases = {
-      remotes = "remote -v";
-    };
-  
-    extraConfig = {
+      alias = {
+        remotes = "remote -v";
+      };
+    
       color.ui = true;
       core.askPass = "";
       github.user = "savio-henrique";

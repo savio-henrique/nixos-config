@@ -17,7 +17,7 @@
         blur = true;
         padding = { x = 3; y = 3;};
       };
-      colors = with config.colorScheme.palette; {
+      colors = with config.lib.stylix.colors; {
         bright = {
           black = "0x${base00}";
           blue = "0x${base0D}";

@@ -8,8 +8,8 @@
     htop
     curl
     unzip
-    neofetch
-    xorg.xev
+    fastfetch
+    xev
     fwupd
     tree
     wget

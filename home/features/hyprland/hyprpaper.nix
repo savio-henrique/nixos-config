@@ -5,11 +5,11 @@
       ipc = true;
       splash = false;
       preload = [
-        "${config.wallpaper}"
+        "${config.wallpaperPath}"
       ];
       wallpaper = {
         monitor = ""; # All monitors
-        path = "${config.wallpaper}";
+        path = "${config.wallpaperPath}";
       };
     };
   };

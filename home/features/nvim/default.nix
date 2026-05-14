@@ -38,9 +38,11 @@ in {
       viAlias = true;
       vimAlias = true;
       vimdiffAlias = true;
+      withRuby = false;
+      withPython3 = false;
       
       # Lua configs
-      extraLuaConfig = ''
+      initLua = ''
         ${builtins.readFile ./config/keymaps.lua}
         ${builtins.readFile ./config/options.lua}
         function ColorMyVim(color)
@@ -54,7 +56,6 @@ in {
 
       # Plugin configs
       extraPackages = with pkgs; [
-        nodePackages.typescript-language-server
         docker-compose-language-service
         vscode-langservers-extracted
         lua-language-server
@@ -164,30 +165,32 @@ in {
         }
 
         {
-          plugin = (pkg.nvim-treesitter.withPlugins (p : [
-            p.tree-sitter-nix
-            p.tree-sitter-vim
-            p.tree-sitter-bash
-            p.tree-sitter-lua
-            p.tree-sitter-python
-            p.tree-sitter-json
-            p.tree-sitter-css
-            p.tree-sitter-yaml
-            p.tree-sitter-html
-            p.tree-sitter-markdown
-            p.tree-sitter-tsx
-            p.tree-sitter-typescript
-            p.tree-sitter-javascript
-            p.tree-sitter-dockerfile
-            p.tree-sitter-php
-          ]));
+          # plugin = builtins.attrValuespkg.nvim-treesitter-parsers (p : [
+          #   p.nix
+          #   p.vim
+          #   p.bash
+          #   p.lua
+          #   p.python
+          #   p.json
+          #   p.css
+          #   p.yaml
+          #   p.html
+          #   p.markdown
+          #   p.tsx
+          #   p.typescript
+          #   p.javascript
+          #   p.dockerfile
+          #   p.php
+          # ]));
+          plugin = pkg.nvim-treesitter;
           type = "lua";
           config = "${builtins.readFile ./config/plugin/treesitter.lua}";
         }
 
         {
           plugin = pkg.base16-nvim;
-          config = "colorscheme base16-${theme}";
+          type = "lua";
+          config = "vim.cmd.colorscheme(base16-${theme})";
         }
       ];
     };
