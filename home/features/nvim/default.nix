@@ -190,7 +190,7 @@ in {
         {
           plugin = pkg.base16-nvim;
           type = "lua";
-          config = "vim.cmd.colorscheme(base16-${theme})";
+          config = "vim.cmd.colorscheme('base16-${theme}')";
         }
       ];
     };

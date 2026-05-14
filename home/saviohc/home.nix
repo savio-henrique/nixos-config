@@ -7,6 +7,11 @@
     ../features/cli
     ../features/nvim
   ]++ (builtins.attrValues outputs.homeManagerModules);
+  # disabledModules = [
+  #   "${inputs.stylix}/modules/waybar/hm.nix"
+  #   "${inputs.stylix}/modules/hyprland/hm.nix"
+  #   "${inputs.stylix}/modules/hyprlock/hm.nix"
+  # ];
 
   config = {
 

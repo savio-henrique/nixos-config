@@ -6,12 +6,11 @@
     image= ./../.. + "/${config.home.username}" + "/wallpapers/${config.wallpaper}";
     targets = {
 	alacritty.enable = false;
-	hyprlock.enable = false;
-    hyprland.enable = false;
 	neovim.enable = false;
 	gtk.enable = true;
     rofi.enable = false;
     tmux.enable = false;
+    hyprlock.enable = false;
     vscode.enable = false;
     };
   };

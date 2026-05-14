@@ -20,7 +20,7 @@ in {
 
     wayland.windowManager.hyprland = {
       enable = true;
-      configType = "lua";
+      configType = "hyprlang";
       settings = {
         "$mod" = "ALT_L";
         "$terminal" = "alacritty";
