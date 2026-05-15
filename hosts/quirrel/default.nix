@@ -45,7 +45,7 @@
 
   oci-config = {
     enable = true;
-    engine = "podman";
+    engine = "docker";
     rootless = false;
   };
 

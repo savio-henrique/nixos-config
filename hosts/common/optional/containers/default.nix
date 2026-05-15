@@ -264,6 +264,10 @@ in {
       };
     };
 
+    environment.systemPackages = lib.mkIf (oci-config.engine=="podman") [
+      pkgs.podman-compose
+    ];
+
     virtualisation.oci-containers = {
       backend = oci-config.engine;
       containers = let

@@ -18,10 +18,19 @@ in {
     home.sessionVariables.NIXOS_OZONE_WL = "1";
     programs.waybar.enable = true;
 
+    home.packages = [
+      pkgs.grim
+      pkgs.swappy
+      pkgs.slurp
+      pkgs.wl-clipboard
+    ];
+
     wayland.windowManager.hyprland = {
       enable = true;
       configType = "hyprlang";
-      settings = {
+      settings = let
+        screenshot = "grim -g \"$(slurp)\" - | wl-copy";
+        in {
         "$mod" = "ALT_L";
         "$terminal" = "alacritty";
         "$fileManager" = "pcmanfm";
@@ -55,6 +64,7 @@ in {
           "$mod, F, fullscreen"
           "$mod, mouse_up, workspace, e-1"
           "$mod, mouse_down, workspace, e+1"
+          "$mod, P, exec, ${screenshot}"
         ];
         exec-once = [
           "waybar"

@@ -43,6 +43,6 @@
       scale = 1.0;
     }
   ];
-
-  wallpaper = "${config.home.homeDirectory}/.config/wallpapers/hollow-knight-2.jpg";
+  wallpaper = "hollow-knight-2.jpg";
+  wallpaperPath = "${config.home.homeDirectory}/.config/wallpapers/${config.wallpaper}";
 }
