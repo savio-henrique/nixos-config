@@ -62,4 +62,5 @@
     pi-hole.enable = true;
   };
 
+  services.tailscale.enable = true;
 }

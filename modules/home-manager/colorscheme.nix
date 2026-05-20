@@ -2,8 +2,8 @@
   inherit (lib) types mkOption;
 in {
   options.colorscheme = mkOption {
-    type = types.nullOr types.str;
-    default = null;
+    type = types.str;
+    default = "twilight";
     description = ''
       Base16 Colorscheme Name
     '';
