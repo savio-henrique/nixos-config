@@ -29,6 +29,7 @@ in {
       pkgs.nerd-fonts.fira-code
       pkgs.nerd-fonts.symbols-only
       pkgs.nerd-fonts.roboto-mono
+      pkgs.tree-sitter
     ];
 
     # Neovim Config
@@ -165,26 +166,8 @@ in {
         }
 
         {
-          # plugin = builtins.attrValuespkg.nvim-treesitter-parsers (p : [
-          #   p.nix
-          #   p.vim
-          #   p.bash
-          #   p.lua
-          #   p.python
-          #   p.json
-          #   p.css
-          #   p.yaml
-          #   p.html
-          #   p.markdown
-          #   p.tsx
-          #   p.typescript
-          #   p.javascript
-          #   p.dockerfile
-          #   p.php
-          # ]));
-          plugin = pkg.nvim-treesitter;
+          plugin = pkg.nvim-treesitter.withAllGrammars;
           type = "lua";
-          config = "${builtins.readFile ./config/plugin/treesitter.lua}";
         }
 
         {
