@@ -12,8 +12,11 @@
   visual.runner = "rofi -show drun";
   visual.environment = "hyprland";
 
-  home.packages = builtins.attrValues {
-    inherit (pkgs) vivaldi grayjay;
+  home.packages = builtins.attrValues { inherit (pkgs)
+    vivaldi
+    grayjay
+    devenv
+    vscode;
   };
 
   #  Alias for monitor on xrandr

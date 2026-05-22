@@ -8,7 +8,6 @@ in {
     ../../features/rofi
     ../../features/hyprland
     ../../features/alacritty.nix
-    ../../features/vesktop
     ../../features/obs
   ];
 
