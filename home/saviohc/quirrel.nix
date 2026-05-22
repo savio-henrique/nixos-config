@@ -39,7 +39,7 @@
       workspace = 2;
       primary = false;
       position = "0x0";
-      refreshRate = 60;
+      refreshRate = 100;
       scale = 1.0;
     }
   ];
