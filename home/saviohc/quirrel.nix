@@ -14,7 +14,6 @@
 
   home.packages = builtins.attrValues { inherit (pkgs)
     vivaldi
-    grayjay
     devenv
     vscode;
   };

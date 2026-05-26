@@ -34,16 +34,16 @@
         "$mod SHIFT,q,killactive"
         "$mod SHIFT,e,exit"
 
-        "$mod ,s,togglesplit"
+        "$mod ,s,layoutmsg, togglesplit"
         "$mod ,f,fullscreen,1"
         "$mod SHIFT,f,fullscreen,0"
         "$mod SHIFT,space,togglefloating"
 
-        "$mod ,minus,splitratio,-0.25"
-        "$mod SHIFT,minus,splitratio,-0.3333333"
+        "$mod ,minus,layoutmsg, mfact -0.25"
+        "$mod SHIFT,minus,layoutmsg,mfact -0.3333333"
 
-        "$mod ,equal,splitratio,0.25"
-        "$mod SHIFT,equal,splitratio,0.3333333"
+        "$mod ,equal,layoutmsg, mfact exact 0.25"
+        "$mod SHIFT,equal,layoutmsg, mfact exact 0.3333333"
 
         "$mod ,g,togglegroup"
         "$mod ,t,lockactivegroup,toggle"

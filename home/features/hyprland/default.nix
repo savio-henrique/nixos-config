@@ -71,9 +71,6 @@ in {
           "hyprpaper"
         ];
       };
-      plugins = [
-        pkgs.hyprlandPlugins.hyprsplit
-      ];
     };
   };
 }
