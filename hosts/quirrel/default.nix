@@ -38,6 +38,7 @@
     ../common/optional/video.nix
     ../common/optional/prime.nix
     ../common/optional/containers
+    ../common/optional/kubernetes
     ./configuration.nix];
 
   video.enable = true;
@@ -47,6 +48,11 @@
     enable = true;
     engine = "docker";
     rootless = false;
+  };
+
+  kubernetes = {
+    enable = true;
+    distro = "kind";
   };
 
   # Keyboard Remap Config
