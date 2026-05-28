@@ -24,6 +24,7 @@
     audacity
     devenv
     vscode
+    obsidian
     discord;
   };
 

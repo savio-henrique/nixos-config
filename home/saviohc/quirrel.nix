@@ -15,6 +15,7 @@
   home.packages = builtins.attrValues { inherit (pkgs)
     vivaldi
     devenv
+    obsidian
     vscode;
   };
 
