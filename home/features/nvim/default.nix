@@ -72,6 +72,25 @@ in {
       plugins = let
         pkg = pkgs.vimPlugins;
         theme = nvim.base16;
+        liveserver = pkgs.vimUtils.buildVimPlugin {
+          name = "live-server-nvim";
+          src = pkgs.fetchFromGitHub {
+            owner = "selimacerbas";
+            repo = "live-server.nvim";
+            rev = "85915d0e7dd926a54b0082aaeafc10a82bfe8288";
+            hash = "sha256-Z+BmQ9vSugX0qRpRvT+hniDuegvVDZbF0EsTW+0/R0w=";
+          };
+        };
+        preview = pkgs.vimUtils.buildVimPlugin {
+          name = "mermaid-preview-nvim";
+          dependencies = [ liveserver ];
+          src = pkgs.fetchFromGitHub {
+            owner = "selimacerbas";
+            repo = "markdown-preview.nvim";
+            rev = "545cf3bc6c6425b33a9b25acef54f66e4035ca0f";
+            hash = "sha256-SHsbgWoYz9rbL57RS2eAs1kfY4UMzsX8Fh8ZyEVnxkM=";
+          };
+        };
       in [
         pkg.neodev-nvim
         pkg.cmp_luasnip
@@ -83,7 +102,6 @@ in {
 
         pkg.nvim-web-devicons
 
-        pkg.markdown-preview-nvim
         pkg.copilot-cmp
         pkg.vim-tmux-navigator
 
@@ -168,6 +186,18 @@ in {
         {
           plugin = pkg.nvim-treesitter.withAllGrammars;
           type = "lua";
+        }
+
+        {
+          plugin = liveserver;
+          type = "lua";
+          config = "require('live_server').setup({ default_port = 8080, live_reload = { enabled = true, inject_script = true, debounce = 120, css_inject = true}, directory_listing = { enabled = true, show_hidden = false }})";
+        }
+
+        {
+          plugin = preview;
+          type = "lua";
+          config = "require('markdown_preview').setup({ default_theme = \"dark\"})";
         }
 
         {
