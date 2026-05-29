@@ -1,4 +1,4 @@
-{ pkgs, config, ... }: 
+{ inputs, pkgs, config, ... }: 
 { 
   imports = [ 
     ./home.nix
@@ -17,7 +17,9 @@
     devenv
     obsidian
     vscode;
-  };
+  } ++ [ 
+    inputs.zen-browser.packages.${pkgs.stdenv.hostPlatform.system}.default
+  ];
 
   #  Alias for monitor on xrandr
   # home.shellAliases = {
