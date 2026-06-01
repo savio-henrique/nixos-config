@@ -34,7 +34,7 @@ in {
         "$mod" = "ALT_L";
         "$terminal" = "alacritty";
         "$fileManager" = "pcmanfm";
-        "$browser" = "brave";
+        "$browser" = "zen";
 
         input = {
           "kb_layout" = "us,br";

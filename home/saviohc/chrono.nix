@@ -1,4 +1,4 @@
-{pkgs, config, ... }: 
+{ inputs, pkgs, config, ... }: 
 { 
   imports = [ 
     ./home.nix
@@ -26,7 +26,9 @@
     vscode
     obsidian
     discord;
-  };
+  } ++ [ 
+    inputs.zen-browser.packages.${pkgs.stdenv.hostPlatform.system}.default
+  ];
 
   monitors = [
     {
