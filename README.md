@@ -50,4 +50,16 @@ Utilizing the SaschaKoenig's [Nixos Config Playlist](https://www.youtube.com/wat
   * Prometheus (WIP)
 ---
 
+## :gear: Installation Commands
+
+Rebuild machine:
+```bash
+sudo nixos-rebuild switch --flake .#<hostname> --show-trace
+```
+
+Rebuild machine via SSH:
+```bash
+nixos-rebuild switch --flake .#<hostname> --show-trace --target-host <user>@<hostname> --sudo --ask-sudo-password --show-trace
+```
+
 *See my next additions and changes on [WIP.md](./WIP.md)*
