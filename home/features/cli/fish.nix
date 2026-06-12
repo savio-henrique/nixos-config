@@ -32,6 +32,35 @@ in {
     # shellInit = ''
     #   echo -e "\033[4;35m'Nenhum cidadão tem o direito de ser um amador em matéria de treinamento físico. Que desgraça é para o homem envelhecer sem nunca ver a beleza e a força do que o seu corpo é capaz.'\033[0m \033[1;35m- \033[1;95m Sócrates";
     #   '';
+    functions = {
+      is_nix_shell = {
+        body = ''
+          set in_nix_shell "$(echo $PATH | awk '{i=1; while($i ~ /store/){ if($i !~ /(-man|-doc)\//){print $i} i++ }}' | cut -d'-' -f2- | rev | cut -d'-' -f2- | rev | tr '\n' ' ')"
+          if test $in_nix_shell != ""
+            echo -n "(nix-shell)"
+          end
+        '';
+      };
+      git_prompt_info = {
+        body = ''
+        set -l branch (git rev-parse --abbrev-ref HEAD 2> /dev/null)
+        if [ -n "$branch" ]
+          echo -n "($branch)"
+        end
+        '';
+      };
+      fish_prompt = {
+        body = ''
+          set -l last_status $status
+          set -l stat
+          if test $last_status -ne 0
+            set stat (set_color red)"[$last_status]"(set_color normal)
+          end
+
+          string join "" -- (set_color blue) (is_nix_shell) (set_color green) (whoami) '@' (set_color white) (hostname -s) (set_color green) ' ' (prompt_pwd) ' ' (set_color normal) (git_prompt_info) (set_color normal) $stat '> '
+        '';
+      };
+    };
   };
 
   home.packages = [
