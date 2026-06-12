@@ -166,5 +166,6 @@ in {
     gr = "git restore";
     grs = "git restore --staged";
     gch = "git checkout";
+    gsw = "git switch";
   };
 }
