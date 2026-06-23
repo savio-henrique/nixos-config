@@ -5,6 +5,10 @@
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
     nixpkgs-stable.url = "github:nixos/nixpkgs/nixos-26.05";
 
+    preservation.url = "github:nix-community/preservation";
+    disko.url = "github:nix-community/disko";
+    disko.inputs.nixpkgs.follows = "nixpkgs";
+
     sops-nix = {
       url = "github:mic92/sops-nix";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -70,6 +74,8 @@
         cyrus = nixpkgs.lib.nixosSystem {
           specialArgs = {inherit inputs outputs;};
           modules = [
+            ./hosts/common/optional/disko.nix
+            ./hosts/common/optional/preservation.nix
             ./hosts/cyrus
           ];
         };
