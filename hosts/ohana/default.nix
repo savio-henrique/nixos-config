@@ -176,6 +176,10 @@
       sopsFile = ../common/secrets.yaml;
       group = "www-data";
     };
+    copyparty-group = {
+      sopsFile = ../common/secrets.yaml;
+      group = "www-data";
+    };
   };
 
   oci-config = {

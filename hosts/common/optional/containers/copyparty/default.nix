@@ -20,6 +20,7 @@
       (configDir + ":/cfg/copyparty.conf:z")
       (dir + ":/w:z")
       (config.sops.secrets.copyparty-user.path + ":/etc/copyparty/users:ro,z")
+      (config.sops.secrets.copyparty-group.path + ":/etc/copyparty/groups:ro,z")
     ];
     environment = {
       LD_PRELOAD = "/usr/lib/libmimalloc-secure.so.2";
