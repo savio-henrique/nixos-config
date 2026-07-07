@@ -189,18 +189,6 @@ in {
         }
 
         {
-          plugin = liveserver;
-          type = "lua";
-          config = "require('live_server').setup({ default_port = 8080, live_reload = { enabled = true, inject_script = true, debounce = 120, css_inject = true}, directory_listing = { enabled = true, show_hidden = false }})";
-        }
-
-        {
-          plugin = preview;
-          type = "lua";
-          config = "require('markdown_preview').setup({ default_theme = \"dark\"})";
-        }
-
-        {
           plugin = pkg.base16-nvim;
           type = "lua";
           config = "vim.cmd.colorscheme('base16-${theme}')";
