@@ -39,6 +39,7 @@
     ../common/optional/prime.nix
     ../common/optional/containers
     ../common/optional/kubernetes
+    ../common/optional/incus
     ./configuration.nix];
 
   video.enable = true;
@@ -54,6 +55,8 @@
     enable = true;
     distro = "kind";
   };
+  
+  incus.enable = true;
 
   # Keyboard Remap Config
   services.xremap = {

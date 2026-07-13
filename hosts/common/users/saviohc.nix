@@ -13,6 +13,7 @@
       "wheel"
       "networkmanager"
       "www-data"
+      "incus-admin"
       "minecraft"
       "docker"
       "libvirtd"
