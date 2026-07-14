@@ -62,4 +62,17 @@ Rebuild machine via SSH:
 nixos-rebuild switch --flake .#<hostname> --show-trace --target-host <user>@<hostname> --sudo --ask-sudo-password --show-trace
 ```
 
+Create VM from flake:
+```bash
+nix build .#nixosConfigurations.vm.config.system.build.metadata --print-out-paths --no-link 
+nix build .#nixosConfigurations.vm.config.system.build.qemuImage --print-out-paths --no-link 
+
+# If using Incus:
+incus image import --alias <name-of-image> <path-to-metadata>/tarball/<metadata-file> <path-to-qemu-image>/nixos.qcow2
+
+# Incus single command:
+incus image import --alias <name-of-image> $(nix build .#nixosConfigurations.vm.config.system.build.metadata --print-out-paths --no-link)/tarball/<metadata-file> $(nix build .#nixosConfigurations.vm.config.system.build.qemuImage --print-out-paths --no-link)/nixos.qcow2
+```
+
+
 *See my next additions and changes on [WIP.md](./WIP.md)*
