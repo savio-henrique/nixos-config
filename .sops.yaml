@@ -9,6 +9,7 @@ keys:
     - &ohana age1z62pvccq0tpvhq8utknff7tjxez7axuqrapcul8cxta7mz275s3stnuh84
     - &cyrus age1m3fpx29rdt48c5qeyzgnva03374snuuzq5y08ahnltm886u6jvpscxnkyq
     - &quirrel age1dlxv0k8xzd3w03jgxe82xuv6ck8cxhkvv4vdqff09qreu5yfs4dqdus6kw
+    - &vms age1edgjtahn8ue9m66u67rcwu7kg9k7fhe5x5m0khtjdqc2xu84yvsq537d5n
 
 creation_rules:
   # By host
@@ -40,6 +41,12 @@ creation_rules:
     key_groups:
       - age:
         - *quirrel
+        - *saviohc
+
+  - path_regex: hosts/vms/secrets.yaml$
+    key_groups:
+      - age:
+        - *vms
         - *saviohc
 
   # Common

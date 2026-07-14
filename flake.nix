@@ -97,6 +97,15 @@
             ./hosts/common/optional/video.nix
           ];
         };
+
+        # Vm Testing
+        vm = nixpkgs.lib.nixosSystem {
+          specialArgs = {inherit inputs outputs;};
+          modules = [
+            "${inputs.nixpkgs}/nixos/modules/virtualisation/incus-virtual-machine.nix"
+            ./hosts/vms/databasevm.nix
+          ];
+        };
       };
       homeConfigurations = {
         "saviohc@chrono" = home-manager.lib.homeManagerConfiguration {
