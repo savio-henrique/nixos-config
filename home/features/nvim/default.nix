@@ -81,16 +81,6 @@ in {
             hash = "sha256-Z+BmQ9vSugX0qRpRvT+hniDuegvVDZbF0EsTW+0/R0w=";
           };
         };
-        preview = pkgs.vimUtils.buildVimPlugin {
-          name = "mermaid-preview-nvim";
-          dependencies = [ liveserver ];
-          src = pkgs.fetchFromGitHub {
-            owner = "selimacerbas";
-            repo = "markdown-preview.nvim";
-            rev = "545cf3bc6c6425b33a9b25acef54f66e4035ca0f";
-            hash = "sha256-SHsbgWoYz9rbL57RS2eAs1kfY4UMzsX8Fh8ZyEVnxkM=";
-          };
-        };
       in [
         pkg.neodev-nvim
         pkg.cmp_luasnip
@@ -101,6 +91,7 @@ in {
         pkg.vim-jsx-typescript
 
         pkg.nvim-web-devicons
+        pkg.markview-nvim
 
         pkg.copilot-cmp
         pkg.vim-tmux-navigator
