@@ -69,8 +69,10 @@ nix build .#nixosConfigurations.vm.config.system.build.qemuImage --print-out-pat
 
 # If using Incus:
 incus image import --alias <name-of-image> <path-to-metadata>/tarball/<metadata-file> <path-to-qemu-image>/nixos.qcow2
+```
 
-# Incus single command:
+Incus Single command:
+```bash
 incus image import --alias <name-of-image> $(nix build .#nixosConfigurations.vm.config.system.build.metadata --print-out-paths --no-link)/tarball/<metadata-file> $(nix build .#nixosConfigurations.vm.config.system.build.qemuImage --print-out-paths --no-link)/nixos.qcow2
 ```
 
