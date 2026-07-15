@@ -172,11 +172,23 @@
       sopsFile = ../common/secrets.yaml;
       group = "www-data";
     };
+
+    # Copyparty Secrets
     copyparty-user = {
       sopsFile = ../common/secrets.yaml;
       group = "www-data";
     };
     copyparty-group = {
+      sopsFile = ../common/secrets.yaml;
+      group = "www-data";
+    };
+
+    # Forgejo Secrets
+    forgejo-db-password = {
+      sopsFile = ../common/secrets.yaml;
+      group = "www-data";
+    };
+    forgejo-password = {
       sopsFile = ../common/secrets.yaml;
       group = "www-data";
     };
@@ -233,6 +245,11 @@
     minecraft = {
       enable = false;
       port = 25565;
+    };
+    forgejo = {
+      enable = true;
+      port = 3032;
+      dir = "/home/saviohc/forgejo-data";
     };
   };
 

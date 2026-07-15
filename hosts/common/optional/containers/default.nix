@@ -229,6 +229,23 @@ in {
       };
     };
 
+    forgejo = {
+      enable = lib.mkOption {
+        default = false;
+        type = lib.types.bool;
+        description = "Enable Forgejo";
+      };
+      port = lib.mkOption {
+        default = 3000;
+        type = lib.types.int;
+        description = "Port for Forgejo";
+      };
+      dir = lib.mkOption {
+        default = "/var/lib/copyparty";
+        type = lib.types.path;
+        description = "Directory for Forgejo data";
+      };
+    };
   };
 
   config = lib.mkIf oci-config.enable {
@@ -285,6 +302,7 @@ in {
         uptime-kuma = (import ./uptime-kuma.nix {inherit config; port = builtins.toString oci-config.uptime-kuma.port; network = oci-config.network;});
         miniflux = (import ./miniflux.nix {inherit config; port = builtins.toString oci-config.miniflux.port; network = oci-config.network;});
         copyparty = (import ./copyparty {inherit config; port = builtins.toString oci-config.copyparty.port; dir = oci-config.copyparty.dir; network = oci-config.network;});
+        forgejo = (import ./forgejo.nix {inherit config; port = builtins.toString oci-config.forgejo.port; dir = oci-config.forgejo.dir; network = oci-config.network;});
       in {}
         # Firefly III
       // lib.optionalAttrs (oci-config.firefly-iii.enable) {
@@ -343,6 +361,11 @@ in {
         # Copyparty
       // lib.optionalAttrs (oci-config.copyparty.enable) {
         copyparty = copyparty.copyparty;
+      } 
+        # Forgejo
+      // lib.optionalAttrs (oci-config.forgejo.enable) {
+        forgejo = forgejo.forgejo;
+        forgejo_db = forgejo.forgejo_db;
       };
     };
 
