@@ -5,7 +5,7 @@
     copypartyConfig = (builtins.readFile ./copyparty.conf);
     configDir = builtins.toFile "copyparty.conf" copypartyConfig;
   in {
-    image = "ghcr.io/9001/copyparty-ac:1.20.16";
+    image = "ghcr.io/9001/copyparty-ac:1.20.17";
     autoStart = true;
     ports = [(port +":3923")];
     hostname = "copyparty";
