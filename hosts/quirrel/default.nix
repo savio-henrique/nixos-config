@@ -55,7 +55,7 @@
     distro = "kind";
   };
   
-  incus.enable = true;
+  incus.enable = false;
 
   # Keyboard Remap Config
   services.xremap = {
