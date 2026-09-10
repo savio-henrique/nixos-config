@@ -6,7 +6,7 @@
     ports = [ (port + ":80") ];
     hostname = "vaultwarden";
     environment = {
-      SIGNUPS_ALLOWED = "true";
+      SIGNUPS_ALLOWED = "false";
       DOMAIN = url;
     }; 
     volumes = [
