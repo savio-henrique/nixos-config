@@ -46,12 +46,13 @@
 
   oci-config = {
     enable = true;
-    engine = "docker";
+    engine = "podman";
     rootless = false;
+    updates.enable = false;
   };
 
   kubernetes = {
-    enable = true;
+    enable = false;
     distro = "kind";
   };
   
