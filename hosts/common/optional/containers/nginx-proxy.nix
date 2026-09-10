@@ -1,7 +1,7 @@
 {network}:
 {
   nginx_proxy_manager = let
-    url= ("http://nginx.home.shxnix.dev"); 
+    url= "https://nginx.tail.shxnix.dev"; 
   in {
     image = "jc21/nginx-proxy-manager:2.15.1";
     autoStart = true;

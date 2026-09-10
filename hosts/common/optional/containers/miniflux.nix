@@ -1,7 +1,7 @@
 {config,port,network}:
 {
   miniflux = let 
-    url= ("http://miniflux.homelab:"+port); 
+    url= "https://miniflux.tail.shxnix.dev"; 
   in {
     image = "miniflux/miniflux:latest";
     autoStart = true;

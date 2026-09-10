@@ -1,7 +1,7 @@
 {config,port,network}:
 {
   uptime_kuma = let 
-    url= ("http://uptime-kuma.homelab:"+port); 
+    url= "https://uptime.tail.shxnix.dev"; 
   in {
     image = "louislam/uptime-kuma:2";
     autoStart = true;

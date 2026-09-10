@@ -1,7 +1,7 @@
 {config,port,dir,network}:
 {
   forgejo = let
-    url= ("http://forgejo.homelab:"+port); 
+    url= "https://forgejo.tail.shxnix.dev";
   in {
     image = "codeberg.org/forgejo/forgejo:15-rootless";
     autoStart = true;

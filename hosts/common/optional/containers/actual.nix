@@ -1,6 +1,6 @@
 {config,dir,port,network}:
 {
-  actual_budget = let url= ("http://actual.homelab:"+port); in {
+  actual_budget = let url= "https://actual.tail.shxnix.dev"; in {
     image = "ghcr.io/actualbudget/actual-server:26.8.0";
     autoStart = true;
     ports = [(port + ":5006")];
