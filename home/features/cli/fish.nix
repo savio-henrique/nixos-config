@@ -3,27 +3,34 @@ let
   # Rebuild config command
   ssh-rebuild = pkgs.writeShellScriptBin "ssh-rebuild" ''
     # ssh-rebuild - Rebuild NixOS configuration over SSH
-    # Usage: ssh-rebuild <host> 
+    # Usage: ssh-rebuild <host> <host-connection>
     # Example: ssh-rebuild myhost
 
     # Colors
     RED='\033[0;31m'
 
     first_arg=$1;
+    sec_arg=$2;
 
     # Check if the first arg is empty
     if [ -z "$first_arg" ] ; then
-      echo -e "''${RED}Please provide a host name."
+      echo -e "''${RED}Please provide a flake host name."
+      exit 0
+
+    fi
+    # Check if the second arg is empty
+    if [ -z "$sec_arg" ] ; then
+      echo -e "''${RED}Please provide a host connection."
       exit 0
     fi
 
-    # Check if the first arg is a valid host
-    if ! [ -z "$(ssh -G $first_arg 2>&1 | grep 'Could not resolve hostname')" ]; then
-      echo -e "''${RED}Invalid host name."
+    # Check if the second arg is a valid host
+    if ! [ -z "$(ssh -G $sec_arg 2>&1 | grep 'Could not resolve hostname')" ]; then
+      echo -e "''${RED}Invalid host connection."
       exit 0
     fi
 
-    nixos-rebuild switch --flake .#$first_arg --target-host $first_arg --use-remote-sudo --show-trace
+    nixos-rebuild switch --flake .#$first_arg --target-host $sec_arg --sudo --ask-sudo-password --show-trace
   '';
 in {
   # Fish config

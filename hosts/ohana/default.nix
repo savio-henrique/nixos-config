@@ -196,6 +196,9 @@
 
   oci-config = {
     enable  = true;
+    nginx-proxy = {
+      enable = true;
+    };
     cloudflare = {
       enable = true;
     };
@@ -250,6 +253,11 @@
       enable = true;
       port = 3032;
       dir = "/home/saviohc/forgejo-data";
+    };
+    actual = {
+      enable = true;
+      port = 5006;
+      dir = "/home/saviohc/actual-budget-data";
     };
   };
 

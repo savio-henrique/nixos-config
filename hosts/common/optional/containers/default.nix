@@ -49,6 +49,14 @@ in {
       description = "Docker network to use";
     };
 
+    nginx-proxy = {
+      enable = lib.mkOption {
+        default = true;
+        type = lib.types.bool;
+        description = "Enable Nginx Proxy Manager";
+      };
+    };
+
     cloudflare = {
       enable = lib.mkOption {
         default = false;
@@ -246,6 +254,24 @@ in {
         description = "Directory for Forgejo data";
       };
     };
+
+    actual = {
+      enable = lib.mkOption {
+        default = false;
+        type = lib.types.bool;
+        description = "Enable Actual Budget";
+      };
+      port = lib.mkOption {
+        default = 8080;
+        type = lib.types.int;
+        description = "Port for Actual Budget";
+      };
+      dir = lib.mkOption {
+        default = "/var/lib/actual";
+        type = lib.types.path;
+        description = "Directory for Actual Budget data";
+      };
+    };
   };
 
   config = lib.mkIf oci-config.enable {
@@ -276,7 +302,7 @@ in {
       };
     } // lib.optionalAttrs (oci-config.engine=="docker" && oci-config.rootless) {
       rootless = {
-        enable = true;
+          enable = true;
         setSocketVariable = true;
       };
     };
@@ -303,7 +329,13 @@ in {
         miniflux = (import ./miniflux.nix {inherit config; port = builtins.toString oci-config.miniflux.port; network = oci-config.network;});
         copyparty = (import ./copyparty {inherit config; port = builtins.toString oci-config.copyparty.port; dir = oci-config.copyparty.dir; network = oci-config.network;});
         forgejo = (import ./forgejo.nix {inherit config; port = builtins.toString oci-config.forgejo.port; dir = oci-config.forgejo.dir; network = oci-config.network;});
+        actual = (import ./actual.nix {inherit config; port = builtins.toString oci-config.actual.port; dir = oci-config.actual.dir; network = oci-config.network;});
+        nginx-proxy = (import ./nginx-proxy.nix { network = oci-config.network;});
       in {}
+        # Nginx Proxy Manager
+      // lib.optionalAttrs (oci-config.nginx-proxy.enable) {
+        nginx_proxy_manager = nginx-proxy.nginx_proxy_manager;
+      }
         # Firefly III
       // lib.optionalAttrs (oci-config.firefly-iii.enable) {
         firefly_iii_core = firefly.firefly_iii_core;
@@ -366,6 +398,10 @@ in {
       // lib.optionalAttrs (oci-config.forgejo.enable) {
         forgejo = forgejo.forgejo;
         forgejo_db = forgejo.forgejo_db;
+      }
+        # Actual Budget
+      // lib.optionalAttrs (oci-config.actual.enable) {
+        actual_budget = actual.actual_budget;
       };
     };
 
