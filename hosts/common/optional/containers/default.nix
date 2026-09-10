@@ -397,8 +397,12 @@ in {
         ExecStart = lib.getExe (pkgs.writeShellScriptBin "oci-container-updates" ''
           images=$(${pkgs.${oci-config.engine}}/bin/${oci-config.engine} ps --format "{{.Image}}" | sort -u)
 
+          echo "Updating OCI containers..."
+
           for image in $images; do
+            echo "Pulling image: $image"
             ${pkgs.${oci-config.engine}}/bin/${oci-config.engine} pull "$image"
+            echo "Updating containers using image: $image"
           done
         '');
       };
@@ -422,10 +426,15 @@ in {
         Type = "oneshot";
         RemainAfterExit = true;
         ExecStart = lib.getExe (pkgs.writeShellScriptBin "oci-container-restart" ''
-          containers=$(${pkgs.systemd}/bin/systemctl list-units | grep .service | grep ${oci-config.engine}- | awk -F' ' '{print $1}' | sort -u)
+          containers=$(${pkgs.systemd}/bin/systemctl list-units | grep .service | grep ${oci-config.engine}- | cut -d' ' -f3 | sort -u)
 
+          echo "Restarting OCI containers..."
           for container in $containers; do
+            echo "Restarting container: $container"
+
             ${pkgs.systemd}/bin/systemctl try-restart "$container"
+
+            echo "Restarted container: $container"
           done
         '');
       };
