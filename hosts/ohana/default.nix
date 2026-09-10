@@ -200,7 +200,7 @@
       enable = true;
     };
     firefly-iii = {
-      enable = true;
+      enable = false;
       port = 8080;
     };
     trilium = {
@@ -225,11 +225,11 @@
       port = 7654;
       dir = "/home/saviohc/copyparty-data";
     };
-    # vaultwarden = {
-    #   enable = false;
-    #   port = 8082;
-    #   dir = "/home/saviohc/vaultwarden/";
-    # };
+    vaultwarden = {
+      enable = true;
+      port = 8085;
+      dir = "/home/saviohc/vaultwarden/";
+    };
     # prometheus = {
     #   enable = true;
     #   port = 9090;
@@ -239,7 +239,7 @@
     #   port = 9000;
     # };
     kaneo = {
-      enable = true;
+      enable = false;
       port = 3030;
     };
     minecraft = {

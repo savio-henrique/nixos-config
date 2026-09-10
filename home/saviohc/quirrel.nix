@@ -15,16 +15,14 @@
   home.packages = builtins.attrValues { inherit (pkgs)
     vivaldi
     devenv
+    calibre
     obsidian
-    vscode;
+    zotero
+    vscode
+    discord;
   } ++ [ 
     inputs.zen-browser.packages.${pkgs.stdenv.hostPlatform.system}.default
   ];
-
-  #  Alias for monitor on xrandr
-  # home.shellAliases = {
-  #   setmon = "xrandr --output HDMI-1-0 --auto --left-of eDP-1";
-  # };
 
   monitors = [
     {
@@ -44,7 +42,7 @@
       workspace = 2;
       primary = false;
       position = "0x0";
-      refreshRate = 100;
+      refreshRate = 60;
       scale = 1.0;
     }
   ];

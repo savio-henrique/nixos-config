@@ -1,12 +1,13 @@
 {config, port, dir, network}:
 {
-  vaultwarden = let url = ("http://vault.homelab:"+port); in {
-    image = "vaultwarden/server:latest-alpine";
+  vaultwarden = let url = "https://vault.tail.shxnix.dev"; in {
+    image = "ghcr.io/dani-garcia/vaultwarden:1.37.2-alpine";
     autoStart = true;
     ports = [ (port + ":80") ];
     hostname = "vaultwarden";
     environment = {
       SIGNUPS_ALLOWED = "true";
+      DOMAIN = url;
     }; 
     volumes = [
       "${dir}/vw-data:/data"
@@ -28,7 +29,7 @@
     ];
   };
   vaultwarden_db = {
-    image = "postgres:latest";
+    image = "postgres:15.19";
     autoStart = true;
     hostname = "vaultwarden_db";
     volumes = [
