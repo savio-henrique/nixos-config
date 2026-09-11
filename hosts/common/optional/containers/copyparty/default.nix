@@ -1,11 +1,11 @@
 {config,port,network, dir}:
 {
   copyparty = let 
-    url= ("http://copyparty.homelab:"+port); 
+    url= "https://copyparty.tail.shxnix.dev"; 
     copypartyConfig = (builtins.readFile ./copyparty.conf);
     configDir = builtins.toFile "copyparty.conf" copypartyConfig;
   in {
-    image = "ghcr.io/9001/copyparty-ac:1.20.20";
+    image = "ghcr.io/9001/copyparty-ac:1.20.23";
     autoStart = true;
     ports = [(port +":3923")];
     hostname = "copyparty";
