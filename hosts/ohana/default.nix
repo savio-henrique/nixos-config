@@ -17,179 +17,160 @@
 
     # Firefly Secrets
     firefly-key = {
-      sopsFile = ../common/secrets.yaml;
+      sopsFile = ./secrets.yaml;
       group = "www-data";
     };
     firefly-db-password= {
-      sopsFile = ../common/secrets.yaml;
+      sopsFile = ./secrets.yaml;
       group = "www-data";
     };
     firefly-db-env= {
-      sopsFile = ../common/secrets.yaml;
+      sopsFile = ./secrets.yaml;
       group = "www-data";
     };
     firefly-api-key = {
-      sopsFile = ../common/secrets.yaml;
-      group = "www-data";
-    };
-
-    # PiHole Secrets
-    pihole-api-key = {
-      sopsFile = ../common/secrets.yaml;
-      group = "www-data";
-    };
-    pihole-password-env = {
-      sopsFile = ../common/secrets.yaml;
-      group = "www-data";
-    };
-    pihole-password = {
-      sopsFile = ../common/secrets.yaml;
-      group = "www-data";
-    };
-    unbound-config = {
-      sopsFile = ../common/secrets.yaml;
+      sopsFile = ./secrets.yaml;
       group = "www-data";
     };
 
     # Vaultwarden Secrets
     vaultwarden-db-password = {
-      sopsFile = ../common/secrets.yaml;
+      sopsFile = ./secrets.yaml;
       group = "www-data";
     };
     vaultwarden-env = {
-      sopsFile = ../common/secrets.yaml;
+      sopsFile = ./secrets.yaml;
       group = "www-data";
     };
 
     # Cloudflare Tunnel
     cloudflare-token = {
-      sopsFile = ../common/secrets.yaml;
+      sopsFile = ./secrets.yaml;
       path = "/usr/share/cloudflared/cloudflare-token";
       mode = "0444";
     };
 
     # Trilium Secrets
     trilium-etapi-token = {
-      sopsFile = ../common/secrets.yaml;
+      sopsFile = ./secrets.yaml;
       mode = "0444";
     };
 
     # Kaneo Secrets
     kaneo-jwt = {
-      sopsFile = ../common/secrets.yaml;
+      sopsFile = ./secrets.yaml;
       group = "www-data";
     };
     kaneo-db-url = {
-      sopsFile = ../common/secrets.yaml;
+      sopsFile = ./secrets.yaml;
       group = "www-data";
     };
     kaneo-db-password = {
-      sopsFile = ../common/secrets.yaml;
+      sopsFile = ./secrets.yaml;
       group = "www-data";
     };
     kaneo-github-client-id = {
-      sopsFile = ../common/secrets.yaml;
+      sopsFile = ./secrets.yaml;
       group = "www-data";
     };
     kaneo-github-client-secret = {
-      sopsFile = ../common/secrets.yaml;
+      sopsFile = ./secrets.yaml;
       group = "www-data";
     };
     kaneo-github-app-id = {
-      sopsFile = ../common/secrets.yaml;
+      sopsFile = ./secrets.yaml;
       group = "www-data";
     };
     kaneo-github-webhook-secret = {
-      sopsFile = ../common/secrets.yaml;
+      sopsFile = ./secrets.yaml;
       group = "www-data";
     };
     kaneo-github-private-key = {
-      sopsFile = ../common/secrets.yaml;
+      sopsFile = ./secrets.yaml;
       group = "www-data";
     };
     kaneo-github-app-name = {
-      sopsFile = ../common/secrets.yaml;
+      sopsFile = ./secrets.yaml;
       group = "www-data";
     };
     kaneo-client-url = {
-      sopsFile = ../common/secrets.yaml;
+      sopsFile = ./secrets.yaml;
       group = "www-data";
     };
     kaneo-smtp-host = {
-      sopsFile = ../common/secrets.yaml;
+      sopsFile = ./secrets.yaml;
       group = "www-data";
     };
     kaneo-smtp-port = {
-      sopsFile = ../common/secrets.yaml;
+      sopsFile = ./secrets.yaml;
       group = "www-data";
     };
     kaneo-smtp-secure = {
-      sopsFile = ../common/secrets.yaml;
+      sopsFile = ./secrets.yaml;
       group = "www-data";
     };
     kaneo-smtp-user = {
-      sopsFile = ../common/secrets.yaml;
+      sopsFile = ./secrets.yaml;
       group = "www-data";
     };
     kaneo-smtp-password = {
-      sopsFile = ../common/secrets.yaml;
+      sopsFile = ./secrets.yaml;
       group = "www-data";
     };
     kaneo-smtp-from-email = {
-      sopsFile = ../common/secrets.yaml;
+      sopsFile = ./secrets.yaml;
       group = "www-data";
     };
     kaneo-smtp-require-tls = {
-      sopsFile = ../common/secrets.yaml;
+      sopsFile = ./secrets.yaml;
       group = "www-data";
     };
 
-
     # Uptime Kuma Secrets
     uptime-kuma-cloudflared-token = {
-      sopsFile = ../common/secrets.yaml;
+      sopsFile = ./secrets.yaml;
       group = "www-data";
     };
 
     # Miniflux Secrets
     miniflux-admin-username = {
-      sopsFile = ../common/secrets.yaml;
+      sopsFile = ./secrets.yaml;
       group = "www-data";
     };
     miniflux-admin-password = {
-      sopsFile = ../common/secrets.yaml;
+      sopsFile = ./secrets.yaml;
       group = "www-data";
     };
     miniflux-db-url = {
-      sopsFile = ../common/secrets.yaml;
+      sopsFile = ./secrets.yaml;
       group = "www-data";
     };
     miniflux-db-user = {
-      sopsFile = ../common/secrets.yaml;
+      sopsFile = ./secrets.yaml;
       group = "www-data";
     };
     miniflux-db-password = {
-      sopsFile = ../common/secrets.yaml;
+      sopsFile = ./secrets.yaml;
       group = "www-data";
     };
 
     # Copyparty Secrets
     copyparty-user = {
-      sopsFile = ../common/secrets.yaml;
+      sopsFile = ./secrets.yaml;
       group = "www-data";
     };
     copyparty-group = {
-      sopsFile = ../common/secrets.yaml;
+      sopsFile = ./secrets.yaml;
       group = "www-data";
     };
 
     # Forgejo Secrets
     forgejo-db-password = {
-      sopsFile = ../common/secrets.yaml;
+      sopsFile = ./secrets.yaml;
       group = "www-data";
     };
     forgejo-password = {
-      sopsFile = ../common/secrets.yaml;
+      sopsFile = ./secrets.yaml;
       group = "www-data";
     };
   };
