@@ -8,5 +8,6 @@
     disk: /
 
 - search:
-    provider: duckduckgo
+    provider: custom
+    url: https://search.chrono.shxnix.dev/search?q=
     target: _blank
