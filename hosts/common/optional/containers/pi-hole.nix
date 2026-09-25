@@ -1,7 +1,7 @@
 {config, network}:
 {
   pi-hole = {
-    image = "pihole/pihole:latest";
+    image = "pihole/pihole:2026.09.0";
     autoStart = true;
     hostname = "pihole";
     ports = [
@@ -26,13 +26,9 @@
     ];
   };
   unbound = {
-    image = "mvance/unbound:latest";
+    image = "mvance/unbound:1.22.0";
     autoStart = true;
     hostname = "unbound";
-    ports = [
-      "5335:53/tcp"
-      "5335:53/udp"
-    ];
     volumes = [
       (config.sops.secrets.unbound-config.path+":/opt/unbound/etc/unbound/unbound.conf")
       "/var/log/unbound:/var/log/unbound"

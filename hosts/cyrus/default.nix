@@ -59,7 +59,7 @@
 
   oci-config = {
     enable  = true;
-    pi-hole.enable = false;
+    pi-hole.enable = true;
   };
 
   services.tailscale.enable = true;
