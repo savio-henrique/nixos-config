@@ -1,7 +1,7 @@
 {config,network}:
 {
   cloudflared = {
-    image = " cloudflare/cloudflared:latest";
+    image = " cloudflare/cloudflared:2026.9.3";
     autoStart = true;
     ports = [("7844" + ":7844")];
     hostname = "cloudflared";
