@@ -4,6 +4,7 @@
     ../common/optional/video.nix
     ../common/optional/container-toolkit.nix
     ../common/optional/containers
+    ../common/optional/incus
     ./configuration.nix
   ];
 
@@ -76,6 +77,11 @@
       ];
       default_mode = "default";
     };
+  };
+
+  # Incus
+  incus = {
+    enable = true;
   };
 
   # VM test configuration

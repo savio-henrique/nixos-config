@@ -8,6 +8,11 @@ in {
       default = false;
       description = "Whether to enable incus.";
     };
+    config = lib.mkOption {
+      type = lib.types.attrs;
+      default = {};
+      description = "Configuration for incus."; 
+    };
   };
 
   config = lib.mkIf cfg.enable {
@@ -16,5 +21,7 @@ in {
 
     # Networking Config
     networking.nftables.enable = true;
+
+    virtualisation.incus.preseed = cfg.config;
   };
 }
