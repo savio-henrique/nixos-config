@@ -272,6 +272,19 @@ in {
         description = "Directory for Actual Budget data";
       };
     };
+
+    excalidraw = {
+      enable = lib.mkOption {
+        default = false;
+        type = lib.types.bool;
+        description = "Enable Excalidraw";
+      };
+      port = lib.mkOption {
+        default = 3009;
+        type = lib.types.int;
+        description = "Port for Excalidraw";
+      };
+    };
   };
 
   config = lib.mkIf oci-config.enable {
@@ -331,6 +344,7 @@ in {
         forgejo = (import ./forgejo.nix {inherit config; port = builtins.toString oci-config.forgejo.port; dir = oci-config.forgejo.dir; network = oci-config.network;});
         actual = (import ./actual.nix {inherit config; port = builtins.toString oci-config.actual.port; dir = oci-config.actual.dir; network = oci-config.network;});
         nginx-proxy = (import ./nginx-proxy.nix { network = oci-config.network;});
+        excalidraw = (import ./excalidraw.nix { port = oci-config.excalidraw.port; network = oci-config.network;});
       in {}
         # Nginx Proxy Manager
       // lib.optionalAttrs (oci-config.nginx-proxy.enable) {
@@ -402,6 +416,10 @@ in {
         # Actual Budget
       // lib.optionalAttrs (oci-config.actual.enable) {
         actual_budget = actual.actual_budget;
+      } 
+      # Excalidraw
+      // lib.optionalAttrs (oci-config.excalidraw.enable) {
+        excalidraw = excalidraw.excalidraw;
       };
     };
 
