@@ -1,4 +1,4 @@
-{port,network}:
+{config, port,network}:
 {
   excalidraw = let
     url= "https://excalidraw.tail.shxnix.dev";
