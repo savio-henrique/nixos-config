@@ -17,6 +17,7 @@ in {
   config = lib.mkIf cfg.enable {
     home.sessionVariables.NIXOS_OZONE_WL = "1";
     programs.waybar.enable = true;
+    services.mako.enable = true;
 
     home.packages = [
       pkgs.grim
@@ -69,6 +70,7 @@ in {
         exec-once = [
           "waybar"
           "hyprpaper"
+          "mako"
         ];
       };
     };
