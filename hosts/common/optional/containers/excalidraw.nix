@@ -1,4 +1,4 @@
-{config, port,network}:
+{port,network}:
 {
   excalidraw = let
     url= "https://excalidraw.tail.shxnix.dev";
@@ -14,9 +14,6 @@
       "homepage.href" = url;
       "homepage.description" = "Selfhosted Excalidraw Instance";
     };
-    environmentFiles = [
-      config.sops.secrets.secret-test.path
-    ];
     extraOptions = [
       "--network=${network}"
     ];
