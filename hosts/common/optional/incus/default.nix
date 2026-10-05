@@ -17,11 +17,13 @@ in {
 
   config = lib.mkIf cfg.enable {
     # Incus Config
-    virtualisation.incus.enable = true;
+    virtualisation.incus = {
+      enable = true;
+      ui.enable = false;
+      preseed = cfg.config;
+    };
 
     # Networking Config
     networking.nftables.enable = true;
-
-    virtualisation.incus.preseed = cfg.config;
   };
 }

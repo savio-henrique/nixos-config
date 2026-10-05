@@ -9,13 +9,6 @@
   ];
 
   # Configure SOPS
-  sops.secrets = {
-    secret-test = {
-      sopsFile = ./secrets.yaml;
-      group = "www-data";
-    };
-  };
-
   oci-config = {
     enable = true;
     engine = "docker";
@@ -25,6 +18,4 @@
       port = 3000;
     };
   };
-
-
 }
