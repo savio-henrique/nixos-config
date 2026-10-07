@@ -72,6 +72,7 @@
     overskride
     wireguard-tools
     networkmanagerapplet
+    lsof
   ];
 
 

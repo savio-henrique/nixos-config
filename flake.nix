@@ -106,6 +106,15 @@
             ./hosts/vms/databasevm.nix
           ];
         };
+
+        # Container testing
+        container = nixpkgs.lib.nixosSystem {
+          specialArgs = {inherit inputs outputs;};
+          modules = [
+            "${inputs.nixpkgs}/nixos/modules/virtualisation/lxc-container.nix"
+            ./hosts/vms/databasevm.nix
+          ];
+        };
       };
       homeConfigurations = {
         "saviohc@chrono" = home-manager.lib.homeManagerConfiguration {
