@@ -72,15 +72,6 @@ in {
       plugins = let
         pkg = pkgs.vimPlugins;
         theme = nvim.base16;
-        liveserver = pkgs.vimUtils.buildVimPlugin {
-          name = "live-server-nvim";
-          src = pkgs.fetchFromGitHub {
-            owner = "selimacerbas";
-            repo = "live-server.nvim";
-            rev = "85915d0e7dd926a54b0082aaeafc10a82bfe8288";
-            hash = "sha256-Z+BmQ9vSugX0qRpRvT+hniDuegvVDZbF0EsTW+0/R0w=";
-          };
-        };
       in [
         pkg.neodev-nvim
         pkg.cmp_luasnip
