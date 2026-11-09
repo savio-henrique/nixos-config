@@ -17,8 +17,8 @@
     devenv
     calibre
     obsidian
-    zotero
     vscode
+    signal-desktop
     discord;
   } ++ [ 
     inputs.zen-browser.packages.${pkgs.stdenv.hostPlatform.system}.default
@@ -29,7 +29,7 @@
       name = "eDP-1";
       width = 1920;
       height = 1080;
-      workspace = 1;
+      workspace = "1";
       primary = false;
       position = "0x0";
       refreshRate = 120;
@@ -39,7 +39,7 @@
       name = "HDMI-A-1";
       width = 1920;
       height = 1080;
-      workspace = 2;
+      workspace = "2";
       primary = true;
       position = "1920x0";
       refreshRate = 60;

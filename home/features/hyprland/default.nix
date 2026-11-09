@@ -28,50 +28,78 @@ in {
 
     wayland.windowManager.hyprland = {
       enable = true;
-      configType = "hyprlang";
+      configType = "lua";
+      package= null;
+      portalPackage = null;
+      systemd.enable = false;
       settings = let
-        screenshot = "grim -g \"$(slurp)\" - | wl-copy";
+        screenshot = "grim -g \\\"$(slurp)\\\" - | wl-copy";
         in {
-        "$mod" = "ALT_L";
-        "$terminal" = "alacritty";
-        "$fileManager" = "pcmanfm";
-        "$browser" = "zen";
+        mod = {
+          _var = "ALT_L";
+        };
+        terminal = {
+          _var = "alacritty";
+        };
+        fileManager = {
+          _var = "pcmanfm";
+        };
+        browser = {
+          _var = "zen";
+        };
 
-        input = {
+        config = {
+          input = {
           "kb_layout" = "us,br";
           "kb_variant" = ",thinkpad";
           "kb_options" = "grp:menu_toggle,caps:escape";
+          };
         };
 
         # Configure monitors
-        monitor = map (m: "${m.name},${
-        if m.enabled
-        then "${toString m.width}x${toString m.height}@${toString m.refreshRate},${m.position},${toString m.scale}"
-        else "disable"
-      }") (config.monitors);
+        monitor = map (m: if m.enabled then {
+          _args = [
+            (lib.generators.mkLuaInline "{ output = \"${m.name}\", mode = \"preferred\", position = \"${m.position}\", scale = ${toString m.scale} }")
+          ];
+        } else {}) config.monitors;
 
         # Configure Binds
-        bindm = [
-          "$mod, mouse:272, movewindow"
-          "$mod, mouse:273, resizewindow"
-        ];
-
         bind = [
-          "$mod, RETURN, exec, $terminal"
-          "$mod SHIFT, Q, exec, logout"
-          "$mod SHIFT, C, killactive"
-          "$mod CONTROL, F, exec, $browser"
-          "$mod, R, exec, ${config.visual.runner}"
-          "$mod, F, fullscreen"
-          "$mod, mouse_up, workspace, e-1"
-          "$mod, mouse_down, workspace, e+1"
-          "$mod, P, exec, ${screenshot}"
+          # Open Terminal
+          {
+            _args = [
+              (lib.generators.mkLuaInline "mod .. \" + RETURN\"")
+              (lib.generators.mkLuaInline "hl.dsp.exec_cmd(terminal)")
+            ];
+          }
+          # Open Browser
+          {
+            _args = [
+              (lib.generators.mkLuaInline "mod .. \" + CONTROL + F\"")
+              (lib.generators.mkLuaInline "hl.dsp.exec_cmd(browser)")
+            ];
+          }
+          # Open Runner
+          {
+            _args = [
+              (lib.generators.mkLuaInline "mod .. \" + R\"")
+              (lib.generators.mkLuaInline "hl.dsp.exec_cmd(\"${config.visual.runner}\")")
+            ];
+          }
+          # Take Screenshot
+          {
+            _args = [
+              (lib.generators.mkLuaInline "mod .. \" + P\"")
+              (lib.generators.mkLuaInline "hl.dsp.exec_cmd(\"${screenshot}\")")
+            ];
+          }
         ];
-        exec-once = [
-          "waybar"
-          "hyprpaper"
-          "mako"
-        ];
+        on = {
+          _args = [
+            "hyprland.start"
+            (lib.generators.mkLuaInline "function()\n  hl.exec_cmd(\"waybar\")\n  hl.exec_cmd(\"hyprpaper\")\n  hl.exec_cmd(\"mako\")\nend")
+          ];
+        };
       };
     };
   };

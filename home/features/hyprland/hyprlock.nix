@@ -62,8 +62,20 @@
       bind = let
         hyprlock = lib.getExe config.programs.hyprlock.package;
       in [
-        "$mod,backspace,exec,${hyprlock}"
-        "$mod,XF86Calculator,exec,${hyprlock}"
+        # Bind lockscreen to hyprlock
+        {
+          _args = [
+            (lib.generators.mkLuaInline "mod .. \" + backspace\"")
+            (lib.generators.mkLuaInline "hl.dsp.exec_cmd(\"${hyprlock}\")")
+          ];
+        }
+        # Bind XF86Calculator to hyprlock
+        {
+          _args = [
+            (lib.generators.mkLuaInline "mod .. \" + XF86Calculator\"")
+            (lib.generators.mkLuaInline "hl.dsp.exec_cmd(\"${hyprlock}\")")
+          ];
+        }
       ];
     };
   };
