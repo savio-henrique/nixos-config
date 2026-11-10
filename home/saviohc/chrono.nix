@@ -19,7 +19,6 @@
     dbeaver-bin
     vivaldi
     element-desktop
-    zotero
     bruno
     audacity
     devenv
@@ -35,7 +34,7 @@
       name = "HDMI-0";
       width = 2560;
       height = 1080;
-      workspace = 1;
+      workspace = "1";
       primary = true;
       refreshRate = 75;
       scale = 1.0;
